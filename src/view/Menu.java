@@ -4,6 +4,7 @@ import constant.UserRole;
 import entity.Book;
 import entity.User;
 import main.Main;
+import service.BookCategoryService;
 import service.BookService;
 import service.UserService;
 
@@ -16,6 +17,8 @@ public class Menu {
 
     private final UserService userService = new UserService();
     private final BookService bookService = new BookService();
+
+    private final BookCategoryService bookCategoryService = new BookCategoryService();
 
     public void showMenu() {
         System.out.println("---------- THƯ VIỆN MINI -----------");
@@ -59,6 +62,7 @@ public class Menu {
                 case 2:
                     break;
                 case 3:
+                    showAdminMenu_CategoyManageMent();
                     break;
                 case 4:
                     showAdminMenu_UserManagement();
@@ -74,7 +78,7 @@ public class Menu {
         }
     }
 
-    public void loginMenu() {
+    public void loginMenu() { // cái này có thể đẩy lên tren cho hợp lý hơn
         System.out.println("1. Đăng nhập");
         System.out.println("2. Đăng ký");
         System.out.println("3. Thoát");
@@ -92,7 +96,7 @@ public class Menu {
                 break;
             case 2:
                 bookService.manageBook();
-
+                break;
         }
     }
 
@@ -111,6 +115,25 @@ public class Menu {
                 break;
             case 3:
                 userService.deleteUserById();
+                break;
+        }
+    }
+    public void showAdminMenu_CategoyManageMent(){
+        System.out.println("Mời bạn chọn chức năng : ");
+        int choice = new Scanner(System.in).nextInt();
+        System.out.println("1 : Thêm Category mới ");
+        System.out.println("2 : Cập nhật thông tin Category ");
+        System.out.println("3 : Xóa Category : ");
+        switch (choice){
+            case 1:
+                bookCategoryService.creat();
+                break;
+            case 2:
+                bookCategoryService.updateCategoryById();
+                break;
+            case 3:
+                bookCategoryService.deleteCategoryById();
+                break;
         }
     }
 

@@ -12,17 +12,19 @@ import java.util.Scanner;
 public class BookService {
 
     private final ArrayList<Book> books = new ArrayList<>();
-    private final BookService bookService = new BookService();
+
+
+    private final BookCategoryService bookCategoryService = new BookCategoryService();
 
     public void inputBook() {
         Book book = new Book();
-        BookCategory bookCategory = new BookCategory();
         System.out.println("Mời bạn nhập tên sách : ");
         book.setName(new Scanner(System.in).nextLine());
         System.out.println("Mời bạn nhập tên tác giả : ");
         book.setAuthor(new Scanner(System.in).nextLine());
-        System.out.println("Mơi bạn nhập thể loại : ");
-//        book.setCategory(new Scanner(System.in).nextLine()); // mắc
+        System.out.println("Mơi bạn nhập thông tin cho thể loại : ");
+        BookCategory bookCategory = bookCategoryService.creat();
+        book.setCategory(bookCategory);
         System.out.println("Mời bạn nhập nhà xuất bản : ");
         book.setPublisher(new Scanner(System.in).nextLine());
         System.out.println("Mời bạn nhập năm xuất bản : ");
@@ -44,11 +46,12 @@ public class BookService {
         }
         return null;
     }
-    public void manageBook(){
-        while (true){
+
+    public void manageBook() {
+        while (true) {
             System.out.println("Mời bạn nhập ID của sách : ");
             int idBook = new Scanner(System.in).nextInt();
-            Book book = bookService.findBookById(idBook);
+            Book book = findBookById(idBook);
             if (book == null) {
                 System.out.println("Thông tin không chính xác , vui lòng nhập lại : ");
                 continue;
@@ -78,6 +81,17 @@ public class BookService {
                         book.setAuthor(newAuthor);
                         break;
                     case 3:
+                        System.out.println("Mời bạn nhập ID của thuộc tính Category : ");
+                        int idCategory = new Scanner(System.in).nextInt();
+                        BookCategory bookCategory = bookCategoryService.findCategoryById(idCategory);
+                        if (bookCategory == null) {
+                            System.out.println("Thông tin nhập không chính xác ");
+                        } else {
+                            System.out.println("Mời bạn nhập tên thể loại mới : ");
+                            bookCategory.setName(new Scanner(System.in).nextLine());
+                            book.setCategory(bookCategory);
+                        }
+
                         break;
                     case 4:
                         System.out.println("Mời bạn nhập nhà xuất bản mới");

@@ -1,13 +1,15 @@
 package entity;
 
 public class BookCategory {
+
     private int id;
     private String name ;
 
     public BookCategory() {
+
     }
 
-    public BookCategory(int id, String name) {
+    public BookCategory( String name) {
         this.id = id;
         this.name = name;
     }
