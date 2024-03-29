@@ -46,7 +46,7 @@ public class Menu {
         }
     }
 
-    private void showAdminMenu() {
+    public void showAdminMenu () {
         while (true) {
             System.out.println("------------ THƯ VIỆN MINI ------------");
             System.out.println("1. Quản lý sách");// show ra menu con có nhập sách vào kho, cập nhật thông tin sách
@@ -68,6 +68,11 @@ public class Menu {
                     showAdminMenu_UserManagement();
                     break;
             }
+            System.out.println("Do you want to contine : ");
+            String choice = new Scanner(System.in).nextLine();
+            if(choice.equalsIgnoreCase("n")){
+                return;
+            }
         }
     }
 
@@ -86,10 +91,10 @@ public class Menu {
     }
 
     public void showAdminMenu_BookManagement() {
-        System.out.println("Mới bạn chọn chức năng : ");
-        int choice = new Scanner(System.in).nextInt();
         System.out.println("1 : Nhập sách mới vào kho ");
         System.out.println("2 : Sửa thông tin sách đang có ");
+        System.out.println("Mới bạn chọn chức năng : ");
+        int choice = new Scanner(System.in).nextInt();
         switch (choice) {
             case 1:
                 bookService.inputBook();
@@ -120,10 +125,10 @@ public class Menu {
     }
     public void showAdminMenu_CategoyManageMent(){
         System.out.println("Mời bạn chọn chức năng : ");
-        int choice = new Scanner(System.in).nextInt();
         System.out.println("1 : Thêm Category mới ");
         System.out.println("2 : Cập nhật thông tin Category ");
         System.out.println("3 : Xóa Category : ");
+        int choice = new Scanner(System.in).nextInt();
         switch (choice){
             case 1:
                 bookCategoryService.creat();

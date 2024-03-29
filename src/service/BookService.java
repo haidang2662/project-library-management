@@ -2,7 +2,6 @@ package service;
 
 import entity.Book;
 import entity.BookCategory;
-import jdk.jfr.Category;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,15 +18,17 @@ public class BookService {
     public void inputBook() {
         Book book = new Book();
         System.out.println("Mời bạn nhập tên sách : ");
-        book.setName(new Scanner(System.in).nextLine());
+        book.setNameCategory(new Scanner(System.in).nextLine());
         System.out.println("Mời bạn nhập tên tác giả : ");
         book.setAuthor(new Scanner(System.in).nextLine());
-        System.out.println("Mơi bạn nhập thông tin cho thể loại : ");
-        BookCategory bookCategory = bookCategoryService.creat();
+        System.out.println("Mơi bạn nhập id của thể loại mà bạn muốn gán cho sách  : ");
+        int idCategory = new Scanner(System.in).nextInt();
+        BookCategory bookCategory = bookCategoryService.findCategoryById(idCategory);
         book.setCategory(bookCategory);
+        System.out.println(book);
         System.out.println("Mời bạn nhập nhà xuất bản : ");
         book.setPublisher(new Scanner(System.in).nextLine());
-        System.out.println("Mời bạn nhập năm xuất bản : ");
+        System.out.println("Mời bạn nhập năm xuất bản theo định dạng yyyy-MM-dd: ");
         book.setPublishedYear(LocalDate.parse(new Scanner(System.in).nextLine()));
         System.out.println("Mời bạn nhập giá quyên sách :");
         book.setPrice(new Scanner(System.in).nextDouble());
@@ -36,11 +37,12 @@ public class BookService {
         System.out.println("Mới bạn nhập số lượng sách hiện có : ");
         book.setTotalQuantity(new Scanner(System.in).nextInt());
         books.add(book);
+        System.out.println(books);
     }
 
     public Book findBookById(int idBook) {
         for (int j = 0; j < books.size(); j++) {
-            if (books.get(j).getId() == idBook) {
+            if (books.get(j).getIdCategory() == idBook) {
                 return books.get(j);
             }
         }
@@ -58,7 +60,6 @@ public class BookService {
             }
             if (book != null) {
                 System.out.println("Mời bạn chọn phần thông tin muốn chỉnh sửa : ");
-                int choice1 = new Scanner(System.in).nextInt();
                 System.out.println("1 : Tên sách");
                 System.out.println("2 : Tác giả");
                 System.out.println("3 : Thể loại");
@@ -69,11 +70,12 @@ public class BookService {
                 System.out.println("8 : Số lượng hiện có");
                 System.out.println("9 : Điểm vote ");
                 System.out.println("10 : Lượt vote ");
+                int choice1 = new Scanner(System.in).nextInt();
                 switch (choice1) {
                     case 1:
                         System.out.println("Mời bạn nhập tên sách mới");
                         String newName = new Scanner(System.in).nextLine();
-                        book.setName(newName);
+                        book.setNameCategory(newName);
                         break;
                     case 2:
                         System.out.println("Mời bạn nhập tên tác giả mới");
@@ -81,16 +83,22 @@ public class BookService {
                         book.setAuthor(newAuthor);
                         break;
                     case 3:
-                        System.out.println("Mời bạn nhập ID của thuộc tính Category : ");
-                        int idCategory = new Scanner(System.in).nextInt();
-                        BookCategory bookCategory = bookCategoryService.findCategoryById(idCategory);
-                        if (bookCategory == null) {
-                            System.out.println("Thông tin nhập không chính xác ");
-                        } else {
-                            System.out.println("Mời bạn nhập tên thể loại mới : ");
-                            bookCategory.setName(new Scanner(System.in).nextLine());
-                            book.setCategory(bookCategory);
+                        while (true){
+                            System.out.println("Mời bạn nhập ID của thuộc tính Category : ");
+                            int idCategory = new Scanner(System.in).nextInt();
+                            BookCategory bookCategory = bookCategoryService.findCategoryById(idCategory);
+                            if (bookCategory == null) {
+                                System.out.println("Thông tin nhập không chính xác ");
+                                continue;
+                            } else {
+                                System.out.println("Mời bạn nhập tên thể loại mới : ");
+                                bookCategory.setNameCategory(new Scanner(System.in).nextLine());
+                                book.setCategory(bookCategory);
+                                System.out.println(bookCategory);
+                               break;
+                            }
                         }
+
 
                         break;
                     case 4:
@@ -125,7 +133,11 @@ public class BookService {
 
                 }
             }
-            break;
+            System.out.println("Do you want to contine fix infomation : ");
+            String choice = new Scanner(System.in).nextLine();
+            if(choice.equalsIgnoreCase("n")){
+                return;
+            }
         }
     }
 

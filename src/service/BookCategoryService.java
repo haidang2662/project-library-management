@@ -1,6 +1,5 @@
 package service;
 
-import entity.Book;
 import entity.BookCategory;
 
 import java.util.ArrayList;
@@ -16,16 +15,17 @@ public class BookCategoryService {
     public BookCategory creat() {
         BookCategory bookCategory = new BookCategory();
         System.out.println("Mời bạn nhập ID cho Category : ");
-        bookCategory.setId(new Scanner(System.in).nextInt());
+        bookCategory.setIdCategory(new Scanner(System.in).nextInt());
         System.out.println("Mời bạn nhập tên cho Category : ");
-        bookCategory.setName(new Scanner(System.in).nextLine());
+        bookCategory.setNameCategory(new Scanner(System.in).nextLine());
         bookCategories.add(bookCategory);
+        System.out.println(bookCategory);
         return bookCategory;
     }
 
     public BookCategory findCategoryById(int idCategory) {
         for (int i = 0; i < bookCategories.size(); i++) {
-            if (bookCategories.get(i).getId() == idCategory) {
+            if (bookCategories.get(i).getIdCategory() == idCategory) {
                 return bookCategories.get(i);
             }
         }
@@ -39,14 +39,15 @@ public class BookCategoryService {
             System.out.println("Thông tin nhập không chính xác ");
         } else {
             System.out.println("Mời bạn nhập tên thể loại mới : ");
-            bookCategory.setName(new Scanner(System.in).nextLine());
+            bookCategory.setNameCategory(new Scanner(System.in).nextLine());
+            System.out.println(bookCategory);
         }
     }
     public void deleteCategoryById(){
         System.out.println("Mời bạn nhập ID của category cần xóa ");
         int idCategory = new Scanner(System.in).nextInt();
         for (int i = 0; i < bookCategories.size(); i++) {
-            if(bookCategories.get(i).getId() == idCategory){
+            if(bookCategories.get(i).getIdCategory() == idCategory){
                 bookCategories.remove(bookCategories.get(i));
                 System.out.println("Đã xóa thành công Category");
                 continue;

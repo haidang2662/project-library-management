@@ -2,39 +2,39 @@ package entity;
 
 public class BookCategory {
 
-    private int id;
-    private String name ;
+    private int idCategory;
+    private String nameCategory;
 
     public BookCategory() {
 
     }
 
     public BookCategory( String name) {
-        this.id = id;
-        this.name = name;
+        this.idCategory = idCategory;
+        this.nameCategory = name;
     }
 
-    public int getId() {
-        return id;
+    public int getIdCategory() {
+        return idCategory;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdCategory(int idCategory) {
+        this.idCategory = idCategory;
     }
 
-    public String getName() {
-        return name;
+    public String getNameCategory() {
+        return nameCategory;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameCategory(String nameCategory) {
+        this.nameCategory = nameCategory;
     }
 
     @Override
     public String toString() {
         return "BookCategory{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "id=" + idCategory +
+                ", name='" + nameCategory + '\'' +
                 '}';
     }
 }

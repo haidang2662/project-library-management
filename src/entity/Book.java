@@ -34,20 +34,20 @@ public class Book {
         this.voteCount = voteCount;
     }
 
-    public int getId() {
+    public int getIdCategory() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdCategory(int idCategory) {
+        this.id = idCategory;
     }
 
-    public String getName() {
+    public String getNameCategory() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameCategory(String nameCategory) {
+        this.name = nameCategory;
     }
 
     public String getAuthor() {
@@ -128,7 +128,7 @@ public class Book {
                 "id=" + id +
                 ", nameBook='" + name + '\'' +
                 ", author='" + author + '\'' +
-                ", classify='" + category + '\'' +
+                ", category='" + category.getNameCategory() + '\'' +
                 ", publishingCompany='" + publisher + '\'' +
                 ", publishingYear=" + publishedYear +
                 ", priceBook=" + price +
