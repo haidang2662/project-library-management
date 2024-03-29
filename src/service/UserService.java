@@ -15,10 +15,12 @@ public class UserService { // chuyên quản lý đăng ký, đăng nhập, đă
     public void register() {
         User user = new User();
         String email;
+        String password;
+        String phone;
         while (true) {
             System.out.println("Mời bạn nhập email : ");
             email = new Scanner(System.in).nextLine();
-            if (!email.matches("")) {
+            if (!email.matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")) {
                 System.out.println("Email không đúng định dạng vui lòng nhập lại");
                 continue;
             }
@@ -34,18 +36,34 @@ public class UserService { // chuyên quản lý đăng ký, đăng nhập, đă
                 break;
             }
         }
-
         user.setEmail(email);
-        System.out.println("Mới bạn nhập password");
-        user.setPassword(new Scanner(System.in).nextLine()); // check passord 8 -> 16 ký tự cả hoa , cả thường , cả số
+        while (true) {
+            System.out.println("Mới bạn nhập password (8 -> 16 ký tự cả hoa , cả thường , cả số)");
+            password = new Scanner(System.in).nextLine();
+            if (!password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,16}$")) {
+                System.out.println("Password không đúng định dạng vui lòng nhập lại ");
+                continue;
+            }
+            break;
+        }
+        user.setPassword(password); // check passord 8 -> 16 ký tự cả hoa , cả thường , cả số
         System.out.println("Mời bạn nhập tên : ");
         user.setFullName(new Scanner(System.in).nextLine());
-        System.out.println("Mời bạn nhập SĐT : ");
-        user.setPhone(new Scanner(System.in).nextLine()); // check đầu 0 và có 9 so tiep theo
+        while (true) {
+            System.out.println("Mời bạn nhập SĐT (đầu 0 và có 9 so tiep theo): ");
+            phone = new Scanner(System.in).nextLine();
+            if (!phone.matches("^0\\d{9}$")) {
+                System.out.println("Số điện thoại không đúng định dạng , vui lòng nhập lại ");
+                continue;
+            }
+            break;
+        }
+        user.setPhone(phone); // check đầu 0 và có 9 so tiep theo
         System.out.println("Mời bạn nhập địa chỉ : ");
         user.setAddress(new Scanner(System.in).nextLine());
         user.setRole(UserRole.USER);
         users.add(user);
+        System.out.println(users);
         // bắt user nhập email, pass, họ tên, ....
         // kiểm tra xem đã có tài khoản nào trùng email với email vùa nhập không
         // nếu trùng thì thông báo là đã có email đó tồn tại rồi, vui lòng email khác
@@ -104,49 +122,92 @@ public class UserService { // chuyên quản lý đăng ký, đăng nhập, đă
             }
         }
     }
-    public void updateUserInformation(){
-        System.out.println("Mời bạn nhập ID của user muốn cập nhật");
-        int idUser = new Scanner(System.in).nextInt();
-        User user = findUserById(idUser);
-        if (user == null) {
-            System.out.println("Thông tin không chính xác , vui lòng nhập lại : ");// chưa chắc chắn làm vòng lặp ở đoạn này . Vứt dòng 167 ra ngoài còn đâu để hết vào while true hoặc vứt hết vào while true luôn
-        }
-        if (user != null) {
-            System.out.println("Mời bạn chọn phần thông tin muốn chỉnh sửa : ");
-            int choice1 = new Scanner(System.in).nextInt();
-            System.out.println("1 : Email");
-            System.out.println("2 : Password");
-            System.out.println("3 : Tên");
-            System.out.println("4 : Số điện thoại");
-            System.out.println("5 : địa chỉ");
-            switch (choice1) {
-                case 1:
-                    System.out.println("Mời bạn nhập email mới : ");
-                    String newEmail = new Scanner(System.in).nextLine();
-                    user.setEmail(newEmail);
-                    break;
-                case 2:
-                    System.out.println("Mời bạn nhập password mới : ");
-                    String newPassword = new Scanner(System.in).nextLine();
-                    user.setPassword(newPassword);
-                    break;
-                case 3:
-                    System.out.println("Mời bạn nhập tên mới : ");
-                    String newName = new Scanner(System.in).nextLine();
-                    user.setFullName(newName);
-                    break;
-                case 4:
-                    System.out.println("Mời bạn nhập SĐT mới : ");
-                    String newPhone = new Scanner(System.in).nextLine();
-                    user.setPhone(newPhone);
-                    break;
-                case 5:
-                    System.out.println("Mời bạn nhập địa chỉ mới : ");
-                    String newAdress = new Scanner(System.in).nextLine();
-                    user.setAddress(newAdress);
-                    break;
+
+    public void updateUserInformation() {
+        User user;
+        while (true) {
+            System.out.println("Mời bạn nhập ID của user muốn cập nhật");
+            int idUser = new Scanner(System.in).nextInt();
+            user = findUserById(idUser);
+            if (user == null) {
+                System.out.println("Thông tin không chính xác , vui lòng nhập lại : ");
+                continue;
+                // chưa chắc chắn làm vòng lặp ở đoạn này . Vứt dòng 167 ra ngoài còn đâu để hết vào while true hoặc vứt hết vào while true luôn
             }
+            break;
         }
+        System.out.println("Mời bạn chọn phần thông tin muốn chỉnh sửa : ");
+        System.out.println("1 : Email");
+        System.out.println("2 : Password");
+        System.out.println("3 : Tên");
+        System.out.println("4 : Số điện thoại");
+        System.out.println("5 : địa chỉ");
+        int choice1 = new Scanner(System.in).nextInt();
+        switch (choice1) {
+            case 1:
+                String newEmail;
+                while (true) {
+                    System.out.println("Mời bạn nhập email mới: ");
+                    newEmail = new Scanner(System.in).nextLine();
+                    if (!newEmail.matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")) {
+                        System.out.println("Email không đúng định dạng vui lòng nhập lại");
+                        continue;
+                    }
+                    boolean coTrungEmailKhong = false;
+                    for (User user1 : users) {
+                        if (newEmail.equalsIgnoreCase(user1.getEmail())) {
+                            System.out.println("Email đã tồn tại vui lòng nhập lại");
+                            coTrungEmailKhong = true;
+                            break;
+                        }
+                    }
+                    if (coTrungEmailKhong == false) {
+                        break;
+                    }
+                }
+                user.setEmail(newEmail);
+                System.out.println(user);
+                break;
+            case 2:
+                String newPassword;
+                while (true) {
+                    System.out.println("Mới bạn nhập password (8 -> 16 ký tự cả hoa , cả thường , cả số)");
+                    newPassword = new Scanner(System.in).nextLine();
+                    if (!newPassword.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,16}$")) {
+                        System.out.println("Password không đúng định dạng vui lòng nhập lại ");
+                        continue;
+                    }
+                    break;
+                }
+                user.setPassword(newPassword);
+                System.out.println(user);
+                break;
+            case 3:
+                System.out.println("Mời bạn nhập tên mới : ");
+                String newName = new Scanner(System.in).nextLine();
+                user.setFullName(newName);
+                break;
+            case 4:
+                String newPhone;
+                while (true) {
+                    System.out.println("Mời bạn nhập SĐT (đầu 0 và có 9 so tiep theo): ");
+                    newPhone = new Scanner(System.in).nextLine();
+                    if (!newPhone.matches("^0\\d{9}$")) {
+                        System.out.println("Số điện thoại không đúng định dạng , vui lòng nhập lại ");
+                        continue;
+                    }
+                    break;
+                }
+                user.setPhone(newPhone);
+                System.out.println(user);
+                break;
+            case 5:
+                System.out.println("Mời bạn nhập địa chỉ mới : ");
+                String newAdress = new Scanner(System.in).nextLine();
+                user.setAddress(newAdress);
+                break;
+        }
+
     }
 
 }

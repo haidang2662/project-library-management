@@ -133,7 +133,7 @@ public class BookService {
 
                 }
             }
-            System.out.println("Do you want to contine fix infomation : ");
+            System.out.println("Do you want to contine to fix infomation : ");
             String choice = new Scanner(System.in).nextLine();
             if(choice.equalsIgnoreCase("n")){
                 return;

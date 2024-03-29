@@ -48,8 +48,8 @@ public class Menu {
 
     public void showAdminMenu () {
         while (true) {
-            System.out.println("------------ THƯ VIỆN MINI ------------");
-            System.out.println("1. Quản lý sách");// show ra menu con có nhập sách vào kho, cập nhật thông tin sách
+            System.out.println("------------ MENU ADMIN MANAGEMENT ------------");
+            System.out.println("1. Quản lý sách");// show ra menu  có nhập sách vào kho, cập nhật thông tin sách
             System.out.println("2. Quản lý mượn trả sách"); // show menu con: mượn, trả
             System.out.println("3. Quản lý thể loại sách "); // thêm sửa xóa thể loại
             System.out.println("4. Quản lý người dùng "); // Thêm , sửa , xóa User
@@ -107,10 +107,10 @@ public class Menu {
 
     public void showAdminMenu_UserManagement() {
         System.out.println("Mời bạn chọn chức năng : ");
-        int choice = new Scanner(System.in).nextInt();
         System.out.println("1 : Thêm user mới ");
         System.out.println("2 : Cập nhật thông tin user ");
         System.out.println("3 : Xóa user ");
+        int choice = new Scanner(System.in).nextInt();
         switch (choice) {
             case 1:
                 userService.register();

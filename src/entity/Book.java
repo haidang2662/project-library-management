@@ -128,7 +128,7 @@ public class Book {
                 "id=" + id +
                 ", nameBook='" + name + '\'' +
                 ", author='" + author + '\'' +
-                ", category='" + category.getNameCategory() + '\'' +
+                ", category='" + category + '\'' +
                 ", publishingCompany='" + publisher + '\'' +
                 ", publishingYear=" + publishedYear +
                 ", priceBook=" + price +
