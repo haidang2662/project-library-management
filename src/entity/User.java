@@ -14,11 +14,26 @@ public class User {
     private String address;
     private UserRole role; // quyền của user: ADMIN/USER
 
+    private double balance; // số dư tài khoản
+
     public User() {
         this.id = autoId++;
     }
 
+    public User(String email, String password, String fullName, String phone, String address) {
+        this.email = email;
+        this.password = password;
+        this.fullName = fullName;
+        this.phone = phone;
+        this.address = address;
+    }
 
+    public User(int id, String email, String password, UserRole role) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
 
     public int getId() {
         return id;
@@ -76,16 +91,33 @@ public class User {
         this.role = role;
     }
 
+    public static int getAutoId() {
+        return autoId;
+    }
+
+    public static void setAutoId(int autoId) {
+        User.autoId = autoId;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", email='" + email + '\'' +
-                ", passWord='" + password + '\'' +
+                ", password='" + password + '\'' +
                 ", fullName='" + fullName + '\'' +
-                ", phone=" + phone +
+                ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", role=" + role +
+                ", balance=" + balance +
                 '}';
     }
 }

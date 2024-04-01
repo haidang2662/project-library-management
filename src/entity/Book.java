@@ -20,7 +20,7 @@ public class Book {
         this.id = autoId++;
     }
 
-    public Book(String name, String author, BookCategory category, String publisher, LocalDate publishedYear, double price, double borrowPricePerDay, int totalQuantity, double voteStar, int voteCount) {
+    public Book(String name, String author, BookCategory category, String publisher, LocalDate publishedYear, double price, double borrowPricePerDay, int totalQuantity) {
         this.id = autoId++;
         this.name = name;
         this.author = author;
@@ -30,8 +30,6 @@ public class Book {
         this.price = price;
         this.borrowPricePerDay = borrowPricePerDay;
         this.totalQuantity = totalQuantity;
-        this.voteStar = voteStar;
-        this.voteCount = voteCount;
     }
 
     public int getIdCategory() {
@@ -106,21 +104,7 @@ public class Book {
         this.totalQuantity = totalQuantity;
     }
 
-    public double getVoteStar() {
-        return voteStar;
-    }
 
-    public void setVoteStar(double voteStar) {
-        this.voteStar = voteStar;
-    }
-
-    public int getVoteCount() {
-        return voteCount;
-    }
-
-    public void setVoteCount(int voteCount) {
-        this.voteCount = voteCount;
-    }
 
     @Override
     public String toString() {
@@ -134,8 +118,6 @@ public class Book {
                 ", priceBook=" + price +
                 ", rentByDay=" + borrowPricePerDay +
                 ", numerBooks=" + totalQuantity +
-                ", voteStar=" + voteStar +
-                ", voteCount=" + voteCount +
                 '}';
     }
 }

@@ -1,26 +1,66 @@
 package service;
 
+import constant.Regex;
 import constant.UserRole;
 import entity.User;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 public class UserService { // chuyên quản lý đăng ký, đăng nhập, đăng xuất, quên mật khẩu, ...
 
-    private List<User> users = new ArrayList<>();
-
+    private final List<User> users = Arrays.asList(
+            new User(-1, "admin", "admin", UserRole.ADMIN),
+            new User(0, "admin", "admin", UserRole.ADMIN),
+            new User(1, "admin", "admin", UserRole.ADMIN),
+            new User(2, "admin", "admin", UserRole.ADMIN),
+            new User(3, "admin", "admin", UserRole.ADMIN)
+    );
 
     public void register() {
-        User user = new User();
+        User user = createUserCommonInfo();
+        user.setRole(UserRole.USER);
+        users.add(user);
+        System.out.println(users);
+    }
+
+    public void createUserForAdmin() {
+        User user = createUserCommonInfo();
+        System.out.println("Chọn quyền của user:");
+        System.out.println("1. Admin");
+        System.out.println("2. User");
+        int choice;
+        while (true) {
+            try {
+                choice = new Scanner(System.in).nextInt();
+                if (choice != 1 && choice != 2) {
+                    System.out.print("Lựa chọn là 1 hoặc 2, vui lòng chọn lại: ");
+                    continue;
+                }
+                break;
+            } catch (InputMismatchException ex) {
+                System.out.print("Lựa chọn là số nguyên, vui lòng chọn lại: ");
+            }
+        }
+        if (choice == 1) {
+            user.setRole(UserRole.USER);
+        } else {
+            user.setRole(UserRole.ADMIN);
+        }
+        users.add(user);
+        System.out.println(users);
+    }
+
+    public User createUserCommonInfo() {
         String email;
         String password;
         String phone;
         while (true) {
             System.out.println("Mời bạn nhập email : ");
             email = new Scanner(System.in).nextLine();
-            if (!email.matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")) {
+            if (!email.matches(Regex.EMAIL_REGEX)) {
                 System.out.println("Email không đúng định dạng vui lòng nhập lại");
                 continue;
             }
@@ -36,47 +76,35 @@ public class UserService { // chuyên quản lý đăng ký, đăng nhập, đă
                 break;
             }
         }
-        user.setEmail(email);
         while (true) {
             System.out.println("Mới bạn nhập password (8 -> 16 ký tự cả hoa , cả thường , cả số)");
             password = new Scanner(System.in).nextLine();
-            if (!password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,16}$")) {
+            if (!password.matches(Regex.PASSWORD_REGEX)) {
                 System.out.println("Password không đúng định dạng vui lòng nhập lại ");
                 continue;
             }
             break;
         }
-        user.setPassword(password); // check passord 8 -> 16 ký tự cả hoa , cả thường , cả số
         System.out.println("Mời bạn nhập tên : ");
-        user.setFullName(new Scanner(System.in).nextLine());
+        String name = new Scanner(System.in).nextLine();
         while (true) {
             System.out.println("Mời bạn nhập SĐT (đầu 0 và có 9 so tiep theo): ");
             phone = new Scanner(System.in).nextLine();
-            if (!phone.matches("^0\\d{9}$")) {
+            if (!phone.matches(Regex.VN_PHONE_REGEX)) {
                 System.out.println("Số điện thoại không đúng định dạng , vui lòng nhập lại ");
                 continue;
             }
             break;
         }
-        user.setPhone(phone); // check đầu 0 và có 9 so tiep theo
         System.out.println("Mời bạn nhập địa chỉ : ");
-        user.setAddress(new Scanner(System.in).nextLine());
-        user.setRole(UserRole.USER);
-        users.add(user);
-        System.out.println(users);
-        // bắt user nhập email, pass, họ tên, ....
-        // kiểm tra xem đã có tài khoản nào trùng email với email vùa nhập không
-        // nếu trùng thì thông báo là đã có email đó tồn tại rồi, vui lòng email khác
-        // nếu không thì tạo 1 object User
-        // add object đso vào List<User>
-        // ghi dữ liệu vào file (để sau)
-
+        String address = new Scanner(System.in).nextLine();
+        return new User(email, password, name, phone, address);
     }
 
 
     public User login() {
         int count = 0;
-        while (count <= 5) {
+        while (count < 5) {
             count++;
             System.out.println("Mời bạn nhập email : ");
             String email = new Scanner(System.in).nextLine();
@@ -87,61 +115,49 @@ public class UserService { // chuyên quản lý đăng ký, đăng nhập, đă
                     return user;
                 }
             }
-            System.out.println("Thông tin đăng nhập chưa chĩnh xác , vui lòng thử lại");
+            System.out.println("Thông tin đăng nhập chưa chính xác. Đăng nhập thất bại " + (count + 1) + "lần, vui lòng thử lại.");
         }
-
-        // xử lý cho user nhập email và pass,
-        // check trong List<User> xem có user nào có email và pass trùng với cái mà người dùng nhập không
-        // nếu trùng thì return ra User tìm được
-        // nếu không trùng bắt nhập lại
-        // nhập lại tối đa 5 lần thì dừng và trả ra null
         return null;
     }
 
     public User findUserById(int idUser) {
-        for (int j = 0; j < users.size(); j++) {
-            if (users.get(j).getId() == idUser) {
-                return users.get(j);
+        for (User user : users) {
+            if (user.getId() == idUser) {
+                return user;
             }
         }
         return null;
     }
 
-    public void deleteUserById() {
-        while (true) {
-            System.out.println("Mời bạn nhập ID của User muốn xóa ");
-            int idUserDelete = new Scanner(System.in).nextInt();
-            for (int i = 0; i < users.size(); i++) {
-                if (users.get(i).getId() == idUserDelete) {
-                    users.remove(users.get(i));
-                    System.out.println("User có ID trên đã được xóa ");
-                    return;
-                } else
-                    System.out.println("Thông tin ID không chính xác , vui lòng nhập lại ");
-                break;
+    public void deleteUserById(int idUserDelete) {
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getId() == idUserDelete) {
+                users.remove(users.get(i));
+                System.out.println("User có ID trên đã được xóa");
+                return;
             }
         }
+        System.out.println("Không tồn tại user với id vừa nhập!");
     }
 
     public void updateUserInformation() {
         User user;
+        System.out.print("Mời bạn nhập ID của user muốn cập nhật");
         while (true) {
-            System.out.println("Mời bạn nhập ID của user muốn cập nhật");
             int idUser = new Scanner(System.in).nextInt();
             user = findUserById(idUser);
             if (user == null) {
-                System.out.println("Thông tin không chính xác , vui lòng nhập lại : ");
+                System.out.print("Thông tin không chính xác , vui lòng nhập lại : ");
                 continue;
-                // chưa chắc chắn làm vòng lặp ở đoạn này . Vứt dòng 167 ra ngoài còn đâu để hết vào while true hoặc vứt hết vào while true luôn
             }
             break;
         }
-        System.out.println("Mời bạn chọn phần thông tin muốn chỉnh sửa : ");
-        System.out.println("1 : Email");
-        System.out.println("2 : Password");
-        System.out.println("3 : Tên");
-        System.out.println("4 : Số điện thoại");
-        System.out.println("5 : địa chỉ");
+        System.out.println("Mời bạn chọn phần thông tin muốn chỉnh sửa: ");
+        System.out.println("1. Email");
+        System.out.println("2. Password");
+        System.out.println("3. Tên");
+        System.out.println("4. Số điện thoại");
+        System.out.println("5. Địa chỉ");
         int choice1 = new Scanner(System.in).nextInt();
         switch (choice1) {
             case 1:
@@ -149,13 +165,13 @@ public class UserService { // chuyên quản lý đăng ký, đăng nhập, đă
                 while (true) {
                     System.out.println("Mời bạn nhập email mới: ");
                     newEmail = new Scanner(System.in).nextLine();
-                    if (!newEmail.matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")) {
+                    if (!newEmail.matches(Regex.EMAIL_REGEX)) {
                         System.out.println("Email không đúng định dạng vui lòng nhập lại");
                         continue;
                     }
                     boolean coTrungEmailKhong = false;
                     for (User user1 : users) {
-                        if (newEmail.equalsIgnoreCase(user1.getEmail())) {
+                        if (newEmail.equalsIgnoreCase(user1.getEmail()) && user1.getId() != user.getId()) {
                             System.out.println("Email đã tồn tại vui lòng nhập lại");
                             coTrungEmailKhong = true;
                             break;
@@ -166,21 +182,19 @@ public class UserService { // chuyên quản lý đăng ký, đăng nhập, đă
                     }
                 }
                 user.setEmail(newEmail);
-                System.out.println(user);
                 break;
             case 2:
                 String newPassword;
                 while (true) {
                     System.out.println("Mới bạn nhập password (8 -> 16 ký tự cả hoa , cả thường , cả số)");
                     newPassword = new Scanner(System.in).nextLine();
-                    if (!newPassword.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,16}$")) {
+                    if (!newPassword.matches(Regex.PASSWORD_REGEX)) {
                         System.out.println("Password không đúng định dạng vui lòng nhập lại ");
                         continue;
                     }
                     break;
                 }
                 user.setPassword(newPassword);
-                System.out.println(user);
                 break;
             case 3:
                 System.out.println("Mời bạn nhập tên mới : ");
@@ -192,14 +206,13 @@ public class UserService { // chuyên quản lý đăng ký, đăng nhập, đă
                 while (true) {
                     System.out.println("Mời bạn nhập SĐT (đầu 0 và có 9 so tiep theo): ");
                     newPhone = new Scanner(System.in).nextLine();
-                    if (!newPhone.matches("^0\\d{9}$")) {
+                    if (!newPhone.matches(Regex.VN_PHONE_REGEX)) {
                         System.out.println("Số điện thoại không đúng định dạng , vui lòng nhập lại ");
                         continue;
                     }
                     break;
                 }
                 user.setPhone(newPhone);
-                System.out.println(user);
                 break;
             case 5:
                 System.out.println("Mời bạn nhập địa chỉ mới : ");
@@ -207,6 +220,7 @@ public class UserService { // chuyên quản lý đăng ký, đăng nhập, đă
                 user.setAddress(newAdress);
                 break;
         }
+        System.out.println(user);
 
     }
 

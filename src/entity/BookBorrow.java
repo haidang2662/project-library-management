@@ -7,11 +7,12 @@ public class BookBorrow {
 
     private User borrower;// người thuê
 
-    private List<BookBorrowDetail> detail; // danh sách các cuốn sách thuê kèm theo số lượng tương ứng
+    private List<BookBorrowDetail> details; // danh sách các cuốn sách thuê kèm theo số lượng tương ứng
 
     private LocalDate createdDate; // ngày thuê
 
     private LocalDate expectedReturnDate;
+
     private LocalDate actualReturnDate;
 
     private double totalDepositAmount;
@@ -19,19 +20,18 @@ public class BookBorrow {
     private double totalActualBorrowFee;
     private double totalPunishAmount;
 
-
-
     public BookBorrow() {
     }
 
-    public double getTotalBorrowFee() {
-        return totalExpectedBorrowFee;
+    public BookBorrow(User borrower, List<BookBorrowDetail> details, LocalDate createdDate,
+                      LocalDate expectedReturnDate, double totalDepositAmount, double totalExpectedBorrowFee) {
+        this.borrower = borrower;
+        this.details = details;
+        this.createdDate = createdDate;
+        this.expectedReturnDate = expectedReturnDate;
+        this.totalDepositAmount = totalDepositAmount;
+        this.totalExpectedBorrowFee = totalExpectedBorrowFee;
     }
-
-    public void setTotalBorrowFee(double totalBorrowFee) {
-        this.totalExpectedBorrowFee = totalBorrowFee;
-    }
-
 
 
     public User getBorrower() {
@@ -43,11 +43,11 @@ public class BookBorrow {
     }
 
     public List<BookBorrowDetail> getDetail() {
-        return detail;
+        return details;
     }
 
     public void setDetail(List<BookBorrowDetail> detail) {
-        this.detail = detail;
+        this.details = detail;
     }
 
     public LocalDate getCreatedDate() {
@@ -66,20 +66,20 @@ public class BookBorrow {
         this.expectedReturnDate = expectedReturnDate;
     }
 
-    public double getTotalDepositAmount() {
-        return totalDepositAmount;
-    }
-
-    public void setTotalDepositAmount(double totalDepositAmount) {
-        this.totalDepositAmount = totalDepositAmount;
-    }
-
     public LocalDate getActualReturnDate() {
         return actualReturnDate;
     }
 
     public void setActualReturnDate(LocalDate actualReturnDate) {
         this.actualReturnDate = actualReturnDate;
+    }
+
+    public double getTotalDepositAmount() {
+        return totalDepositAmount;
+    }
+
+    public void setTotalDepositAmount(double totalDepositAmount) {
+        this.totalDepositAmount = totalDepositAmount;
     }
 
     public double getTotalExpectedBorrowFee() {
@@ -110,7 +110,7 @@ public class BookBorrow {
     public String toString() {
         return "BookBorrow{" +
                 "borrower=" + borrower +
-                ", detail=" + detail +
+                ", detail=" + details +
                 ", createdDate=" + createdDate +
                 ", expectedReturnDate=" + expectedReturnDate +
                 ", actualReturnDate=" + actualReturnDate +

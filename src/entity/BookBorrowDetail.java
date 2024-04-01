@@ -6,7 +6,7 @@ public class BookBorrowDetail {
     private int returnQuantity;
     private String originalStatus;
     private String returnStatus;
-
+    private double depositAmount;
     private double expectedBorrowFee;// dự kiến
     private double actualBorrowFee; // thực tế
     private double punishAmount;
@@ -14,15 +14,10 @@ public class BookBorrowDetail {
     public BookBorrowDetail() {
     }
 
-    public BookBorrowDetail(Book book, int borrowQuantity, int returnQuantity, String originalStatus, String returnStatus, double expectedBorrowFee, double actualBorrowFee, double punishAmount) {
+    public BookBorrowDetail(Book book, int borrowQuantity, String originalStatus) {
         this.book = book;
         this.borrowQuantity = borrowQuantity;
-        this.returnQuantity = returnQuantity;
         this.originalStatus = originalStatus;
-        this.returnStatus = returnStatus;
-        this.expectedBorrowFee = expectedBorrowFee;
-        this.actualBorrowFee = actualBorrowFee;
-        this.punishAmount = punishAmount;
     }
 
     public Book getBook() {
@@ -65,6 +60,14 @@ public class BookBorrowDetail {
         this.returnStatus = returnStatus;
     }
 
+    public double getDepositAmount() {
+        return depositAmount;
+    }
+
+    public void setDepositAmount(double depositAmount) {
+        this.depositAmount = depositAmount;
+    }
+
     public double getExpectedBorrowFee() {
         return expectedBorrowFee;
     }
@@ -92,14 +95,15 @@ public class BookBorrowDetail {
     @Override
     public String toString() {
         return "BookBorrowDetail{" +
-                "book=" + book +
+                ", book=" + book +
                 ", borrowQuantity=" + borrowQuantity +
                 ", returnQuantity=" + returnQuantity +
                 ", originalStatus='" + originalStatus + '\'' +
                 ", returnStatus='" + returnStatus + '\'' +
+                ", depositAmount=" + depositAmount +
                 ", expectedBorrowFee=" + expectedBorrowFee +
                 ", actualBorrowFee=" + actualBorrowFee +
-                ", totalPunishAmount=" + punishAmount +
+                ", punishAmount=" + punishAmount +
                 '}';
     }
 }
