@@ -7,6 +7,8 @@ import entity.BookCategory;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -19,7 +21,7 @@ public class BookService {
         this.bookCategoryService = bookCategoryService;
     }
 
-    public void inputBook() {
+    public ArrayList<Book> inputBook() {
 
         System.out.println("Mời bạn nhập tên sách : ");
         String name = new Scanner(System.in).nextLine();
@@ -28,7 +30,15 @@ public class BookService {
         BookCategory category;
         while (true) {
             System.out.println("Mời bạn nhập id của thể loại mà bạn muốn gán cho sách  : ");
-            int idCategory = new Scanner(System.in).nextInt();
+            int idCategory;
+            while (true) {
+                try {
+                    idCategory = new Scanner(System.in).nextInt();
+                    break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
+                } catch (InputMismatchException e) {
+                    System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
+                }
+            }
             category = bookCategoryService.findCategoryById(idCategory);
             if (category == null) {
                 System.out.println("Thông tin không chính xác vui lòng nhập lại ");
@@ -50,20 +60,57 @@ public class BookService {
             }
         }
         System.out.println("Mời bạn nhập giá quyên sách :");
-        double price = new Scanner(System.in).nextDouble();
+        double price;
+        while (true) {
+            try {
+                price = new Scanner(System.in).nextDouble();
+                if (price < 0) {
+                    System.out.println("Giá 1 quyển sách phải là số dương , vui lòng nhập lại ");
+                    continue;
+                }
+                break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
+            } catch (InputMismatchException e) {
+                System.out.println("Giá trị bạn vừa nhập không phải là một số tự nhiên . Vui lòng nhập lại.");
+            }
+        }
         System.out.println("Mời bạn nhập giá thuê sách theo ngày: ");
-        double borrowPricePerDay = new Scanner(System.in).nextDouble();
+        double borrowPricePerDay;
+        while (true) {
+            try {
+                borrowPricePerDay = new Scanner(System.in).nextDouble();
+                if (borrowPricePerDay < 0) {
+                    System.out.println("Giá thuê sách phải là số dương , vui lòng nhập lại ");
+                    continue;
+                }
+                break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
+            } catch (InputMismatchException e) {
+                System.out.println("Giá trị bạn vừa nhập không phải là một số tự nhiên . Vui lòng nhập lại.");
+            }
+        }
         System.out.println("Mới bạn nhập số lượng sách hiện có : ");
-        int totalQuantity = new Scanner(System.in).nextInt();
+        int totalQuantity;
+        while (true) {
+            try {
+                totalQuantity = new Scanner(System.in).nextInt();
+                if (totalQuantity < 0) {
+                    System.out.println("Số lượng sách hiện có phải là số dương , vui lòng nhập lại ");
+                    continue;
+                }
+                break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
+            } catch (InputMismatchException e) {
+                System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
+            }
+        }
         Book book = new Book(name, author, category, publisher, publishedYear, price, borrowPricePerDay, totalQuantity);
         books.add(book);
         System.out.println(books);
+        return books;
     }
 
     public Book findBookById(int idBook) {
-        for (int j = 0; j < books.size(); j++) {
-            if (books.get(j).getIdCategory() == idBook) {
-                return books.get(j);
+        for (Book book : books) {
+            if (book.getIdCategory() == idBook) {
+                return book;
             }
         }
         return null;
@@ -72,8 +119,16 @@ public class BookService {
     public void updateBook() {
         while (true) {
             System.out.println("Mời bạn nhập ID của sách : ");
-            int idBook = new Scanner(System.in).nextInt();
-            Book book = findBookById(idBook);
+            int bookId;
+            while (true) {
+                try {
+                    bookId = new Scanner(System.in).nextInt();
+                    break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
+                } catch (InputMismatchException e) {
+                    System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
+                }
+            }
+            Book book = findBookById(bookId);
             if (book == null) {
                 System.out.println("Thông tin không chính xác , vui lòng nhập lại : ");
                 continue;
@@ -88,12 +143,24 @@ public class BookService {
             System.out.println("7. Tiền thuê theo ngày");
             System.out.println("8. Số lượng hiện có");
             System.out.println("9. Thoát");
-            int choice1 = new Scanner(System.in).nextInt();
-            switch (choice1) {
+            int featureChoice;
+            while (true) {
+                try {
+                    featureChoice = new Scanner(System.in).nextInt();
+                    if (featureChoice < 1 || featureChoice > 9) {
+                        System.out.println("Chức năng là số từ 1 tới 9, vui lòng nhập lại: ");
+                        continue;
+                    }
+                    break;
+                } catch (InputMismatchException ex) {
+                    System.out.print("Lựa chọn phải là một số nguyên, vui lòng nhập lại: ");
+                }
+            }
+            switch (featureChoice) {
                 case 1:
                     System.out.println("Mời bạn nhập tên sách mới");
                     String newName = new Scanner(System.in).nextLine();
-                    book.setNameCategory(newName);
+                    book.setName(newName);
                     break;
                 case 2:
                     System.out.println("Mời bạn nhập tên tác giả mới");
@@ -103,7 +170,15 @@ public class BookService {
                 case 3:
                     while (true) {
                         System.out.println("Mời bạn nhập id của thể loại mới: ");
-                        int idCategory = new Scanner(System.in).nextInt();
+                        int idCategory;
+                        while (true) {
+                            try {
+                                idCategory = new Scanner(System.in).nextInt();
+                                break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
+                            } catch (InputMismatchException e) {
+                                System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
+                            }
+                        }
                         BookCategory bookCategory = bookCategoryService.findCategoryById(idCategory);
                         if (bookCategory == null) {
                             System.out.println("Thông tin nhập không chính xác");
@@ -135,17 +210,53 @@ public class BookService {
                     break;
                 case 6:
                     System.out.println("Mời bạn nhập giá mới: ");
-                    double newPrice = new Scanner(System.in).nextDouble();
+                    double newPrice;
+                    while (true) {
+                        try {
+                            newPrice = new Scanner(System.in).nextDouble();
+                            if (newPrice < 0) {
+                                System.out.println("Giá 1 quyển sách phải là 1 số dương");
+                                continue;
+                            }
+                            break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số tự nhiên hợp lệ
+                        } catch (InputMismatchException e) {
+                            System.out.println("Giá trị bạn vừa nhập không phải là một số tự nhiên . Vui lòng nhập lại.");
+                        }
+                    }
                     book.setPrice(newPrice);
                     break;
                 case 7:
                     System.out.println("Mời bạn nhập tiền thuê theo ngày mới");
-                    double newBorrowPricePerDay = new Scanner(System.in).nextDouble();
+                    double newBorrowPricePerDay;
+                    while (true) {
+                        try {
+                            newBorrowPricePerDay = new Scanner(System.in).nextDouble();
+                            if (newBorrowPricePerDay < 0) {
+                                System.out.println("Tiền thuê theo ngày phải là 1 số dương");
+                                continue;
+                            }
+                            break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số tự nhiên hợp lệ
+                        } catch (InputMismatchException e) {
+                            System.out.println("Giá trị bạn vừa nhập không phải là một số tự nhiên . Vui lòng nhập lại.");
+                        }
+                    }
                     book.setBorrowPricePerDay(newBorrowPricePerDay);
                     break;
                 case 8:
                     System.out.println("Mời bạn nhập số lượng hiện có mới ");
-                    int newTotalQuantity = new Scanner(System.in).nextInt();
+                    int newTotalQuantity;
+                    while (true) {
+                        try {
+                            newTotalQuantity = new Scanner(System.in).nextInt();
+                            if (newTotalQuantity < 0) {
+                                System.out.println("Số lượng sách hiện có phải là số dương , vui lòng nhập lại ");
+                                continue;
+                            }
+                            break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
+                        } catch (InputMismatchException e) {
+                            System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
+                        }
+                    }
                     book.setTotalQuantity(newTotalQuantity);
                     break;
                 case 9:
@@ -153,5 +264,27 @@ public class BookService {
             }
         }
     }
+
+    public List<Book> findBooksByCategoryId(int categoryId) {
+        List<Book> books1 = new ArrayList<>();
+        for (Book book : books) {
+            if (book.getCategory().getIdCategory() == categoryId) {
+                books1.add(book);
+            }
+        }
+        return books1;
+    }
+
+    public void updateTotalQuantityBook(int idBook, int numberBook) {
+        for (Book book : books) {
+            if (book.getId() == idBook) {
+                book.setTotalQuantity(book.getTotalQuantity() + numberBook);
+                return;
+            }
+        }
+    }
+
+
+
 
 }

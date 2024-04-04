@@ -31,7 +31,9 @@ public class Book {
         this.borrowPricePerDay = borrowPricePerDay;
         this.totalQuantity = totalQuantity;
     }
-
+    public int getId() {  // đoạn này tự  làm không chắc đúng không
+        return id;
+    }
     public int getIdCategory() {
         return id;
     }
@@ -40,12 +42,12 @@ public class Book {
         this.id = idCategory;
     }
 
-    public String getNameCategory() {
+    public String getName() {
         return name;
     }
 
-    public void setNameCategory(String nameCategory) {
-        this.name = nameCategory;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAuthor() {
@@ -119,5 +121,22 @@ public class Book {
                 ", rentByDay=" + borrowPricePerDay +
                 ", numerBooks=" + totalQuantity +
                 '}';
+    }
+
+    public void setVoteStar(double voteStar) {
+        this.voteStar = voteStar;
+    }
+
+    public void setVoteCount(int voteCount) {
+        this.voteCount = voteCount;
+
+    }
+
+    public int getVoteCount() {
+        return voteCount;
+    }
+
+    public double getVoteStar() {
+        return voteStar;
     }
 }

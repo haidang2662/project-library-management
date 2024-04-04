@@ -74,7 +74,7 @@ public class BookBorrow {
         this.actualReturnDate = actualReturnDate;
     }
 
-    public double getTotalDepositAmount() {
+    public double getTotalDepositAmount(double tongTienPhat) {
         return totalDepositAmount;
     }
 

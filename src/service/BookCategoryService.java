@@ -1,19 +1,15 @@
 package service;
 
+import entity.Book;
 import entity.BookCategory;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 
 public class BookCategoryService {
-
-//    private final List<BookCategory> bookCategories = Arrays.asList(
-//            new BookCategory(-1 , "Chính kịch"),
-//            new BookCategory(-2 , "Thiếu nhi"),
-//            new BookCategory(-3,  "Lích sử")
-//    );
 
     private final List<BookCategory> bookCategories = new ArrayList<>();
 
@@ -37,7 +33,15 @@ public class BookCategoryService {
     public void updateCategoryById() {
         while (true) {
             System.out.println("Mời bạn nhập ID của thể loại sách muốn cập nhật: ");
-            int idCategory = new Scanner(System.in).nextInt();
+            int idCategory;
+            while (true) {
+                try {
+                    idCategory = new Scanner(System.in).nextInt();
+                    break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
+                } catch (InputMismatchException e) {
+                    System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
+                }
+            }
             BookCategory bookCategory = findCategoryById(idCategory);
             if (bookCategory == null) {
                 System.out.println("Id vừa nhập không tồn tại trong hệ thống, vui lòng nhập lại:  ");
@@ -50,22 +54,11 @@ public class BookCategoryService {
         }
     }
 
-    public void deleteCategoryById() {
-        // TODO - khi nào thì được phép xóa 1 thể loại sách??? . Khi thể loại sách đó không dược gán cho bất kỳ quyển sách nào
-        // làm giống xóa user
-        System.out.println("Mời bạn nhập ID của category cần xóa ");
-        int idCategory = new Scanner(System.in).nextInt();
-        BookCategory bookCategory = findCategoryById(idCategory);
-
-        for (int i = 0; i < bookCategories.size(); i++) {
-            if (bookCategories.get(i).getIdCategory() == idCategory) {
-                bookCategories.remove(bookCategories.get(i));
-                System.out.println("Đã xóa thành công Category");
-                continue;
+    public void deleteCategoryById(int idCategory) {
+        for (BookCategory category : bookCategories) {
+            if (category.getIdCategory() == idCategory) {
+                bookCategories.remove(category);
             }
-            System.out.println("Thông tin không chính xác , vui lòng nhập lại ");
-            return;
         }
-
     }
 }

@@ -13,11 +13,14 @@ public class Menu {
     private final UserService userService = new UserService();
     private final BookCategoryService bookCategoryService = new BookCategoryService();
     private final BookService bookService = new BookService(bookCategoryService);
-    private final BookBorrowService bookBorrowService = new BookBorrowService(userService, bookCategoryService, bookService);
+    private final TransactionService transactionService = new TransactionService(userService);
+    private final VoteHistoryService voteHistoryService = new VoteHistoryService(userService, bookService);
+    private final BookBorrowService bookBorrowService = new BookBorrowService(userService, bookCategoryService,
+            bookService, transactionService);
 
 
     private final AdminMenu adminMenu = new AdminMenu(userService, bookService, bookCategoryService, bookBorrowService);
-    private final UserMenu userMenu = new UserMenu(userService, bookService, bookCategoryService, bookBorrowService);
+    private final UserMenu userMenu = new UserMenu(userService, bookBorrowService, transactionService, voteHistoryService);
 
     public void showMenu() {
         while (true) {
@@ -58,6 +61,7 @@ public class Menu {
                     break;
                 case 3:
                     return;
+
             }
         }
     }
