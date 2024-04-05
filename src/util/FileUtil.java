@@ -1,37 +1,42 @@
 package util;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class FileUtil implements DataWritable, DataReadable {
+public class FileUtil<T> implements DataWritable<T>, DataReadable<T> {
 
-    private static final Gson gson = new Gson();
+    private static final Gson gson = new GsonBuilder().serializeNulls().create();
 
     @Override
-    public <T> void writeDataToFile(Object[] data, String fileName, Class<T> clazz) {
+    public void writeDataToFile(List<T> data, String fileName) {
         if (StringUtil.isNullOrEmpty(fileName) || DataUtil.isNullOrEmpty(data)) {
             return;
         }
-        try (FileReader reader = new FileReader(fileName)) {
-            gson.fromJson(reader, clazz);
+        try (FileWriter fileWriter = new FileWriter(fileName)) {
+            String rs = gson.toJson(data);
+            fileWriter.write(rs);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-
     @Override
-    public Object readDataFromFile(String fileName) {
+    public List<T> readDataFromFile(String fileName, Class<T[]> clazz) {
         if (StringUtil.isNullOrEmpty(fileName)) {
             return null;
         }
-//        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(fileName))) {
-//            return objectInputStream.readObject();
-//        } catch (IOException | ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
+        try (FileReader reader = new FileReader(fileName)) {
+            return new ArrayList<>(Arrays.asList(gson.fromJson(reader, clazz)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }

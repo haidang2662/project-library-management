@@ -1,7 +1,9 @@
 package util;
 
-public interface DataWritable {
+import java.util.List;
 
-    <T> void writeDataToFile(Object[] data, String fileName, Class<T> clazz);
+public interface DataWritable<T> {
+
+    void writeDataToFile(List<T> data, String fileName);
 
 }

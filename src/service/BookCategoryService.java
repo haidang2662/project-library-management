@@ -1,6 +1,5 @@
 package service;
 
-import entity.Book;
 import entity.BookCategory;
 
 import java.util.ArrayList;
@@ -22,9 +21,9 @@ public class BookCategoryService {
     }
 
     public BookCategory findCategoryById(int idCategory) {
-        for (int i = 0; i < bookCategories.size(); i++) {
-            if (bookCategories.get(i).getIdCategory() == idCategory) {
-                return bookCategories.get(i);
+        for (BookCategory bookCategory : bookCategories) {
+            if (bookCategory.getIdCategory() == idCategory) {
+                return bookCategory;
             }
         }
         return null;

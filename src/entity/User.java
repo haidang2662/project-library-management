@@ -4,9 +4,7 @@ import constant.UserRole;
 
 public class User {
 
-    private static int autoId;
-
-    private int id ;
+    private int id;
     private String email;
     private String password;
     private String fullName;
@@ -17,10 +15,10 @@ public class User {
     private double balance; // số dư tài khoản
 
     public User() {
-        this.id = autoId++;
     }
 
-    public User(String email, String password, String fullName, String phone, String address) {
+    public User(int id, String email, String password, String fullName, String phone, String address) {
+        this.id = id;
         this.email = email;
         this.password = password;
         this.fullName = fullName;
@@ -28,11 +26,32 @@ public class User {
         this.address = address;
     }
 
-    public User(int id, String email, String password, UserRole role) {
-        this.id = id;
+    public User(String email, String password, UserRole role) {
         this.email = email;
         this.password = password;
         this.role = role;
+    }
+
+    public User(int id, String email, String password, String fullName, String phone, String address, UserRole role, double balance) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.fullName = fullName;
+        this.phone = phone;
+        this.address = address;
+        this.role = role;
+        this.balance = balance;
+    }
+
+    public User(int id, String email, String password, String fullName, String phone, String address, String role, double balance) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.fullName = fullName;
+        this.phone = phone;
+        this.address = address;
+        this.role = UserRole.valueOf(role);
+        this.balance = balance;
     }
 
     public int getId() {
@@ -89,14 +108,6 @@ public class User {
 
     public void setRole(UserRole role) {
         this.role = role;
-    }
-
-    public static int getAutoId() {
-        return autoId;
-    }
-
-    public static void setAutoId(int autoId) {
-        User.autoId = autoId;
     }
 
     public double getBalance() {

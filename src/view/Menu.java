@@ -66,4 +66,15 @@ public class Menu {
         }
     }
 
+    // FILE - thêm haàm này, mỗi đối tượng có lưu trữ data thì đều cần các hàm set và findCurreantAutoId
+    public void initializeData() {
+        userService.setUsers();
+        userService.createDefaultAdminUser(); // haàm này sẽ tự động tạo admin user nếu chua có, neu co rồi thì không tạo nua
+        userService.findCurrentAutoId();
+
+        // ví du
+//        bookService.setBooks();
+//        bookService.findCurrentAutoId();
+    }
+
 }

@@ -4,27 +4,71 @@ import constant.Regex;
 import constant.UserRole;
 import entity.User;
 import main.Main;
+import util.FileUtil;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-public class UserService { // chuyên quản lý đăng ký, đăng nhập, đăng xuất, quên mật khẩu, ...
+public class UserService {
 
-    private final List<User> users = Arrays.asList(
-            new User(-1, "admin", "admin", UserRole.ADMIN),
-            new User(0, "admin", "admin", UserRole.ADMIN),
-            new User(1, "admin", "admin", UserRole.ADMIN),
-            new User(2, "admin", "admin", UserRole.ADMIN),
-            new User(3, "admin", "admin", UserRole.ADMIN)
-    );
+    private final FileUtil<User> fileUtil = new FileUtil<>(); // FILE - thêm thộc tính này, với UserService thì sẽ là FileUtil<User>, voi Book sẽ là FileUtil<Book>
+    private static final String USER_DATA_FILE = "users.json";
+    private static final String ADMIN_EMAIL = "admin@gmail.com";
+    private static final String ADMIN_PASSWORD = "admin";
+    private static int AUTO_ID; // FILE - thêm auto id ở đây, bỏ auto id ở entity đi
+    private List<User> users;
+
+    public void setUsers() {
+        List<User> userList = fileUtil.readDataFromFile(USER_DATA_FILE, User[].class);
+        users = userList != null ? userList : new ArrayList<>();
+    }
+
+    // FILE - lưu dữ liệu vào file, hàm nãy sẽ được gọi mỗi khi co sự thay đổi về user, ví dụ xóa user, thêm user, cập nhật user
+    public void saveUserData() {
+        fileUtil.writeDataToFile(users, USER_DATA_FILE);
+    }
+
+    // FILE - hàm tạo user admin
+    public void createDefaultAdminUser() {
+        if (users == null || users.isEmpty()) {
+            createAdmin();
+            return;
+        }
+        for (User user : users) {
+            if (user.getEmail().equalsIgnoreCase(ADMIN_EMAIL)
+                    && user.getPassword().equalsIgnoreCase(ADMIN_PASSWORD)) {
+                return;
+            }
+        }
+        createAdmin();
+    }
+
+    private void createAdmin() {
+        User user = new User(ADMIN_EMAIL, ADMIN_PASSWORD, UserRole.ADMIN);
+        user.setId(0);
+        users.add(user);
+        saveUserData();
+    }
+
+    // FILE - tìm auto id
+    public void findCurrentAutoId() {
+        int maxId = -1;
+        for (User user : users) {
+            if (user.getId() > maxId) {
+                maxId = user.getId();
+            }
+        }
+        AUTO_ID = maxId + 1;
+    }
 
     public void register() {
         User user = createUserCommonInfo();
         user.setRole(UserRole.USER);
         users.add(user);
         System.out.println(users);
+        saveUserData();
     }
 
     public void createUserForAdmin() {
@@ -52,6 +96,7 @@ public class UserService { // chuyên quản lý đăng ký, đăng nhập, đă
         }
         users.add(user);
         System.out.println(users);
+        saveUserData(); // FILE - khi có thay đổi về list user, can luu vao file
     }
 
     public User createUserCommonInfo() {
@@ -78,7 +123,7 @@ public class UserService { // chuyên quản lý đăng ký, đăng nhập, đă
             }
         }
         while (true) {
-            System.out.println("Mới bạn nhập password (8 -> 16 ký tự cả hoa , cả thường , cả số)");
+            System.out.println("Mới bạn nhập password (8 -> 16 cả ký tự, cả số)");
             password = new Scanner(System.in).nextLine();
             if (!password.matches(Regex.PASSWORD_REGEX)) {
                 System.out.println("Password không đúng định dạng vui lòng nhập lại ");
@@ -108,7 +153,7 @@ public class UserService { // chuyên quản lý đăng ký, đăng nhập, đă
         }
         System.out.println("Mời bạn nhập địa chỉ : ");
         String address = new Scanner(System.in).nextLine();
-        return new User(email, password, name, phone, address);
+        return new User(AUTO_ID++, email, password, name, phone, address);
     }
 
 
@@ -118,7 +163,7 @@ public class UserService { // chuyên quản lý đăng ký, đăng nhập, đă
             count++;
             String email;
             while (true) {
-                System.out.println("Mời bạn nhập email : ");
+                System.out.print("Mời bạn nhập email: ");
                 email = new Scanner(System.in).nextLine();
                 if (!email.matches(Regex.EMAIL_REGEX)) {
                     System.out.println("Email không đúng định dạng vui lòng nhập lại");
@@ -126,16 +171,8 @@ public class UserService { // chuyên quản lý đăng ký, đăng nhập, đă
                 }
                 break;
             }
-            String password;
-            while (true) {
-                System.out.println("Mới bạn nhập password (8 -> 16 ký tự cả hoa , cả thường , cả số)");
-                password = new Scanner(System.in).nextLine();
-                if (!password.matches(Regex.PASSWORD_REGEX)) {
-                    System.out.println("Password không đúng định dạng vui lòng nhập lại ");
-                    continue;
-                }
-                break;
-            }
+            System.out.print("Mời bạn nhập mật khẩu : ");
+            String password = new Scanner(System.in).nextLine();
             for (User user : users) {
                 if (user.getEmail().equalsIgnoreCase(email) && user.getPassword().equals(password)) {
                     return user;
@@ -158,8 +195,9 @@ public class UserService { // chuyên quản lý đăng ký, đăng nhập, đă
     public void deleteUserById(int idUserDelete) {
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getId() == idUserDelete) {
-                users.remove(users.get(i));
+                users.remove(i);
                 System.out.println("User có ID trên đã được xóa");
+                saveUserData();// FILE - khi có thay đổi về list user, can luu vao file
                 return;
             }
         }
@@ -214,7 +252,7 @@ public class UserService { // chuyên quản lý đăng ký, đăng nhập, đă
             case 2:
                 String newPassword;
                 while (true) {
-                    System.out.println("Mới bạn nhập password (8 -> 16 ký tự cả hoa , cả thường , cả số)");
+                    System.out.println("Mới bạn nhập password (8 -> 16 cả ký tự, cả số)");
                     newPassword = new Scanner(System.in).nextLine();
                     if (!newPassword.matches(Regex.PASSWORD_REGEX)) {
                         System.out.println("Password không đúng định dạng vui lòng nhập lại ");
@@ -249,7 +287,7 @@ public class UserService { // chuyên quản lý đăng ký, đăng nhập, đă
                 break;
         }
         System.out.println(user);
-
+        saveUserData();// FILE - khi có thay đổi về list user, can luu vao file
     }
 
     public void updateBalance() {
@@ -270,6 +308,7 @@ public class UserService { // chuyên quản lý đăng ký, đăng nhập, đă
         }
 
         user.setBalance(user.getBalance() + money);
+        saveUserData();// FILE - khi có thay đổi về list user, can luu vao file
     }
 
     public void showBalance() {
@@ -281,11 +320,11 @@ public class UserService { // chuyên quản lý đăng ký, đăng nhập, đă
         for (User user : users) {
             if (user.getId() == idUser) {
                 user.setBalance(user.getBalance() + amount);
+                saveUserData();// FILE - khi có thay đổi về list user, can luu vao file
                 return;
             }
         }
     }
-
 
     public User getLoggedInUser() {
         for (User userTemp : users) {

@@ -1,7 +1,9 @@
 package util;
 
-public interface DataReadable {
+import java.util.List;
 
-    Object readDataFromFile(String fileName);
+public interface DataReadable<T> {
+
+    List<T> readDataFromFile(String fileName, Class<T[]> clazz);
 
 }
