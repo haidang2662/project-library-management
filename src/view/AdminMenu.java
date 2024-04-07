@@ -8,7 +8,6 @@ import service.BookCategoryService;
 import service.BookService;
 import service.UserService;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -30,6 +29,7 @@ public class AdminMenu {
 
     public void showAdminMenu() {
         while (true) {
+            bookBorrowService.showBookBorrows();
             System.out.println("------------ MENU ADMIN MANAGEMENT ------------");
             System.out.println("1. Quản lý sách");// show ra menu  có nhập sách vào kho, cập nhật thông tin sách
             System.out.println("2. Quản lý mượn trả sách"); // show menu con: mượn, trả
@@ -123,7 +123,9 @@ public class AdminMenu {
             System.out.println("---------- QUẢN LÝ KHO SÁCH ------------");
             System.out.println("1. Nhập sách mới vào kho");
             System.out.println("2. Sửa thông tin sách đang có");
-            System.out.println("3. Thoát");
+            System.out.println("3. Tìm kiếm sách theo tên");
+            System.out.println("4. Tìm kiếm sách theo tên thể loại");
+            System.out.println("5. Thoát");
             System.out.println("Mới bạn chọn chức năng: ");
             int featureChoice;
             while (true) {
@@ -146,6 +148,14 @@ public class AdminMenu {
                     bookService.updateBook();
                     break;
                 case 3:
+                    bookService.findBookByName();
+                    // TODO - tìm kiếm sách theo tên . Đã làm xong .
+                    break;
+                case 4:
+                    bookService.findBookByNameCategory();
+                    // TODO - tìm kiếm sách theo thể loại . Đã làm xong .
+                    break;
+                case 5:
                     return;
             }
         }
@@ -155,9 +165,10 @@ public class AdminMenu {
         while (true) {
             System.out.println("Mời bạn chọn chức năng : ");
             System.out.println("1. Thêm user mới ");
-            System.out.println("2. Cập nhật thông tin user ");
-            System.out.println("3. Xóa user ");
-            System.out.println("4. Thoát");
+            System.out.println("2. Cập nhật thông tin User ");
+            System.out.println("3. Xóa User (chỉ xóa User khi User này chưa từng thực hiện giao dịch) ");
+            System.out.println("4. Tìm kiếm User theo tên ");
+            System.out.println("5. Thoát");
             int featureChoice;
             while (true) {
                 try {
@@ -178,14 +189,12 @@ public class AdminMenu {
                     User user;
                     int idUserDelete;
                     while (true) {
-                        while (true) {
-                            try {
-                                System.out.println("Mời bạn nhập ID của User muốn xóa ");
-                                idUserDelete = new Scanner(System.in).nextInt();
-                                break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
-                            } catch (InputMismatchException e) {
-                                System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
-                            }
+                        try {
+                            System.out.println("Mời bạn nhập ID của User muốn xóa ");
+                            idUserDelete = new Scanner(System.in).nextInt();
+                        } catch (InputMismatchException e) {
+                            System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
+                            continue;
                         }
                         user = userService.findUserById(idUserDelete);
                         if (user == null) {
@@ -202,6 +211,10 @@ public class AdminMenu {
                     userService.deleteUserById(idUserDelete);
                 }
                 case 4 -> {
+                    userService.findUserByName();
+                    // TODO - tìm bạn đọc teo tên Đã làm xong
+                }
+                case 5 -> { // TODO sao đoạn này không return được
                     return;
                 }
             }
@@ -237,7 +250,7 @@ public class AdminMenu {
                     bookCategoryService.updateCategoryById();
                     break;
                 case 3:
-                    System.out.println("Mời bạn nhập ID của thể loại cần xóa ");
+                    System.out.println("Mời bạn nhập ID của thể loại cần xóa: ");
                     int idCategory = new Scanner(System.in).nextInt();
                     List<Book> books1 = bookService.findBooksByCategoryId(idCategory);
                     if (books1 == null || books1.isEmpty()) {

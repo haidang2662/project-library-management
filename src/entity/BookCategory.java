@@ -2,20 +2,18 @@ package entity;
 
 public class BookCategory {
 
-    private static int AUTO_ID = 0;
     private int idCategory;
     private String nameCategory;
 
-    public BookCategory() {
-        this.idCategory = AUTO_ID++;
+    public BookCategory(int id) {
+        this.idCategory = id;
     }
 
-    public BookCategory(String name) {
-        this.idCategory = AUTO_ID++;
-        this.nameCategory = name;
+    public BookCategory(int id, int idCategory, String nameCategory) {
+        this.idCategory = id;
+        this.idCategory = idCategory;
+        this.nameCategory = nameCategory;
     }
-
-
 
     public int getIdCategory() {
         return idCategory;
@@ -36,8 +34,8 @@ public class BookCategory {
     @Override
     public String toString() {
         return "BookCategory{" +
-                "id=" + idCategory +
-                ", name='" + nameCategory + '\'' +
+                "idCategory=" + idCategory +
+                ", nameCategory='" + nameCategory + '\'' +
                 '}';
     }
 }

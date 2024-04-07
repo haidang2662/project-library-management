@@ -15,12 +15,11 @@ public class Menu {
     private final BookService bookService = new BookService(bookCategoryService);
     private final TransactionService transactionService = new TransactionService(userService);
     private final VoteHistoryService voteHistoryService = new VoteHistoryService(userService, bookService);
-    private final BookBorrowService bookBorrowService = new BookBorrowService(userService, bookCategoryService,
-            bookService, transactionService);
+    private final BookBorrowService bookBorrowService = new BookBorrowService(userService, bookService, transactionService);
 
 
     private final AdminMenu adminMenu = new AdminMenu(userService, bookService, bookCategoryService, bookBorrowService);
-    private final UserMenu userMenu = new UserMenu(userService, bookBorrowService, transactionService, voteHistoryService);
+    private final UserMenu userMenu = new UserMenu(userService, bookBorrowService, transactionService, voteHistoryService,bookService);
 
     public void showMenu() {
         while (true) {
@@ -69,12 +68,22 @@ public class Menu {
     // FILE - thêm haàm này, mỗi đối tượng có lưu trữ data thì đều cần các hàm set và findCurreantAutoId
     public void initializeData() {
         userService.setUsers();
-        userService.createDefaultAdminUser(); // haàm này sẽ tự động tạo admin user nếu chua có, neu co rồi thì không tạo nua
+        userService.createDefaultAdminUser(); // haàm này sẽ tự động tạo admin user nếu chua có, neu co rồi thì không
+        // tạo nua . Hàm này hình như chưa được dùng .
         userService.findCurrentAutoId();
-
         // ví du
-//        bookService.setBooks();
-//        bookService.findCurrentAutoId();
+        bookService.setBooks();
+        bookService.findCurrentAutoId();
+
+        voteHistoryService.setVoteHistories();
+
+        transactionService.setTransactionHistories();
+
+        bookCategoryService.setBookCategories();
+        bookCategoryService.findCurrentAutoId();
+
+        bookBorrowService.setBookBorrows();
+
     }
 
 }

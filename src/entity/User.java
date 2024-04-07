@@ -118,17 +118,4 @@ public class User {
         this.balance = balance;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", fullName='" + fullName + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", role=" + role +
-                ", balance=" + balance +
-                '}';
-    }
 }

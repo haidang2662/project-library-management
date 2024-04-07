@@ -4,6 +4,7 @@ import constant.DateTimeConstant;
 import constant.TransactionType;
 import entity.*;
 import main.Main;
+import util.FileUtil;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -15,19 +16,30 @@ import java.util.Scanner;
 
 public class BookBorrowService {
 
-    private final List<BookBorrow> bookBorrows = new ArrayList<>(); // danh sách các lượt mượn/trả sách
+    private final FileUtil<BookBorrow> fileUtil = new FileUtil<>();
+
+    private static final String BOOK_BORROW_DATA_FILE = "bookBorrows.json";
+
+    private List<BookBorrow> bookBorrows; // danh sách các lượt mượn/trả sách
 
     private final UserService userService;
-    private final BookCategoryService bookCategoryService;
     private final BookService bookService;
 
     private final TransactionService transactionService;
 
-    public BookBorrowService(UserService userService, BookCategoryService bookCategoryService, BookService bookService, TransactionService transactionService) {
+    public BookBorrowService(UserService userService, BookService bookService, TransactionService transactionService) {
         this.userService = userService;
-        this.bookCategoryService = bookCategoryService;
         this.bookService = bookService;
         this.transactionService = transactionService;
+    }
+
+    public void setBookBorrows() {
+        List<BookBorrow> bookBorrowList = fileUtil.readDataFromFile(BOOK_BORROW_DATA_FILE, BookBorrow[].class);
+        bookBorrows = bookBorrowList != null ? bookBorrowList : new ArrayList<>();
+    }
+
+    public void saveBookBorrowsData() {
+        fileUtil.writeDataToFile(bookBorrows, BOOK_BORROW_DATA_FILE);
     }
 
     public void createBorrow() {
@@ -35,10 +47,11 @@ public class BookBorrowService {
         int userId = borrower.getId();
         BookBorrow borrow = findBorrowing(userId);
         if (borrow != null) {
-            System.out.println("Bạn đọc này đang có lượt mượn sách chưa trả");
+            System.out.println("Bạn đọc này đang có lượt mượn sách chưa trả. " +
+                    "Vui lòng thực hiện trả sách đang mượn để có thể tiếp tục mượn các cuốn sách khác.");
             return;
         }
-        System.out.println("Bạn đọc này có thể tiếp tục mượn sách ");
+        System.out.println("Bạn đọc này có thể tiếp tục mượn sách");
         double soDuTK = borrower.getBalance();
         if (soDuTK < 50000) {
             System.out.println("Bạn đọc này có số dư tài khoản dưới 50.000 , vui lòng nạp thêm tài khoản ");
@@ -49,7 +62,7 @@ public class BookBorrowService {
         // nhập danh sách các đầu sách muốn mượn (kèm theo số lượng và tình trạng tương ứng)
         List<BookBorrowDetail> details = createdBorrowDetail(borrower);
         if (details.isEmpty()) {
-            System.out.println("Danh sách sách muốn mượn đang rỗng , mượn không thành công  ");
+            System.out.println("Danh sách sách muốn mượn đang rỗng, mượn không thành công.");
             return;
         }
 
@@ -83,9 +96,10 @@ public class BookBorrowService {
             bookService.updateTotalQuantityBook(detail.getBook().getId(), -detail.getBorrowQuantity());
         }
 
-        BookBorrow bookBorrow = new BookBorrow(borrower, details, createdDate,
-                expectedReturnDate, tongTienCoc, tongTienThue);
+        BookBorrow bookBorrow = new BookBorrow(borrower, details, createdDate, expectedReturnDate,
+                tongTienCoc, tongTienThue);
         bookBorrows.add(bookBorrow);
+        saveBookBorrowsData(); // Lưu dữ liêu file liên quan đến BookBorrow
         String transactionContent = borrower.getFullName() + " thực hiện mượn sách thư viện";
         Transaction transaction = new Transaction(borrower, createdDate, tongTienCoc, TransactionType.BORROW, transactionContent);
         transactionService.saveTransaction(transaction);
@@ -98,7 +112,7 @@ public class BookBorrowService {
         while (true) {
             try {
                 numberOfTypeBook = new Scanner(System.in).nextInt();
-                if (numberOfTypeBook < 0) {
+                if (numberOfTypeBook <= 0) {
                     System.out.println("Số lượng đầu sách  phải là số dương , vui lòng nhập lại ");
                     continue;
                 }
@@ -113,13 +127,11 @@ public class BookBorrowService {
             while (true) {
                 System.out.println("Mời bạn nhập id của quyển sách bạn muốn mượn: ");
                 int bookId;
-                while (true) {
-                    try {
-                        bookId = new Scanner(System.in).nextInt();
-                        break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
-                    } catch (InputMismatchException e) {
-                        System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
-                    }
+                try {
+                    bookId = new Scanner(System.in).nextInt();
+                } catch (InputMismatchException e) {
+                    System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
+                    continue;
                 }
                 book = bookService.findBookById(bookId);
                 if (book == null) {
@@ -130,47 +142,40 @@ public class BookBorrowService {
             }
             System.out.println("Mời bạn nhập số lượng sách muốn mượn: ");
             int borrowQuantity;
+            boolean muonCuonKhac = false;
             while (true) {
                 try {
                     borrowQuantity = new Scanner(System.in).nextInt();
-                    if (borrowQuantity < 0) {
-                        System.out.println("Số lượng đầu sách  phải là số dương , vui lòng nhập lại ");
+                    if (borrowQuantity <= 0) {
+                        System.out.println("Số lượng đầu sách  phải là số dương, vui lòng nhập lại ");
                         continue;
                     }
+
+                    if (borrowQuantity > book.getTotalQuantity()) {
+                        System.out.println("Số sách hiện có trong thư viện: " + book.getTotalQuantity());
+                        System.out.println("Sách bạn muốn mượn đang không có đủ trong thư viện, " +
+                                "bạn có muốn tiếp tục mượn sách này không (Y/N) : ");
+                        String choice = new Scanner(System.in).nextLine();
+                        if (choice.equalsIgnoreCase("n")) {
+                            muonCuonKhac = true;
+                            break;
+                        }
+                        System.out.print("Nhập lại số sách muốn mượn: ");
+                        continue;
+                    }
+
                     break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
                 } catch (InputMismatchException e) {
                     System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
                 }
             }
-
-            if (borrowQuantity > book.getTotalQuantity()) {
-                System.out.println("Số sách hiện có trong thư viện" + book.getTotalQuantity());
-                System.out.println("Sách bạn muốn mượn đang không có đủ trong thư viện , bạn có muốn tiếp tục mượn sách này không (Y/N) : ");
-                String choice = new Scanner(System.in).nextLine();
-                if (choice.equalsIgnoreCase("n")) {
-                    continue;
-                }
-                System.out.println("Mời bạn nhập lại số lượng sách muốn mượn :");
-                while (true) {
-                    try {
-                        borrowQuantity = new Scanner(System.in).nextInt();
-                        if (borrowQuantity < 0) {
-                            System.out.println("Số lượng đầu sách  phải là số dương , vui lòng nhập lại ");
-                            continue;
-                        }
-                        if (borrowQuantity > book.getTotalQuantity()) {
-                            System.out.println("Số lượng đầu sách  phải phải nhỏ hơn số lượng hiện có trong thư viện (" + book.getTotalQuantity() + " quyển)");
-                            continue;
-                        }
-                        break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
-                    } catch (InputMismatchException e) {
-                        System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
-                    }
-                }
+            if (!muonCuonKhac) {
+                continue;
             }
 
             if (book.getPrice() * borrowQuantity > soDuTaiKhoan) {
-                System.out.println("Số dư tài khoản không đủ đê mượn đầu sách này . Hệ thống sẽ tự động lập phiếu mượn sách với các cuôn sách đã mượn thành công .");
+                System.out.println("Số dư tài khoản không đủ đê mượn đầu sách này. " +
+                        "Hệ thống sẽ tự động lập phiếu mượn sách với các cuôn sách đã mượn thành công .");
                 break;
             }
 
@@ -223,7 +228,7 @@ public class BookBorrowService {
                 try {
                     numberBookReturn = new Scanner(System.in).nextInt();
                     if (numberBookReturn < 0) {
-                        System.out.println("Số sách trả về phải là số dương , vui lòng nhập lại");
+                        System.out.println("Số sách trả về phải là số dương hoặc bằng 0, vui lòng nhập lại");
                         continue;
                     }
                     break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
@@ -240,7 +245,7 @@ public class BookBorrowService {
                 try {
                     x = new Scanner(System.in).nextInt();
                     if (x < 0) {
-                        System.out.println("Số % phạt phải là số dương , vui lòng nhập lại");
+                        System.out.println("Số % phạt phải là số dương hoặc bằng 0, vui lòng nhập lại");
                         continue;
                     }
                     break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
@@ -257,7 +262,7 @@ public class BookBorrowService {
 
         double tongTienPhat = tienPhatThueQuaHan + tienPhatDoTinhTrangSach;
         borrowing.setTotalPunishAmount(tongTienPhat);
-        borrower.setBalance(borrower.getBalance() - tongTienPhat);
+        borrower.setBalance(borrower.getBalance() - tongTienPhat + tienCocTraLai);
         String returnBookTransactionContent = "Hoàn trả tiền cọc sách khi bạn đọc " + borrower.getFullName() + " trả sách";
         Transaction returnBookTransaction = new Transaction(borrower, returnDate, tienCocTraLai, TransactionType.RETURN, returnBookTransactionContent);
         transactionService.saveTransaction(returnBookTransaction);
@@ -266,13 +271,15 @@ public class BookBorrowService {
             Transaction punishedTransaction = new Transaction(borrower, returnDate, -tongTienPhat, TransactionType.PUNISH, punishedTransactionContent);
             transactionService.saveTransaction(punishedTransaction);
         }
+        saveBookBorrowsData();
+        userService.saveUserData();
+        bookService.saveBookData();
     }
 
     public List<BookBorrow> findByUserId(int userId) { // tìm tất cả các lượt mượn sách từ trước tới giờ của user theo id
-        User borrower = userService.findUserById(userId);
         List<BookBorrow> borrows = new ArrayList<>();
         for (BookBorrow bookBorrow : bookBorrows) {
-            if (bookBorrow.getBorrower() == borrower) {
+            if (bookBorrow.getBorrower().getId() == userId) {
                 borrows.add(bookBorrow);
             }
         }
@@ -284,13 +291,11 @@ public class BookBorrowService {
         while (true) {
             System.out.print("Mời bạn nhâp mã bạn đọc: ");
             int idUser;
-            while (true) {
-                try {
-                    idUser = new Scanner(System.in).nextInt();
-                    break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
-                } catch (InputMismatchException e) {
-                    System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
-                }
+            try {
+                idUser = new Scanner(System.in).nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
+                continue;
             }
             borrower = userService.findUserById(idUser);
             if (borrower == null) {
@@ -306,11 +311,10 @@ public class BookBorrowService {
         List<BookBorrow> borrows = findByUserId(userId);
         // lọc xem trong tất cả các lượt mượn kia có lượt nào là lượt chưa trả hay không
         for (BookBorrow borrow : borrows) {
-            if (borrow.getActualReturnDate() == null) {// không có giá trị ngày tr ==> tức là chưa trả sách
+            if (borrow.getActualReturnDate() == null) {// không có giá trị ngày trả ==> tức là chưa trả sách
                 return borrow;
             }
         }
-        System.out.println("Bạn đọc đã trả hết sách mượn rồi ");
         return null;
     }
 
@@ -348,7 +352,7 @@ public class BookBorrowService {
 
     }
 
-    public void findNearestBorrowByUserId() {
+    public void findNearestBorrowByUserId() {// tìm kiếm lượt mượn gần nhất
         List<BookBorrow> borrows = findByUserId(Main.loggedInUser.getId());
         long minDifference = Long.MAX_VALUE;
         BookBorrow nearestBorrow = null;
@@ -372,6 +376,28 @@ public class BookBorrowService {
             }
         }
         return borrows;
+    }
+
+    public void showBookBorrows() {
+        System.out.printf("%-30s%-30s%-15s%-25s%-25s%-25s%-25s%-25s%-25s%n", "Name", "Details", "createdDate", "expectedReturnDate","actualReturnDate","totalDepositAmount","totalExpectedBorrowFee"
+                ,"totalActualBorrowFee","totalPunishAmount");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        for (BookBorrow borrow : bookBorrows) {
+            showBookBorrow(borrow);
+        }
+    }
+
+    public void showBookBorrow(BookBorrow borrow) {
+        List<BookBorrowDetail> details = borrow.getDetail();
+        for (int i = 0; i < details.size(); i++) {
+            System.out.printf("%-30s%-30s%-15s%-25s%-25s%-25s%-25s%-25s%-25s%n",borrow.getBorrower().getFullName(),
+                    borrow.getDetail().get(i),borrow.getCreatedDate(),borrow.getExpectedReturnDate(),
+                    borrow.getActualReturnDate(),borrow.getTotalDepositAmount(),borrow.getTotalExpectedBorrowFee(),
+                    borrow.getTotalActualBorrowFee(),borrow.getTotalPunishAmount());
+        }
+
+
+
     }
 
 }

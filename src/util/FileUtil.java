@@ -33,7 +33,8 @@ public class FileUtil<T> implements DataWritable<T>, DataReadable<T> {
             return null;
         }
         try (FileReader reader = new FileReader(fileName)) {
-            return new ArrayList<>(Arrays.asList(gson.fromJson(reader, clazz)));
+            T[] dataArr = gson.fromJson(reader, clazz);
+            return dataArr == null ? null : new ArrayList<>(Arrays.asList(dataArr));
         } catch (IOException e) {
             e.printStackTrace();
         }

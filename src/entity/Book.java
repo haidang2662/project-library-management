@@ -3,8 +3,8 @@ package entity;
 import java.time.LocalDate;
 
 public class Book {
-    private static int autoId;
-    private int id ;
+
+    private int id;
     private String name;
     private String author;
     private BookCategory category;
@@ -17,11 +17,12 @@ public class Book {
     private int voteCount;
 
     public Book() {
-        this.id = autoId++;
+
     }
 
-    public Book(String name, String author, BookCategory category, String publisher, LocalDate publishedYear, double price, double borrowPricePerDay, int totalQuantity) {
-        this.id = autoId++;
+    public Book(int id, String name, String author, BookCategory category, String publisher, LocalDate publishedYear,
+                double price, double borrowPricePerDay, int totalQuantity) {
+        this.id = id;
         this.name = name;
         this.author = author;
         this.category = category;
@@ -31,9 +32,15 @@ public class Book {
         this.borrowPricePerDay = borrowPricePerDay;
         this.totalQuantity = totalQuantity;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getId() {  // đoạn này tự  làm không chắc đúng không
         return id;
     }
+
     public int getIdCategory() {
         return id;
     }
@@ -107,22 +114,6 @@ public class Book {
     }
 
 
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", nameBook='" + name + '\'' +
-                ", author='" + author + '\'' +
-                ", category='" + category + '\'' +
-                ", publishingCompany='" + publisher + '\'' +
-                ", publishingYear=" + publishedYear +
-                ", priceBook=" + price +
-                ", rentByDay=" + borrowPricePerDay +
-                ", numerBooks=" + totalQuantity +
-                '}';
-    }
-
     public void setVoteStar(double voteStar) {
         this.voteStar = voteStar;
     }
@@ -138,5 +129,22 @@ public class Book {
 
     public double getVoteStar() {
         return voteStar;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", author='" + author + '\'' +
+                ", category=" + category +
+                ", publisher='" + publisher + '\'' +
+                ", publishedYear=" + publishedYear +
+                ", price=" + price +
+                ", borrowPricePerDay=" + borrowPricePerDay +
+                ", totalQuantity=" + totalQuantity +
+                ", voteStar=" + voteStar +
+                ", voteCount=" + voteCount +
+                '}';
     }
 }

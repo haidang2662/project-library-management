@@ -19,22 +19,27 @@ public class UserMenu {
 
     private final VoteHistoryService voteHistoryService;
 
+    private final BookService bookService;
+
 
     public UserMenu(UserService userService, BookBorrowService bookBorrowService, TransactionService transactionService,
-                    VoteHistoryService voteHistoryService) {
+                    VoteHistoryService voteHistoryService, BookService bookService) {
         this.userService = userService;
         this.bookBorrowService = bookBorrowService;
         this.transactionService = transactionService;
         this.voteHistoryService = voteHistoryService;
+        this.bookService = bookService;
     }
 
     public void showUserMenu() {
         while (true) {
+            transactionService.showTransactions();
             System.out.println("------------ THƯ VIỆN MINI (User) ------------");
             System.out.println("1. Quản lý thông tin tài khoản");
-            System.out.println("2. Quản lý thông tin mượn trả sách");
+            System.out.println("2. Xem thông tin mượn trả sách");
             System.out.println("3. Quản lý lượt đánh giá sách");
-            System.out.println("4. Thoát");
+            System.out.println("4. Tìm kiếm sách");
+            System.out.println("5. Đăng xuất");
             int featureChoice;
             while (true) {
                 try {
@@ -59,6 +64,10 @@ public class UserMenu {
                     showBookVotingMenu();
                     break;
                 case 4:
+                    findBookMenu();
+                    // TODO - menu con tìm kiếm sách theo tên hoặc theo lượt vote từ 4 - 5 sao hoặc theo thể loại . Đã làm xong .
+                    break;
+                case 5:
                     return;
             }
         }
@@ -169,6 +178,41 @@ public class UserMenu {
                     userService.showBalance();
                     break;
                 case 5:
+                    return;
+            }
+        }
+    }
+
+    private void findBookMenu(){
+        while (true) {
+            System.out.println("------------ Menu tìm kiếm sách  ------------");
+            System.out.println("1. Tìm kiếm sách theo tên ");
+            System.out.println("2. tìm kiếm sách theo lượt vote từ 4 - 5 sao  ");
+            System.out.println("3. tìm kiếm sách theo thể loại sách  ");
+            System.out.println("4. Thoát");
+            int featureChoice;
+            while (true) {
+                try {
+                    featureChoice = new Scanner(System.in).nextInt();
+                    if (featureChoice < 1 || featureChoice > 4) {
+                        System.out.println("Chức năng là số từ 1 tới 4, vui lòng nhập lại: ");
+                        continue;
+                    }
+                    break;
+                } catch (InputMismatchException ex) {
+                    System.out.print("Lựa chọn phải là một số nguyên, vui lòng nhập lại: ");
+                }
+            }
+            switch (featureChoice) {
+                case 1:
+                    bookService.findBookByName();
+                    break;
+                case 2:
+                    bookService.findBookByVoteStar();
+                    break;
+                case 3:
+                    bookService.findBookByNameCategory();
+                case 4:
                     return;
             }
         }

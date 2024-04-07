@@ -3,14 +3,18 @@ package service;
 import entity.Book;
 import entity.User;
 import entity.VoteHistory;
+import util.FileUtil;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class VoteHistoryService {
 
-    private final ArrayList<VoteHistory> voteHistories = new ArrayList<>();
+    private final FileUtil<VoteHistory> fileUtil = new FileUtil<>();
+    private static final String VOTE_HISTORY_DATA_FILE = "voteHistories.json";
+    private List<VoteHistory> voteHistories;
 
     private final UserService userService;
 
@@ -19,6 +23,15 @@ public class VoteHistoryService {
     public VoteHistoryService(UserService userService, BookService bookService) {
         this.userService = userService;
         this.bookService = bookService;
+    }
+
+    public void setVoteHistories() {
+        List<VoteHistory> voteHistoryList = fileUtil.readDataFromFile(VOTE_HISTORY_DATA_FILE, VoteHistory[].class);
+        voteHistories = voteHistoryList != null ? voteHistoryList : new ArrayList<>();
+    }
+
+    public void saveVoteHistoriesData() {
+        fileUtil.writeDataToFile(voteHistories, VOTE_HISTORY_DATA_FILE);
     }
 
     public void inputVote() {
@@ -63,9 +76,11 @@ public class VoteHistoryService {
         String comment = new Scanner(System.in).nextLine();
         VoteHistory voteHistory = new VoteHistory(user, book, comment, newVoteStar);
         voteHistories.add(voteHistory);
+        saveVoteHistoriesData(); // Lưu dữ liệu File
 
         book.setVoteCount(book.getVoteCount() + 1);
         book.setVoteStar((book.getVoteStar() * (book.getVoteCount() - 1) + newVoteStar) / book.getVoteCount());
+        bookService.saveBookData();
     }
 
     public void findHistoryVoteByBookId() {
@@ -73,13 +88,11 @@ public class VoteHistoryService {
         Book book;
         int bookId;
         while (true) {
-            while (true) {
-                try {
-                    bookId = new Scanner(System.in).nextInt();
-                    break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
-                } catch (InputMismatchException e) {
-                    System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
-                }
+            try {
+                bookId = new Scanner(System.in).nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
+                continue;
             }
             book = bookService.findBookById(bookId);
             if (book == null) {
@@ -107,5 +120,18 @@ public class VoteHistoryService {
             }
         }
         System.out.println(votesFindHistory);
+    }
+
+    public void showVoteHistories() {
+        System.out.printf("%-20s%-20s%-20s%-20s%-20s%n", "User", "Book", "ratedContent", "ratedContent","voteStarHistory");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------");
+        for (VoteHistory voteHistory : voteHistories) {
+            showVoteHistory(voteHistory);
+        }
+    }
+
+    public void showVoteHistory(VoteHistory voteHistory) {
+        System.out.printf("%-20s%-20s%-20s%-20s%-20s%n",voteHistory.getUser().getFullName(),voteHistory.getBook().getName(),
+                voteHistory.getRatedContent(),voteHistory.getCreatedDate(),voteHistory.getVoteStarHistory());
     }
 }

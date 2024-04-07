@@ -2,6 +2,7 @@ package service;
 
 import constant.Regex;
 import constant.UserRole;
+import entity.Book;
 import entity.User;
 import main.Main;
 import util.FileUtil;
@@ -74,8 +75,8 @@ public class UserService {
     public void createUserForAdmin() {
         User user = createUserCommonInfo();
         System.out.println("Chọn quyền của user:");
-        System.out.println("1. Admin");
-        System.out.println("2. User");
+        System.out.println("1. User");
+        System.out.println("2. Admin");
         int choice;
         while (true) {
             try {
@@ -89,14 +90,23 @@ public class UserService {
                 System.out.print("Lựa chọn là số nguyên, vui lòng chọn lại: ");
             }
         }
-        if (choice == 1) {
-            user.setRole(UserRole.USER);
-        } else {
-            user.setRole(UserRole.ADMIN);
-        }
+        user.setRole(choice == 1 ? UserRole.USER : UserRole.ADMIN);
         users.add(user);
-        System.out.println(users);
+        showUsers();
         saveUserData(); // FILE - khi có thay đổi về list user, can luu vao file
+    }
+
+    // TODO - làm tất cả các hàm format in ra: showUserS, showUser . Đã làm xong .
+    public void showUsers() {
+        System.out.printf("%-5s%-30s%-30s%-20s%-20s%-10s%-10s%n", "Id", "Name", "Email", "Phone","Address","Role","Balance");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------");
+        for (User user : users) {
+            showUser(user);
+        }
+    }
+
+    public void showUser(User user) {
+        System.out.printf("%-5s%-30s%-30s%-20s%-20s%-10s%-10s%n", user.getId(), user.getFullName(), user.getEmail(), user.getPhone(),user.getAddress(),user.getRole(),user.getBalance());
     }
 
     public User createUserCommonInfo() {
@@ -125,7 +135,8 @@ public class UserService {
         while (true) {
             System.out.println("Mới bạn nhập password (8 -> 16 cả ký tự, cả số)");
             password = new Scanner(System.in).nextLine();
-            if (!password.matches(Regex.PASSWORD_REGEX)) {
+//            if (!password.matches(Regex.PASSWORD_REGEX)) {
+            if (false) {
                 System.out.println("Password không đúng định dạng vui lòng nhập lại ");
                 continue;
             }
@@ -178,7 +189,7 @@ public class UserService {
                     return user;
                 }
             }
-            System.out.println("Thông tin đăng nhập chưa chính xác. Đăng nhập thất bại " + (count + 1) + "lần, vui lòng thử lại.");
+            System.out.println("Thông tin đăng nhập chưa chính xác. Đăng nhập thất bại " + (count ) + " lần, vui lòng thử lại.");
         }
         return null;
     }
@@ -263,7 +274,7 @@ public class UserService {
                 user.setPassword(newPassword);
                 break;
             case 3:
-                System.out.println("Mời bạn nhập tên mới : ");
+                System.out.println("Mời bạn nhập tên mới: ");
                 String newName = new Scanner(System.in).nextLine();
                 user.setFullName(newName);
                 break;
@@ -282,11 +293,11 @@ public class UserService {
                 break;
             case 5:
                 System.out.println("Mời bạn nhập địa chỉ mới : ");
-                String newAdress = new Scanner(System.in).nextLine();
-                user.setAddress(newAdress);
+                String newAddress = new Scanner(System.in).nextLine();
+                user.setAddress(newAddress);
                 break;
         }
-        System.out.println(user);
+        showUser(user);
         saveUserData();// FILE - khi có thay đổi về list user, can luu vao file
     }
 
@@ -333,6 +344,18 @@ public class UserService {
             }
         }
         return null;
+    }
+
+    public void findUserByName(){
+        System.out.println("Mời bạn nhập tên của User : ");
+        String name = new Scanner(System.in).nextLine();
+        ArrayList<User> users1 = new ArrayList<>();
+        for(User user : users){
+            if(user.getFullName().toLowerCase().contains(name.toLowerCase())){
+                users1.add(user);
+            }
+        }
+        System.out.println(users1);
     }
 
 }

@@ -3,6 +3,8 @@ package service;
 import constant.DateTimeConstant;
 import entity.Book;
 import entity.BookCategory;
+import entity.User;
+import util.FileUtil;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -14,30 +16,49 @@ import java.util.Scanner;
 
 public class BookService {
 
-    private final ArrayList<Book> books = new ArrayList<>();
+    private final FileUtil<Book> fileUtil = new FileUtil<>();
+    private static final String BOOK_DATA_FILE = "books.json";
+    private static int AUTO_ID;
+    private List<Book> books;
     private final BookCategoryService bookCategoryService;
 
     public BookService(BookCategoryService bookCategoryService) {
         this.bookCategoryService = bookCategoryService;
     }
 
-    public ArrayList<Book> inputBook() {
+    public void setBooks() {
+        List<Book> booksList = fileUtil.readDataFromFile(BOOK_DATA_FILE, Book[].class);
+        books = booksList != null ? booksList : new ArrayList<>();
+    }
 
+    public void saveBookData() {
+        fileUtil.writeDataToFile(books, BOOK_DATA_FILE);
+    }
+
+    public void findCurrentAutoId() {
+        int maxId = -1;
+        for (Book book : books) {
+            if (book.getId() > maxId) {
+                maxId = book.getId();
+            }
+        }
+        AUTO_ID = maxId + 1;
+    }
+
+    public void inputBook() {
         System.out.println("Mời bạn nhập tên sách : ");
         String name = new Scanner(System.in).nextLine();
         System.out.println("Mời bạn nhập tên tác giả : ");
         String author = new Scanner(System.in).nextLine();
         BookCategory category;
         while (true) {
-            System.out.println("Mời bạn nhập id của thể loại mà bạn muốn gán cho sách  : ");
+            System.out.println("Mời bạn nhập id của thể loại mà bạn muốn gán cho sách: ");
             int idCategory;
-            while (true) {
-                try {
-                    idCategory = new Scanner(System.in).nextInt();
-                    break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
-                } catch (InputMismatchException e) {
-                    System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
-                }
+            try {
+                idCategory = new Scanner(System.in).nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
+                continue;
             }
             category = bookCategoryService.findCategoryById(idCategory);
             if (category == null) {
@@ -92,7 +113,7 @@ public class BookService {
         while (true) {
             try {
                 totalQuantity = new Scanner(System.in).nextInt();
-                if (totalQuantity < 0) {
+                if (totalQuantity <= 0) {
                     System.out.println("Số lượng sách hiện có phải là số dương , vui lòng nhập lại ");
                     continue;
                 }
@@ -101,10 +122,10 @@ public class BookService {
                 System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
             }
         }
-        Book book = new Book(name, author, category, publisher, publishedYear, price, borrowPricePerDay, totalQuantity);
+        Book book = new Book(AUTO_ID++, name, author, category, publisher, publishedYear, price, borrowPricePerDay, totalQuantity);
         books.add(book);
         System.out.println(books);
-        return books;
+        saveBookData(); // Lưu vào File dữ liệu liên quan đến books
     }
 
     public Book findBookById(int idBook) {
@@ -171,13 +192,11 @@ public class BookService {
                     while (true) {
                         System.out.println("Mời bạn nhập id của thể loại mới: ");
                         int idCategory;
-                        while (true) {
-                            try {
-                                idCategory = new Scanner(System.in).nextInt();
-                                break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
-                            } catch (InputMismatchException e) {
-                                System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
-                            }
+                        try {
+                            idCategory = new Scanner(System.in).nextInt();
+                        } catch (InputMismatchException e) {
+                            System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
+                            continue;
                         }
                         BookCategory bookCategory = bookCategoryService.findCategoryById(idCategory);
                         if (bookCategory == null) {
@@ -214,7 +233,7 @@ public class BookService {
                     while (true) {
                         try {
                             newPrice = new Scanner(System.in).nextDouble();
-                            if (newPrice < 0) {
+                            if (newPrice <= 0) {
                                 System.out.println("Giá 1 quyển sách phải là 1 số dương");
                                 continue;
                             }
@@ -231,7 +250,7 @@ public class BookService {
                     while (true) {
                         try {
                             newBorrowPricePerDay = new Scanner(System.in).nextDouble();
-                            if (newBorrowPricePerDay < 0) {
+                            if (newBorrowPricePerDay <= 0) {
                                 System.out.println("Tiền thuê theo ngày phải là 1 số dương");
                                 continue;
                             }
@@ -248,7 +267,7 @@ public class BookService {
                     while (true) {
                         try {
                             newTotalQuantity = new Scanner(System.in).nextInt();
-                            if (newTotalQuantity < 0) {
+                            if (newTotalQuantity <= 0) {
                                 System.out.println("Số lượng sách hiện có phải là số dương , vui lòng nhập lại ");
                                 continue;
                             }
@@ -262,6 +281,8 @@ public class BookService {
                 case 9:
                     return;
             }
+            showBooks();
+            saveBookData(); // Lưu vào File dữ liệu liên quan đến books
         }
     }
 
@@ -279,12 +300,57 @@ public class BookService {
         for (Book book : books) {
             if (book.getId() == idBook) {
                 book.setTotalQuantity(book.getTotalQuantity() + numberBook);
+                saveBookData(); // Lưu vào File dữ liệu liên quan đến books
                 return;
             }
         }
     }
 
+    public void findBookByName(){
+        System.out.println("Mời bạn nhập tên của sách : ");
+        String name = new Scanner(System.in).nextLine();
+        ArrayList<Book> books1 = new ArrayList<>();
+        for(Book book : books){
+            if(book.getName().toLowerCase().contains(name.toLowerCase())){
+                books1.add(book);
+            }
+        }
+        System.out.println(books1);
+    }
 
+    public void findBookByNameCategory(){
+        System.out.println("Mời bạn nhập tên của thể loại : ");
+        String name = new Scanner(System.in).nextLine();
+        ArrayList<Book> books1 = new ArrayList<>();
+        for(Book book : books){
+            if(book.getCategory().getNameCategory().toLowerCase().contains(name.toLowerCase())){
+                books1.add(book);
+            }
+        }
+        System.out.println(books1);
+    }
 
+    public void findBookByVoteStar(){
+        ArrayList<Book> books1 = new ArrayList<>();
+        for(Book book : books){
+            if(book.getVoteStar()>=4 && book.getVoteStar()<=5){
+                books1.add(book);
+            }
+        }
+        System.out.println(books1);
+    }
 
+    public void showBooks() {
+        System.out.printf("%-5s%-20s%-20s%-20s%-20s%-20s%-10s%-30s%-20s%-10s%-10s%n", "Id", "Name", "Author", "CateGory","Publisher","PublishedYear","Price","BorrowPricePerDay","TotalQuantity","VoteStar","VoteCount");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        for (Book book : books) {
+            showBook(book);
+        }
+    }
+
+    public void showBook(Book book) {
+        System.out.printf("%-5s%-20s%-20s%-20s%-20s%-20s%-10s%-30s%-20s%-10s%-10s%n",book.getId(),book.getName(),book.getAuthor(),book.getCategory(),
+                book.getPublisher(),book.getPublishedYear(),book.getPrice(),book.getBorrowPricePerDay(),book.getTotalQuantity(),
+                book.getVoteStar(),book.getVoteCount());
+    }
 }
