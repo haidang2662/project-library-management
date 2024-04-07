@@ -1,0 +1,18 @@
+[
+  {
+    "id": 0,
+    "name": "Giải tích",
+    "author": "ABC",
+    "category": {
+      "idCategory": 1,
+      "nameCategory": "toan hoc"
+    },
+    "publisher": "Kim Dồng",
+    "publishedYear": "12/05/2020",
+    "price": 50000.0,
+    "borrowPricePerDay": 5000.0,
+    "totalQuantity": 100,
+    "voteStar": 0.0,
+    "voteCount": 0
+  }
+]

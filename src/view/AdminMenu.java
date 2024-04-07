@@ -131,7 +131,7 @@ public class AdminMenu {
             while (true) {
                 try {
                     featureChoice = new Scanner(System.in).nextInt();
-                    if (featureChoice < 1 || featureChoice > 3) {
+                    if (featureChoice < 1 || featureChoice > 5) {
                         System.out.println("Chức năng là số từ 1 tới 3, vui lòng nhập lại: ");
                         continue;
                     }
@@ -173,7 +173,7 @@ public class AdminMenu {
             while (true) {
                 try {
                     featureChoice = new Scanner(System.in).nextInt();
-                    if (featureChoice < 1 || featureChoice > 4) {
+                    if (featureChoice < 1 || featureChoice > 5) {
                         System.out.println("Chức năng là số từ 1 tới 4, vui lòng nhập lại: ");
                         continue;
                     }

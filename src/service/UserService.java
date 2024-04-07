@@ -133,10 +133,9 @@ public class UserService {
             }
         }
         while (true) {
-            System.out.println("Mới bạn nhập password (8 -> 16 cả ký tự, cả số)");
+            System.out.println("Mới bạn nhập password (8 -> 16 ký tự cả chữ thường, chữ hoa và cả số)");
             password = new Scanner(System.in).nextLine();
-//            if (!password.matches(Regex.PASSWORD_REGEX)) {
-            if (false) {
+            if (!password.matches(Regex.PASSWORD_REGEX)) {
                 System.out.println("Password không đúng định dạng vui lòng nhập lại ");
                 continue;
             }
@@ -263,7 +262,7 @@ public class UserService {
             case 2:
                 String newPassword;
                 while (true) {
-                    System.out.println("Mới bạn nhập password (8 -> 16 cả ký tự, cả số)");
+                    System.out.println("Mới bạn nhập password (8 -> 16 ký tự cả chữ thường, chữ hoa và cả số)");
                     newPassword = new Scanner(System.in).nextLine();
                     if (!newPassword.matches(Regex.PASSWORD_REGEX)) {
                         System.out.println("Password không đúng định dạng vui lòng nhập lại ");
