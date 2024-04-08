@@ -131,6 +131,11 @@ public class Book {
         return voteStar;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

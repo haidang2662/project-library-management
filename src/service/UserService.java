@@ -224,18 +224,7 @@ public class UserService {
     }
 
     public void updateUserInformation() {
-        int idUser;
-        while (true) {
-            System.out.println("Mời bạn nhập id của User ");
-            try {
-                idUser = new Scanner(System.in).nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
-                continue;
-            }
-            break;
-        }
-        User user = findUserById(idUser);
+        User user = Main.loggedInUser;
         System.out.println("Mời bạn chọn phần thông tin muốn chỉnh sửa: ");
         System.out.println("1. Email");
         System.out.println("2. Password");
@@ -320,26 +309,7 @@ public class UserService {
         saveUserData();// FILE - khi có thay đổi về list user, can luu vao file
     }
 
-    public void updateBalance() {
-        User user = getLoggedInUser();
-        double money;
-        while (true) {
-            try {
-                System.out.println("Mời bạn nhập số tiền muốn nạp : ");
-                money = new Scanner(System.in).nextDouble();
-                if (money < 0) {
-                    System.out.println("số tiền nạp vào bắt buộc phải > 0 , vui lòng nhập lại ");
-                    continue;
-                }
-                break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số tự nhiên hợp lệ
-            } catch (InputMismatchException e) {
-                System.out.println("Giá trị bạn vừa nhập không phải là một số tự nhiên . Vui lòng nhập lại.");
-            }
-        }
 
-        user.setBalance(user.getBalance() + money);
-        saveUserData();// FILE - khi có thay đổi về list user, can luu vao file
-    }
 
     public void showBalance() {
         User user = getLoggedInUser();
@@ -370,11 +340,9 @@ public class UserService {
         System.out.println("Mời bạn nhập tên của User : ");
         String name = new Scanner(System.in).nextLine();
         List<User> users1 = new ArrayList<>();
-        for (User user : users){
-            System.out.println(user.getFullName());
-        }
+
         for(User user : users){
-            if(user.getFullName().toLowerCase().contains(name.toLowerCase())){
+            if(user.getFullName()!=null && user.getFullName().toLowerCase().contains(name.toLowerCase()) ){
                 users1.add(user);
             }
         }

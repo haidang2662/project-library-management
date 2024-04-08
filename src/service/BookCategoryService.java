@@ -1,7 +1,6 @@
 package service;
 
 import entity.BookCategory;
-import entity.User;
 import util.FileUtil;
 
 import java.util.ArrayList;
@@ -81,13 +80,14 @@ public class BookCategoryService {
     }
 
     public void deleteCategoryById(int idCategory) {
-        for (BookCategory category : bookCategories) {
-            if (category.getIdCategory() == idCategory) {
-                bookCategories.remove(category);
-                saveBookCategoryData(); // Lưu dữ liệu file
-            }
-        }
+
+        BookCategory bookCategory = findCategoryById(idCategory);
+        bookCategories.remove(bookCategory);
+        saveBookCategoryData();// Lưu file
+
+
     }
+
 
     public void showCategories() {
         System.out.printf("%-5s%-30s%n", "Id", "Name");
@@ -98,6 +98,6 @@ public class BookCategoryService {
     }
 
     public void showCategory(BookCategory category) {
-        System.out.printf("%-5s%-30s%n", category.getIdCategory(),category.getNameCategory());
+        System.out.printf("%-5s%-30s%n", category.getIdCategory(), category.getNameCategory());
     }
 }

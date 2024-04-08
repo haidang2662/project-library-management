@@ -51,7 +51,6 @@ public class BookBorrowService {
                     "Vui lòng thực hiện trả sách đang mượn để có thể tiếp tục mượn các cuốn sách khác.");
             return;
         }
-        System.out.println("Bạn đọc này có thể tiếp tục mượn sách");
         double soDuTK = borrower.getBalance();
         if (soDuTK < 50000) {
             System.out.println("Bạn đọc này có số dư tài khoản dưới 50.000 , vui lòng nạp thêm tài khoản ");
@@ -163,8 +162,10 @@ public class BookBorrowService {
                         System.out.print("Nhập lại số sách muốn mượn: ");
                         continue;
                     }
+                    if (borrowQuantity < book.getTotalQuantity()){
+                        break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
+                    }
 
-                    break; // Thoát khỏi vòng lặp nếu giá trị được nhập vào là số nguyên hợp lệ
                 } catch (InputMismatchException e) {
                     System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
                 }

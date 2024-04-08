@@ -228,14 +228,15 @@ public class AdminMenu {
             System.out.println("1. Thêm danh mục mới");
             System.out.println("2. Cập nhật thông tin danh mục");
             System.out.println("3. Xóa danh mục");
-            System.out.println("4. Thoát");
+            System.out.println("4. Xem các thể loại sách đang có : ");
+            System.out.println("5. Thoát");
             System.out.println("Mời bạn chọn chức năng : ");
             int featureChoice;
             while (true) {
                 try {
                     featureChoice = new Scanner(System.in).nextInt();
-                    if (featureChoice < 1 || featureChoice > 4) {
-                        System.out.println("Chức năng là số từ 1 tới 4, vui lòng nhập lại: ");
+                    if (featureChoice < 1 || featureChoice > 5) {
+                        System.out.println("Chức năng là số từ 1 tới 5, vui lòng nhập lại: ");
                         continue;
                     }
                     break;
@@ -261,7 +262,9 @@ public class AdminMenu {
                     System.out.println("Không được xóa thể loại này do đã gán vào sách");
                     break;
                 case 4:
-                    return;
+                    bookCategoryService.showCategories();
+                case 5 :
+                    break;
             }
         }
     }

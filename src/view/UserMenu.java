@@ -44,8 +44,8 @@ public class UserMenu {
             while (true) {
                 try {
                     featureChoice = new Scanner(System.in).nextInt();
-                    if (featureChoice < 1 || featureChoice > 4) {
-                        System.out.println("Chức năng là số từ 1 tới 4, vui lòng nhập lại: ");
+                    if (featureChoice < 1 || featureChoice > 5) {
+                        System.out.println("Chức năng là số từ 1 tới 5, vui lòng nhập lại: ");
                         continue;
                     }
                     break;
@@ -168,11 +168,11 @@ public class UserMenu {
                     userService.updateUserInformation();
                     break;
                 case 2:
-                    userService.updateBalance();
+                    transactionService.updateBalance();
                     break;
                 case 3:
                     ArrayList<Transaction> transactions = transactionService.showTransactionHistories();
-                    System.out.println(transactions);
+                    transactionService.showTransactions(transactions);
                     break;
                 case 4:
                     userService.showBalance();
@@ -212,6 +212,7 @@ public class UserMenu {
                     break;
                 case 3:
                     bookService.findBookByNameCategory();
+                    break;
                 case 4:
                     return;
             }

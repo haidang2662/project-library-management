@@ -281,7 +281,7 @@ public class BookService {
                 case 9:
                     return;
             }
-            showBooks();
+            System.out.println("Chúc mừng bạn đã cập nhật thành công ");
             saveBookData(); // Lưu vào File dữ liệu liên quan đến books
             break;
         }

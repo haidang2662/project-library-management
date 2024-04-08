@@ -107,7 +107,7 @@ public class VoteHistoryService {
                 votesFindHistory.add(voteHistory);
             }
         }
-        System.out.println(votesFindHistory);
+        showVoteHistories(votesFindHistory);
     }
 
     public void findHistoryVoteByBookName() {
@@ -119,11 +119,11 @@ public class VoteHistoryService {
                 votesFindHistory.add(voteHistory);
             }
         }
-        System.out.println(votesFindHistory);
+        showVoteHistories(voteHistories);
     }
 
     public void showVoteHistories() {
-        System.out.printf("%-20s%-20s%-20s%-20s%-20s%n", "User", "Book", "ratedContent", "ratedContent","voteStarHistory");
+        System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%n", "User", "Book", "ratedContent", "Time", "voteStarHistory", "averageVoteStar");
         System.out.println("------------------------------------------------------------------------------------------------------------------------------");
         for (VoteHistory voteHistory : voteHistories) {
             showVoteHistory(voteHistory);
@@ -131,7 +131,22 @@ public class VoteHistoryService {
     }
 
     public void showVoteHistory(VoteHistory voteHistory) {
-        System.out.printf("%-20s%-20s%-20s%-20s%-20s%n",voteHistory.getUser().getFullName(),voteHistory.getBook().getName(),
-                voteHistory.getRatedContent(),voteHistory.getCreatedDate(),voteHistory.getVoteStarHistory());
+
+        double a = voteHistory.getBook().getVoteStar()*voteHistory.getBook().getVoteCount() + voteHistory.getVoteStarHistory();
+        double b = voteHistory.getBook().getVoteCount()+1;
+        double c = a/b;
+
+        System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%n", voteHistory.getUser().getFullName(), voteHistory.getBook().getName(),
+                voteHistory.getRatedContent(), voteHistory.getCreatedDate(), voteHistory.getVoteStarHistory(), c);
+
+
+    }
+
+    public void showVoteHistories(List<VoteHistory> voteHistories1) {
+        System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%n", "User", "Book", "ratedContent", "Time", "voteStarHistory", "averageVoteStar");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------");
+        for (VoteHistory voteHistory : voteHistories1) {
+            showVoteHistory(voteHistory);
+        }
     }
 }
