@@ -131,20 +131,6 @@ public class Book {
         return voteStar;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", author='" + author + '\'' +
-                ", category=" + category +
-                ", publisher='" + publisher + '\'' +
-                ", publishedYear=" + publishedYear +
-                ", price=" + price +
-                ", borrowPricePerDay=" + borrowPricePerDay +
-                ", totalQuantity=" + totalQuantity +
-                ", voteStar=" + voteStar +
-                ", voteCount=" + voteCount +
-                '}';
-    }
+
+
 }

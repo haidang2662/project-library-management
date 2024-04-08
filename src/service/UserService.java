@@ -68,7 +68,7 @@ public class UserService {
         User user = createUserCommonInfo();
         user.setRole(UserRole.USER);
         users.add(user);
-        System.out.println(users);
+        showUser(user);
         saveUserData();
     }
 
@@ -92,7 +92,7 @@ public class UserService {
         }
         user.setRole(choice == 1 ? UserRole.USER : UserRole.ADMIN);
         users.add(user);
-        showUsers();
+        showUser(user);
         saveUserData(); // FILE - khi có thay đổi về list user, can luu vao file
     }
 
@@ -106,7 +106,16 @@ public class UserService {
     }
 
     public void showUser(User user) {
+
         System.out.printf("%-5s%-30s%-30s%-20s%-20s%-10s%-10s%n", user.getId(), user.getFullName(), user.getEmail(), user.getPhone(),user.getAddress(),user.getRole(),user.getBalance());
+    }
+
+    public void showUsers(List<User> users1) {
+        System.out.printf("%-5s%-30s%-30s%-20s%-20s%-10s%-10s%n", "Id", "Name", "Email", "Phone","Address","Role","Balance");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------");
+        for (User user : users1) {
+            showUser(user);
+        }
     }
 
     public User createUserCommonInfo() {
@@ -215,7 +224,18 @@ public class UserService {
     }
 
     public void updateUserInformation() {
-        User user = getLoggedInUser();
+        int idUser;
+        while (true) {
+            System.out.println("Mời bạn nhập id của User ");
+            try {
+                idUser = new Scanner(System.in).nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
+                continue;
+            }
+            break;
+        }
+        User user = findUserById(idUser);
         System.out.println("Mời bạn chọn phần thông tin muốn chỉnh sửa: ");
         System.out.println("1. Email");
         System.out.println("2. Password");
@@ -330,6 +350,7 @@ public class UserService {
         for (User user : users) {
             if (user.getId() == idUser) {
                 user.setBalance(user.getBalance() + amount);
+                System.out.println("Số dư tài khoản của bạn đọc " + user.getBalance());
                 saveUserData();// FILE - khi có thay đổi về list user, can luu vao file
                 return;
             }
@@ -348,13 +369,16 @@ public class UserService {
     public void findUserByName(){
         System.out.println("Mời bạn nhập tên của User : ");
         String name = new Scanner(System.in).nextLine();
-        ArrayList<User> users1 = new ArrayList<>();
+        List<User> users1 = new ArrayList<>();
+        for (User user : users){
+            System.out.println(user.getFullName());
+        }
         for(User user : users){
             if(user.getFullName().toLowerCase().contains(name.toLowerCase())){
                 users1.add(user);
             }
         }
-        System.out.println(users1);
+        showUsers(users1);
     }
 
 }

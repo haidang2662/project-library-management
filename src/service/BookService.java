@@ -124,7 +124,7 @@ public class BookService {
         }
         Book book = new Book(AUTO_ID++, name, author, category, publisher, publishedYear, price, borrowPricePerDay, totalQuantity);
         books.add(book);
-        System.out.println(books);
+        showBook(book);
         saveBookData(); // Lưu vào File dữ liệu liên quan đến books
     }
 
@@ -283,6 +283,7 @@ public class BookService {
             }
             showBooks();
             saveBookData(); // Lưu vào File dữ liệu liên quan đến books
+            break;
         }
     }
 
@@ -309,25 +310,25 @@ public class BookService {
     public void findBookByName(){
         System.out.println("Mời bạn nhập tên của sách : ");
         String name = new Scanner(System.in).nextLine();
-        ArrayList<Book> books1 = new ArrayList<>();
+        List<Book> books1 = new ArrayList<>();
         for(Book book : books){
             if(book.getName().toLowerCase().contains(name.toLowerCase())){
                 books1.add(book);
             }
         }
-        System.out.println(books1);
+        showBooks(books1);
     }
 
     public void findBookByNameCategory(){
         System.out.println("Mời bạn nhập tên của thể loại : ");
         String name = new Scanner(System.in).nextLine();
-        ArrayList<Book> books1 = new ArrayList<>();
+        List<Book> books1 = new ArrayList<>();
         for(Book book : books){
             if(book.getCategory().getNameCategory().toLowerCase().contains(name.toLowerCase())){
                 books1.add(book);
             }
         }
-        System.out.println(books1);
+        showBooks(books1);
     }
 
     public void findBookByVoteStar(){
@@ -337,7 +338,7 @@ public class BookService {
                 books1.add(book);
             }
         }
-        System.out.println(books1);
+        showBooks(books1);
     }
 
     public void showBooks() {
@@ -349,8 +350,16 @@ public class BookService {
     }
 
     public void showBook(Book book) {
-        System.out.printf("%-5s%-20s%-20s%-20s%-20s%-20s%-10s%-30s%-20s%-10s%-10s%n",book.getId(),book.getName(),book.getAuthor(),book.getCategory(),
+        System.out.printf("%-5s%-20s%-20s%-20s%-20s%-20s%-10s%-30s%-20s%-10s%-10s%n",book.getId(),book.getName(),book.getAuthor(),book.getCategory().getNameCategory(),
                 book.getPublisher(),book.getPublishedYear(),book.getPrice(),book.getBorrowPricePerDay(),book.getTotalQuantity(),
                 book.getVoteStar(),book.getVoteCount());
+    }
+
+    public void showBooks(List<Book> books1) {
+        System.out.printf("%-5s%-20s%-20s%-20s%-20s%-20s%-10s%-30s%-20s%-10s%-10s%n", "Id", "Name", "Author", "CateGory","Publisher","PublishedYear","Price","BorrowPricePerDay","TotalQuantity","VoteStar","VoteCount");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        for (Book book : books1) {
+            showBook(book);
+        }
     }
 }
