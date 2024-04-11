@@ -51,6 +51,7 @@ public class BookService {
         System.out.println("Mời bạn nhập tên tác giả : ");
         String author = new Scanner(System.in).nextLine();
         BookCategory category;
+        bookCategoryService.showCategories();
         while (true) {
             System.out.println("Mời bạn nhập id của thể loại mà bạn muốn gán cho sách: ");
             int idCategory;
@@ -124,7 +125,7 @@ public class BookService {
         }
         Book book = new Book(AUTO_ID++, name, author, category, publisher, publishedYear, price, borrowPricePerDay, totalQuantity);
         books.add(book);
-        showBook(book);
+        showBookDetail(book);
         saveBookData(); // Lưu vào File dữ liệu liên quan đến books
     }
 
@@ -190,6 +191,7 @@ public class BookService {
                     break;
                 case 3:
                     while (true) {
+                        bookCategoryService.showCategories();
                         System.out.println("Mời bạn nhập id của thể loại mới: ");
                         int idCategory;
                         try {
@@ -204,7 +206,6 @@ public class BookService {
                             continue;
                         }
                         book.setCategory(bookCategory);
-                        System.out.println(book);
                         break;
                     }
                     break;
@@ -225,7 +226,6 @@ public class BookService {
                         }
                     }
                     book.setPublishedYear(newPublishedYear);
-                    System.out.println(book);
                     break;
                 case 6:
                     System.out.println("Mời bạn nhập giá mới: ");
@@ -267,7 +267,7 @@ public class BookService {
                     while (true) {
                         try {
                             newTotalQuantity = new Scanner(System.in).nextInt();
-                            if (newTotalQuantity <= 0) {
+                            if (newTotalQuantity < 0) {
                                 System.out.println("Số lượng sách hiện có phải là số dương , vui lòng nhập lại ");
                                 continue;
                             }
@@ -282,6 +282,7 @@ public class BookService {
                     return;
             }
             System.out.println("Chúc mừng bạn đã cập nhật thành công ");
+            showBook(book);
             saveBookData(); // Lưu vào File dữ liệu liên quan đến books
             break;
         }
@@ -341,25 +342,27 @@ public class BookService {
         showBooks(books1);
     }
 
-    public void showBooks() {
-        System.out.printf("%-5s%-20s%-20s%-20s%-20s%-20s%-10s%-30s%-20s%-10s%-10s%n", "Id", "Name", "Author", "CateGory","Publisher","PublishedYear","Price","BorrowPricePerDay","TotalQuantity","VoteStar","VoteCount");
-        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        for (Book book : books) {
-            showBook(book);
-        }
+    public void showBook(Book book) {
+        printHeader();
+        showBookDetail(book);
     }
 
-    public void showBook(Book book) {
+
+    public void showBookDetail(Book book) {
         System.out.printf("%-5s%-20s%-20s%-20s%-20s%-20s%-10s%-30s%-20s%-10s%-10s%n",book.getId(),book.getName(),book.getAuthor(),book.getCategory().getNameCategory(),
                 book.getPublisher(),book.getPublishedYear(),book.getPrice(),book.getBorrowPricePerDay(),book.getTotalQuantity(),
                 book.getVoteStar(),book.getVoteCount());
     }
 
     public void showBooks(List<Book> books1) {
+        printHeader();
+        for (Book book : books1) {
+            showBookDetail(book);
+        }
+    }
+
+    public void printHeader(){
         System.out.printf("%-5s%-20s%-20s%-20s%-20s%-20s%-10s%-30s%-20s%-10s%-10s%n", "Id", "Name", "Author", "CateGory","Publisher","PublishedYear","Price","BorrowPricePerDay","TotalQuantity","VoteStar","VoteCount");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        for (Book book : books1) {
-            showBook(book);
-        }
     }
 }

@@ -83,6 +83,7 @@ public class Menu {
         bookCategoryService.findCurrentAutoId();
 
         bookBorrowService.setBookBorrows();
+        bookBorrowService.findCurrentAutoId();
 
     }
 

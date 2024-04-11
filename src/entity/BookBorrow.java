@@ -5,6 +5,8 @@ import java.util.List;
 
 public class BookBorrow {
 
+    private int id;
+
     private User borrower;// người thuê
 
     private List<BookBorrowDetail> details; // danh sách các cuốn sách thuê kèm theo số lượng tương ứng
@@ -23,8 +25,9 @@ public class BookBorrow {
     public BookBorrow() {
     }
 
-    public BookBorrow(User borrower, List<BookBorrowDetail> details, LocalDate createdDate,
+    public BookBorrow(int id , User borrower, List<BookBorrowDetail> details, LocalDate createdDate,
                       LocalDate expectedReturnDate, double totalDepositAmount, double totalExpectedBorrowFee) {
+        this.id = id;
         this.borrower = borrower;
         this.details = details;
         this.createdDate = createdDate;
@@ -33,6 +36,13 @@ public class BookBorrow {
         this.totalExpectedBorrowFee = totalExpectedBorrowFee;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public User getBorrower() {
         return borrower;
