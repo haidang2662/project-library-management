@@ -11,8 +11,6 @@ public class BookBorrowDetail {
     private double actualBorrowFee; // thực tế
     private double punishAmount;
 
-    public BookBorrowDetail() {
-    }
 
     public BookBorrowDetail(Book book, int borrowQuantity, String originalStatus) {
         this.book = book;

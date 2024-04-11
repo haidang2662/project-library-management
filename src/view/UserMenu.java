@@ -33,7 +33,6 @@ public class UserMenu {
 
     public void showUserMenu() {
         while (true) {
-            transactionService.showTransactions();
             System.out.println("------------ THƯ VIỆN MINI (User) ------------");
             System.out.println("1. Quản lý thông tin tài khoản");
             System.out.println("2. Xem thông tin mượn trả sách");
@@ -134,7 +133,7 @@ public class UserMenu {
                     break;
                 case 2:
                     List<BookBorrow> bookBorrows = bookBorrowService.findByUserId(Main.loggedInUser.getId());
-                    System.out.println(bookBorrows);
+                    bookBorrowService.showBookBorrows(bookBorrows);
                     break;
                 case 3:
                     return;

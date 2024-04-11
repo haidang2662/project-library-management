@@ -2,6 +2,7 @@ package view;
 
 import entity.Book;
 import entity.BookBorrow;
+import entity.BookBorrowDetail;
 import entity.User;
 import service.BookBorrowService;
 import service.BookCategoryService;
@@ -29,7 +30,6 @@ public class AdminMenu {
 
     public void showAdminMenu() {
         while (true) {
-            bookBorrowService.showBookBorrows();
             System.out.println("------------ MENU ADMIN MANAGEMENT ------------");
             System.out.println("1. Quản lý sách");// show ra menu  có nhập sách vào kho, cập nhật thông tin sách
             System.out.println("2. Quản lý mượn trả sách"); // show menu con: mượn, trả
@@ -77,14 +77,15 @@ public class AdminMenu {
             System.out.println("3. Tìm kiếm lượt mượn/trả sách theo ID bạn đọc");
             System.out.println("4. Tìm kiếm lượt mượn/trả sách theo tên sách");
             System.out.println("5. Tìm kiếm lượt mượn/trả sách theo tên bạn đọc");
-            System.out.println("6. Thoát");
+            System.out.println("6. Xem chi tiết lượt mượn");
+            System.out.println("7. Thoát");
             System.out.println("Mới bạn chọn chức năng: ");
             int featureChoice;
             while (true) {
                 try {
                     featureChoice = new Scanner(System.in).nextInt();
-                    if (featureChoice < 1 || featureChoice > 6) {
-                        System.out.println("Chức năng là số từ 1 tới 6, vui lòng nhập lại: ");
+                    if (featureChoice < 1 || featureChoice > 7) {
+                        System.out.println("Chức năng là số từ 1 tới 7, vui lòng nhập lại: ");
                         continue;
                     }
                     break;
@@ -101,17 +102,20 @@ public class AdminMenu {
                     break;
                 case 3:
                     List<BookBorrow> borrows2 = bookBorrowService.findByUserIdShowMenu();
-                    System.out.println(borrows2);
+                    bookBorrowService.showBookBorrows(borrows2);
                     break;
                 case 4:
-                    List<BookBorrow> borrows = bookBorrowService.findByBookName();
-                    System.out.println(borrows);
+                    List<BookBorrowDetail> borrows = bookBorrowService.findByBookName();
+                    bookBorrowService.showBookBorrowDetails(borrows);
                     break;
                 case 5:
                     List<BookBorrow> borrows1 = bookBorrowService.findByUserName();
-                    System.out.println(borrows1);
+                    bookBorrowService.showBookBorrows(borrows1);
                     break;
                 case 6:
+                    bookBorrowService.findBorrowDetail();
+                    break;
+                case 7:
                     return;
             }
         }
@@ -132,7 +136,7 @@ public class AdminMenu {
                 try {
                     featureChoice = new Scanner(System.in).nextInt();
                     if (featureChoice < 1 || featureChoice > 5) {
-                        System.out.println("Chức năng là số từ 1 tới 3, vui lòng nhập lại: ");
+                        System.out.println("Chức năng là số từ 1 tới 5, vui lòng nhập lại: ");
                         continue;
                     }
                     break;
@@ -214,7 +218,7 @@ public class AdminMenu {
                     userService.findUserByName();
                     // TODO - tìm bạn đọc teo tên Đã làm xong
                 }
-                case 5 -> { // TODO sao đoạn này không return được
+                case 5 -> {
                     return;
                 }
             }
@@ -228,7 +232,7 @@ public class AdminMenu {
             System.out.println("1. Thêm danh mục mới");
             System.out.println("2. Cập nhật thông tin danh mục");
             System.out.println("3. Xóa danh mục");
-            System.out.println("4. Xem các thể loại sách đang có : ");
+            System.out.println("4. Xem các thể loại sách đang có  ");
             System.out.println("5. Thoát");
             System.out.println("Mời bạn chọn chức năng : ");
             int featureChoice;
@@ -263,8 +267,9 @@ public class AdminMenu {
                     break;
                 case 4:
                     bookCategoryService.showCategories();
-                case 5 :
                     break;
+                case 5 :
+                    return;
             }
         }
     }

@@ -96,26 +96,26 @@ public class UserService {
         saveUserData(); // FILE - khi có thay đổi về list user, can luu vao file
     }
 
-    // TODO - làm tất cả các hàm format in ra: showUserS, showUser . Đã làm xong .
-    public void showUsers() {
-        System.out.printf("%-5s%-30s%-30s%-20s%-20s%-10s%-10s%n", "Id", "Name", "Email", "Phone","Address","Role","Balance");
-        System.out.println("------------------------------------------------------------------------------------------------------------------------------");
-        for (User user : users) {
-            showUser(user);
-        }
-    }
 
     public void showUser(User user) {
-
-        System.out.printf("%-5s%-30s%-30s%-20s%-20s%-10s%-10s%n", user.getId(), user.getFullName(), user.getEmail(), user.getPhone(),user.getAddress(),user.getRole(),user.getBalance());
+        printHeader();
+        showUserDetail(user);
     }
 
     public void showUsers(List<User> users1) {
-        System.out.printf("%-5s%-30s%-30s%-20s%-20s%-10s%-10s%n", "Id", "Name", "Email", "Phone","Address","Role","Balance");
-        System.out.println("------------------------------------------------------------------------------------------------------------------------------");
+        printHeader();
         for (User user : users1) {
-            showUser(user);
+            showUserDetail(user);
         }
+    }
+
+    public void printHeader() {
+        System.out.printf("%-5s%-30s%-30s%-20s%-20s%-10s%-10s%n", "Id", "Name", "Email", "Phone", "Address", "Role", "Balance");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------");
+    }
+
+    public void showUserDetail(User user) {
+        System.out.printf("%-5s%-30s%-30s%-20s%-20s%-10s%-10s%n", user.getId(), user.getFullName(), user.getEmail(), user.getPhone(), user.getAddress(), user.getRole(), user.getBalance());
     }
 
     public User createUserCommonInfo() {
@@ -197,7 +197,7 @@ public class UserService {
                     return user;
                 }
             }
-            System.out.println("Thông tin đăng nhập chưa chính xác. Đăng nhập thất bại " + (count ) + " lần, vui lòng thử lại.");
+            System.out.println("Thông tin đăng nhập chưa chính xác. Đăng nhập thất bại " + (count) + " lần, vui lòng thử lại.");
         }
         return null;
     }
@@ -224,19 +224,31 @@ public class UserService {
     }
 
     public void updateUserInformation() {
-        User user = Main.loggedInUser;
+        int idUserUpdate;
+        while (true) {
+            try {
+                System.out.println("Mời bạn nhập ID của User muốn update ");
+                idUserUpdate = new Scanner(System.in).nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
+                continue;
+            }
+            break;
+        }
+        User user = findUserById(idUserUpdate);
         System.out.println("Mời bạn chọn phần thông tin muốn chỉnh sửa: ");
         System.out.println("1. Email");
         System.out.println("2. Password");
         System.out.println("3. Tên");
         System.out.println("4. Số điện thoại");
         System.out.println("5. Địa chỉ");
+        System.out.println("6. Thoát");
         int featureChoice;
         while (true) {
             try {
                 featureChoice = new Scanner(System.in).nextInt();
-                if (featureChoice < 1 || featureChoice > 5) {
-                    System.out.println("Chức năng là số từ 1 tới 5, vui lòng nhập lại: ");
+                if (featureChoice < 1 || featureChoice > 6) {
+                    System.out.println("Chức năng là số từ 1 tới 6, vui lòng nhập lại: ");
                     continue;
                 }
                 break;
@@ -304,11 +316,12 @@ public class UserService {
                 String newAddress = new Scanner(System.in).nextLine();
                 user.setAddress(newAddress);
                 break;
+            case 6:
+                return;
         }
         showUser(user);
         saveUserData();// FILE - khi có thay đổi về list user, can luu vao file
     }
-
 
 
     public void showBalance() {
@@ -336,13 +349,13 @@ public class UserService {
         return null;
     }
 
-    public void findUserByName(){
+    public void findUserByName() {
         System.out.println("Mời bạn nhập tên của User : ");
         String name = new Scanner(System.in).nextLine();
         List<User> users1 = new ArrayList<>();
 
-        for(User user : users){
-            if(user.getFullName()!=null && user.getFullName().toLowerCase().contains(name.toLowerCase()) ){
+        for (User user : users) {
+            if (user.getFullName() != null && user.getFullName().toLowerCase().contains(name.toLowerCase())) {
                 users1.add(user);
             }
         }

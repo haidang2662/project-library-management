@@ -73,31 +73,38 @@ public class BookCategoryService {
             }
             System.out.println("Mời bạn nhập tên thể loại mới : ");
             bookCategory.setNameCategory(new Scanner(System.in).nextLine());
-            System.out.println(bookCategory);
+            showCategory(bookCategory);
             saveBookCategoryData(); // Lưu dữ liệu file
             break;
         }
     }
 
     public void deleteCategoryById(int idCategory) {
-
         BookCategory bookCategory = findCategoryById(idCategory);
         bookCategories.remove(bookCategory);
         saveBookCategoryData();// Lưu file
-
-
+        showCategories();
     }
 
-
     public void showCategories() {
-        System.out.printf("%-5s%-30s%n", "Id", "Name");
-        System.out.println("----------------------------------------");
+        printHeader();
         for (BookCategory category : bookCategories) {
-            showCategory(category);
+            showCategoryDetail(category);
         }
     }
 
+    public void printHeader() {
+        System.out.printf("%-5s%-30s%n", "Id", "Name");
+        System.out.println("----------------------------------------");
+    }
+
     public void showCategory(BookCategory category) {
+        printHeader();
+        showCategoryDetail(category);
+    }
+
+    public void showCategoryDetail(BookCategory category) {
         System.out.printf("%-5s%-30s%n", category.getIdCategory(), category.getNameCategory());
+
     }
 }
