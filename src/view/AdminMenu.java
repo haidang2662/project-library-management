@@ -172,13 +172,14 @@ public class AdminMenu {
             System.out.println("2. Cập nhật thông tin User ");
             System.out.println("3. Xóa User (chỉ xóa User khi User này chưa từng thực hiện giao dịch) ");
             System.out.println("4. Tìm kiếm User theo tên ");
-            System.out.println("5. Thoát");
+            System.out.println("5. Rút tiền từ tài khoản cho User ");
+            System.out.println("6. Thoát");
             int featureChoice;
             while (true) {
                 try {
                     featureChoice = new Scanner(System.in).nextInt();
-                    if (featureChoice < 1 || featureChoice > 5) {
-                        System.out.println("Chức năng là số từ 1 tới 4, vui lòng nhập lại: ");
+                    if (featureChoice < 1 || featureChoice > 6) {
+                        System.out.println("Chức năng là số từ 1 tới 6, vui lòng nhập lại: ");
                         continue;
                     }
                     break;
@@ -219,6 +220,10 @@ public class AdminMenu {
                     // TODO - tìm bạn đọc teo tên Đã làm xong
                 }
                 case 5 -> {
+                    userService.withDraw();
+
+                }
+                case 6 -> {
                     return;
                 }
             }
