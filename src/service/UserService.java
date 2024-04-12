@@ -367,7 +367,7 @@ public class UserService {
         int idUser;
         while (true) {
             try {
-                System.out.println("Mời bạn nhập ID của User muốn xóa ");
+                System.out.println("Mời bạn nhập ID của User muốn rút tiền ");
                 idUser = new Scanner(System.in).nextInt();
             } catch (InputMismatchException e) {
                 System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
