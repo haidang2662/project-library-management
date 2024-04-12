@@ -1,13 +1,7 @@
 package view;
 
-import entity.Book;
-import entity.BookBorrow;
-import entity.BookBorrowDetail;
-import entity.User;
-import service.BookBorrowService;
-import service.BookCategoryService;
-import service.BookService;
-import service.UserService;
+import entity.*;
+import service.*;
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -18,14 +12,16 @@ public class AdminMenu {
     private final UserService userService;
     private final BookService bookService;
     private final BookCategoryService bookCategoryService;
-
     private final BookBorrowService bookBorrowService;
 
-    public AdminMenu(UserService userService, BookService bookService, BookCategoryService bookCategoryService, BookBorrowService bookBorrowService) {
+    private final TransactionService transactionService;
+
+    public AdminMenu(UserService userService, BookService bookService, BookCategoryService bookCategoryService, BookBorrowService bookBorrowService, TransactionService transactionService) {
         this.userService = userService;
         this.bookService = bookService;
         this.bookCategoryService = bookCategoryService;
         this.bookBorrowService = bookBorrowService;
+        this.transactionService = transactionService;
     }
 
     public void showAdminMenu() {
@@ -173,13 +169,14 @@ public class AdminMenu {
             System.out.println("3. Xóa User (chỉ xóa User khi User này chưa từng thực hiện giao dịch) ");
             System.out.println("4. Tìm kiếm User theo tên ");
             System.out.println("5. Rút tiền từ tài khoản cho User ");
-            System.out.println("6. Thoát");
+            System.out.println("6. Nạp tiền vào tài khoản cho User");
+            System.out.println("7. Thoát");
             int featureChoice;
             while (true) {
                 try {
                     featureChoice = new Scanner(System.in).nextInt();
-                    if (featureChoice < 1 || featureChoice > 6) {
-                        System.out.println("Chức năng là số từ 1 tới 6, vui lòng nhập lại: ");
+                    if (featureChoice < 1 || featureChoice > 7) {
+                        System.out.println("Chức năng là số từ 1 tới 7, vui lòng nhập lại: ");
                         continue;
                     }
                     break;
@@ -219,11 +216,29 @@ public class AdminMenu {
                     userService.findUserByName();
                     // TODO - tìm bạn đọc teo tên Đã làm xong
                 }
-                case 5 -> {
-                    userService.withDraw();
+                case 5 -> userService.withDraw();
 
-                }
                 case 6 -> {
+                    User user;
+                    int idUser;
+                    while (true) {
+                        try {
+                            System.out.println("Mời bạn nhập ID của User muốn nạp tiền ");
+                            idUser = new Scanner(System.in).nextInt();
+                        } catch (InputMismatchException e) {
+                            System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
+                            continue;
+                        }
+                        user = userService.findUserById(idUser);
+                        if (user == null) {
+                            System.out.print("Thông tin không chính xác , vui lòng nhập lại : ");
+                            continue;
+                        }
+                        break;
+                    }
+                    transactionService.updateBalance(user);
+                }
+                case 7 -> {
                     return;
                 }
             }

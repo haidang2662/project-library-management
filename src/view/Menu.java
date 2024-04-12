@@ -18,7 +18,7 @@ public class Menu {
     private final BookBorrowService bookBorrowService = new BookBorrowService(userService, bookService, transactionService);
 
 
-    private final AdminMenu adminMenu = new AdminMenu(userService, bookService, bookCategoryService, bookBorrowService);
+    private final AdminMenu adminMenu = new AdminMenu(userService, bookService, bookCategoryService, bookBorrowService, transactionService);
     private final UserMenu userMenu = new UserMenu(userService, bookBorrowService, transactionService, voteHistoryService,bookService);
 
     public void showMenu() {

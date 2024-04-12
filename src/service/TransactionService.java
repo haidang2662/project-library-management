@@ -74,8 +74,8 @@ public class TransactionService {
         }
     }
 
-    public void updateBalance() {
-        User user = Main.loggedInUser;
+    public void updateBalance(User user) {
+
         double money;
         while (true) {
             try {
