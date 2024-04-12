@@ -2,6 +2,7 @@ package view;
 
 import entity.BookBorrow;
 import entity.Transaction;
+import entity.User;
 import main.Main;
 import service.*;
 
@@ -167,7 +168,8 @@ public class UserMenu {
                     userService.updateUserInformation();
                     break;
                 case 2:
-                    transactionService.updateBalance();
+                    User user = Main.loggedInUser;
+                    transactionService.updateBalance(user);
                     break;
                 case 3:
                     ArrayList<Transaction> transactions = transactionService.showTransactionHistories();
