@@ -362,37 +362,4 @@ public class UserService {
         showUsers(users1);
     }
 
-    public void withDraw() {
-        User user;
-        int idUser;
-        while (true) {
-            try {
-                System.out.println("Mời bạn nhập ID của User muốn rút tiền ");
-                idUser = new Scanner(System.in).nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
-                continue;
-            }
-            user = findUserById(idUser);
-            if (user == null) {
-                System.out.print("Thông tin không chính xác , vui lòng nhập lại : ");
-                continue;
-            }
-            break;
-        }
-        System.out.println("Mời bạn nhập số tiền muốn rút : ");
-        double a ;
-        double money;
-        while (true){
-            money = new Scanner(System.in).nextDouble();
-            a = user.getBalance()-money;
-            if(a<50000){
-                System.out.println("Số dư trong tài khoản sau khi rút tiền phải lớn hơn hoặc bằng 50000 , vui lòng nhập lại");
-                continue;
-            }
-            break;
-        }
-        user.setBalance(a);
-        saveUserData();
-    }
 }

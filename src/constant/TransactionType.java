@@ -1,5 +1,5 @@
 package constant;
 
 public enum TransactionType {
-    BORROW,RETURN,PUNISH,DEPOSIT
+    BORROW, RETURN, PUNISH, DEPOSIT, WITHDRAW
 }

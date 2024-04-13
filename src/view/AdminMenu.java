@@ -1,6 +1,9 @@
 package view;
 
-import entity.*;
+import entity.Book;
+import entity.BookBorrow;
+import entity.BookBorrowDetail;
+import entity.User;
 import service.*;
 
 import java.util.InputMismatchException;
@@ -149,11 +152,10 @@ public class AdminMenu {
                     break;
                 case 3:
                     bookService.findBookByName();
-                    // TODO - tìm kiếm sách theo tên . Đã làm xong .
+
                     break;
                 case 4:
                     bookService.findBookByNameCategory();
-                    // TODO - tìm kiếm sách theo thể loại . Đã làm xong .
                     break;
                 case 5:
                     return;
@@ -212,32 +214,9 @@ public class AdminMenu {
                     }
                     userService.deleteUserById(idUserDelete);
                 }
-                case 4 -> {
-                    userService.findUserByName();
-                    // TODO - tìm bạn đọc teo tên Đã làm xong
-                }
-                case 5 -> userService.withDraw();
-
-                case 6 -> {
-                    User user;
-                    int idUser;
-                    while (true) {
-                        try {
-                            System.out.println("Mời bạn nhập ID của User muốn nạp tiền ");
-                            idUser = new Scanner(System.in).nextInt();
-                        } catch (InputMismatchException e) {
-                            System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
-                            continue;
-                        }
-                        user = userService.findUserById(idUser);
-                        if (user == null) {
-                            System.out.print("Thông tin không chính xác , vui lòng nhập lại : ");
-                            continue;
-                        }
-                        break;
-                    }
-                    transactionService.updateBalance(user);
-                }
+                case 4 -> userService.findUserByName();
+                case 5 -> transactionService.withDraw();
+                case 6 -> transactionService.deposit();
                 case 7 -> {
                     return;
                 }
@@ -288,7 +267,7 @@ public class AdminMenu {
                 case 4:
                     bookCategoryService.showCategories();
                     break;
-                case 5 :
+                case 5:
                     return;
             }
         }

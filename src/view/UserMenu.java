@@ -169,7 +169,7 @@ public class UserMenu {
                     break;
                 case 2:
                     User user = Main.loggedInUser;
-                    transactionService.updateBalance(user);
+                    transactionService.deposit(user);
                     break;
                 case 3:
                     ArrayList<Transaction> transactions = transactionService.showTransactionHistories();
