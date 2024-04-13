@@ -119,15 +119,7 @@ public class VoteHistoryService {
                 votesFindHistory.add(voteHistory);
             }
         }
-        showVoteHistories(voteHistories);
-    }
-
-    public void showVoteHistories() {
-        System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%n", "User", "Book", "ratedContent", "Time", "voteStarHistory", "averageVoteStar");
-        System.out.println("------------------------------------------------------------------------------------------------------------------------------");
-        for (VoteHistory voteHistory : voteHistories) {
-            showVoteHistory(voteHistory);
-        }
+        showVoteHistories(votesFindHistory);
     }
 
     public void showVoteHistory(VoteHistory voteHistory) {
@@ -142,10 +134,10 @@ public class VoteHistoryService {
 
     }
 
-    public void showVoteHistories(List<VoteHistory> voteHistories1) {
+    public void showVoteHistories(List<VoteHistory> histories) {
         System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%n", "User", "Book", "ratedContent", "Time", "voteStarHistory", "averageVoteStar");
         System.out.println("------------------------------------------------------------------------------------------------------------------------------");
-        for (VoteHistory voteHistory : voteHistories1) {
+        for (VoteHistory voteHistory : histories) {
             showVoteHistory(voteHistory);
         }
     }
