@@ -65,7 +65,6 @@ public class UserMenu {
                     break;
                 case 4:
                     findBookMenu();
-                    // TODO - menu con tìm kiếm sách theo tên hoặc theo lượt vote từ 4 - 5 sao hoặc theo thể loại . Đã làm xong .
                     break;
                 case 5:
                     return;
@@ -184,7 +183,7 @@ public class UserMenu {
         }
     }
 
-    private void findBookMenu(){
+    private void findBookMenu() {
         while (true) {
             System.out.println("------------ Menu tìm kiếm sách  ------------");
             System.out.println("1. Tìm kiếm sách theo tên ");
