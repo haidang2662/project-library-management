@@ -9,10 +9,7 @@ import util.FileUtil;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class BookBorrowService {
 
@@ -222,16 +219,12 @@ public class BookBorrowService {
 
         double tienPhatThueQuaHan = 0;
         long soNgayQuaHan = ChronoUnit.DAYS.between(borrowing.getExpectedReturnDate(), returnDate);
-        if (soNgayQuaHan < 0) {
-            soNgayQuaHan = 0;
-        }
-        if (soNgayQuaHan >= 0) {
+        if (soNgayQuaHan > 0) {
             tienPhatThueQuaHan = tienThueThucTe - borrowing.getTotalExpectedBorrowFee();
             System.out.println("Đã quá hạn trả " + soNgayQuaHan + " ngày, bạn đọc cần nộp thêm tiền thuê tương ứng " +
                     "với số ngày vượt quá là " + tienPhatThueQuaHan);
-
         }
-        double tienPhatDoTinhTrangSach = 0;
+        double tienPhatDoTinhTrangSach;
         double tienCocTraLai = 0;
         double tongTienPhat = 0;
         for (BookBorrowDetail detail : borrowing.getDetail()) {

@@ -101,6 +101,7 @@ public class VoteHistoryService {
             }
             break;
         }
+
         ArrayList<VoteHistory> votesFindHistory = new ArrayList<>();
         for (VoteHistory voteHistory : voteHistories) {
             if (voteHistory.getBook().getId() == bookId) {
@@ -123,15 +124,12 @@ public class VoteHistoryService {
     }
 
     public void showVoteHistory(VoteHistory voteHistory) {
-
-        double a = voteHistory.getBook().getVoteStar()*voteHistory.getBook().getVoteCount() + voteHistory.getVoteStarHistory();
-        double b = voteHistory.getBook().getVoteCount()+1;
-        double c = a/b;
+        double a = voteHistory.getBook().getVoteStar() * voteHistory.getBook().getVoteCount() + voteHistory.getVoteStarHistory();
+        double b = voteHistory.getBook().getVoteCount() + 1;
+        double c = a / b;
 
         System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%n", voteHistory.getUser().getFullName(), voteHistory.getBook().getName(),
                 voteHistory.getRatedContent(), voteHistory.getCreatedDate(), voteHistory.getVoteStarHistory(), c);
-
-
     }
 
     public void showVoteHistories(List<VoteHistory> histories) {
