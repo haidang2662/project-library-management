@@ -392,15 +392,6 @@ public class BookBorrowService {
         return borrows;
     }
 
-    public void showBookBorrows() {
-        System.out.printf("%-10s%-20s%-10s%-30s%-20s%-20s%-20s%-20s%-15s%-25s%-25s%-25s%-25s%-25s%-25s%n", "UserId", "User", "BookId", "BookName", "borrowQuantity", "returnQuantity", "originalStatus", "returnStatus", "createdDate", "expectedReturnDate", "actualReturnDate", "totalDepositAmount", "totalExpectedBorrowFee"
-                , "totalActualBorrowFee", "totalPunishAmount");
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        for (BookBorrow borrow : bookBorrows) {
-            showBookBorrow(borrow);
-        }
-    }
-
     public void showBookBorrow(BookBorrow borrow) {
         System.out.println("****************************************************************************");
         printHeader();
@@ -449,7 +440,6 @@ public class BookBorrowService {
                 bookBorrowDetail.getOriginalStatus(), bookBorrowDetail.getReturnStatus(), bookBorrowDetail.getDepositAmount(),
                 bookBorrowDetail.getExpectedBorrowFee(), bookBorrowDetail.getActualBorrowFee(), bookBorrowDetail.getActualBorrowFee(),bookBorrowDetail.getPunishAmount());
     }
-
 
     public void findBorrowDetail() {
         System.out.println("Mời bạn nhập ID lượt mượn : ");
