@@ -49,15 +49,6 @@ public class TransactionService {
             }
         }
         return transactions;
-
-    }
-
-    public void showTransactions() {
-        System.out.printf("%-50s%-20s%-15s%-25s%-30s%n", "User", "createdDate", "amount", "transactionType", "transactionContent");
-        System.out.println("------------------------------------------------------------------------------------------------------------------------------");
-        for (Transaction transaction : transactionHistories) {
-            showTransaction(transaction);
-        }
     }
 
     public void showTransaction(Transaction transaction) {
@@ -74,9 +65,16 @@ public class TransactionService {
     }
 
     public void updateBalance(User user, double money, TransactionType transactionType) {
+        String message = switch (transactionType) {
+            case DEPOSIT -> "Nạp tiền vào tài khoản";
+            case BORROW -> "Tiền cọc mượn sách";
+            case PUNISH -> "Tiền phạt mượn sách";
+            case RETURN -> "Trả sách";
+            case WITHDRAW -> "Rút tiền khỏi tài khoản";
+        };
         user.setBalance(user.getBalance() + money);
         userService.saveUserData();// FILE - khi có thay đổi về list user, can luu vao file
-        Transaction transaction = new Transaction(user, LocalDate.now(), money, TransactionType.DEPOSIT, "Nạp tiền vào tài khoản");
+        Transaction transaction = new Transaction(user, LocalDate.now(), money, transactionType, message);
         transactionHistories.add(transaction);
         saveTransactionHistoriesData();
     }
