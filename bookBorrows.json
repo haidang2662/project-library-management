@@ -1,1 +1,1750 @@
-[{"id":0,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":440000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":100,"voteStar":4.375,"voteCount":4},"borrowQuantity":1,"returnQuantity":2,"originalStatus":"nguyên vẹn","returnStatus":"3","depositAmount":120000.0,"expectedBorrowFee":10000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"08/04/2024","expectedReturnDate":"10/04/2024","actualReturnDate":"08/04/2024","totalDepositAmount":120000.0,"totalExpectedBorrowFee":10000.0,"totalActualBorrowFee":0.0,"totalPunishAmount":50000.0},{"id":1,"borrower":{"id":4,"email":"b@gmail.com","password":"Bb123456","fullName":"dang","phone":"0987654321","address":"hn","role":"USER","balance":920000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":99,"voteStar":4.375,"voteCount":4},"borrowQuantity":2,"returnQuantity":3,"originalStatus":"nguyên vẹn","returnStatus":"nguyên vẹn","depositAmount":240000.0,"expectedBorrowFee":20000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"11/04/2024","totalDepositAmount":240000.0,"totalExpectedBorrowFee":20000.0,"totalActualBorrowFee":20000.0,"totalPunishAmount":0.0},{"id":2,"borrower":{"id":4,"email":"b@gmail.com","password":"Bb123456","fullName":"dang","phone":"0987654321","address":"hn","role":"USER","balance":920000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":99,"voteStar":4.375,"voteCount":4},"borrowQuantity":2,"returnQuantity":2,"originalStatus":"nguyên vẹn","returnStatus":"nguyên vẹn","depositAmount":240000.0,"expectedBorrowFee":20000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"11/04/2024","totalDepositAmount":240000.0,"totalExpectedBorrowFee":20000.0,"totalActualBorrowFee":20000.0,"totalPunishAmount":0.0},{"id":3,"borrower":{"id":4,"email":"b@gmail.com","password":"Bb123456","fullName":"dang","phone":"0987654321","address":"hn","role":"USER","balance":900000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":99,"voteStar":4.375,"voteCount":4},"borrowQuantity":2,"returnQuantity":2,"originalStatus":"nguyên vẹn","returnStatus":"nguyên vẹn","depositAmount":240000.0,"expectedBorrowFee":20000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":240000.0,"totalExpectedBorrowFee":20000.0,"totalActualBorrowFee":20000.0,"totalPunishAmount":0.0},{"id":4,"borrower":{"id":4,"email":"b@gmail.com","password":"Bb123456","fullName":"dang","phone":"0987654321","address":"hn","role":"USER","balance":630000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":98,"voteStar":4.5,"voteCount":6},"borrowQuantity":3,"returnQuantity":2,"originalStatus":"nguyen vẹn","returnStatus":"Bị thiếu mất 1 quyển","depositAmount":360000.0,"expectedBorrowFee":30000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":360000.0,"totalExpectedBorrowFee":30000.0,"totalActualBorrowFee":30000.0,"totalPunishAmount":120000.0},{"id":5,"borrower":{"id":4,"email":"b@gmail.com","password":"Bb123456","fullName":"dang","phone":"0987654321","address":"hn","role":"USER","balance":360000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":97,"voteStar":4.5,"voteCount":6},"borrowQuantity":3,"returnQuantity":2,"originalStatus":"nguyên vẹn","returnStatus":"thiếu 1 quyển","depositAmount":360000.0,"expectedBorrowFee":30000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":360000.0,"totalExpectedBorrowFee":30000.0,"totalActualBorrowFee":30000.0,"totalPunishAmount":120000.0},{"id":6,"borrower":{"id":4,"email":"b@gmail.com","password":"Bb123456","fullName":"dang","phone":"0987654321","address":"hn","role":"USER","balance":90000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":96,"voteStar":4.5,"voteCount":6},"borrowQuantity":3,"returnQuantity":2,"originalStatus":"nguyen vẹn","returnStatus":"thieu 1 quyen","depositAmount":360000.0,"expectedBorrowFee":30000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":360000.0,"totalExpectedBorrowFee":30000.0,"totalActualBorrowFee":30000.0,"totalPunishAmount":120000.0},{"id":7,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":600000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":96,"voteStar":4.5,"voteCount":6},"borrowQuantity":3,"returnQuantity":3,"originalStatus":"nguyen ven","returnStatus":"nguyen ven","depositAmount":360000.0,"expectedBorrowFee":30000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":360000.0,"totalExpectedBorrowFee":30000.0,"totalActualBorrowFee":30000.0,"totalPunishAmount":0.0},{"id":8,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":330000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":95,"voteStar":4.5,"voteCount":6},"borrowQuantity":3,"returnQuantity":2,"originalStatus":"nguyen ven","returnStatus":"thieu 1 quyen","depositAmount":360000.0,"expectedBorrowFee":30000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":360000.0,"totalExpectedBorrowFee":30000.0,"totalActualBorrowFee":30000.0,"totalPunishAmount":120000.0},{"id":9,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":90000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":94,"voteStar":4.5,"voteCount":6},"borrowQuantity":2,"returnQuantity":1,"originalStatus":"nguyen ven","returnStatus":"thieu 1 quyen","depositAmount":240000.0,"expectedBorrowFee":20000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":240000.0,"totalExpectedBorrowFee":20000.0,"totalActualBorrowFee":20000.0,"totalPunishAmount":120000.0},{"id":10,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":840000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":93,"voteStar":4.5,"voteCount":6},"borrowQuantity":4,"returnQuantity":3,"originalStatus":"nguyen ven","returnStatus":"thieu 1 quyen","depositAmount":480000.0,"expectedBorrowFee":40000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":480000.0,"totalExpectedBorrowFee":40000.0,"totalActualBorrowFee":40000.0,"totalPunishAmount":40000.0},{"id":11,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":600000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":92,"voteStar":4.5,"voteCount":6},"borrowQuantity":4,"returnQuantity":3,"originalStatus":"nguyen ven","returnStatus":"thieu 1 quyen","depositAmount":480000.0,"expectedBorrowFee":40000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":480000.0,"totalExpectedBorrowFee":40000.0,"totalActualBorrowFee":40000.0,"totalPunishAmount":120000.0},{"id":12,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":480000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":91,"voteStar":4.5,"voteCount":6},"borrowQuantity":4,"returnQuantity":3,"originalStatus":"nguyen ven","returnStatus":"thieu 1 quyen","depositAmount":480000.0,"expectedBorrowFee":40000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":480000.0,"totalExpectedBorrowFee":40000.0,"totalActualBorrowFee":40000.0,"totalPunishAmount":120000.0},{"id":13,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":380000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":91,"voteStar":4.5,"voteCount":6},"borrowQuantity":1,"returnQuantity":1,"originalStatus":"nguyen ven","returnStatus":"ngueyn ven","depositAmount":120000.0,"expectedBorrowFee":10000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":120000.0,"totalExpectedBorrowFee":10000.0,"totalActualBorrowFee":10000.0,"totalPunishAmount":0.0},{"id":14,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":380000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":91,"voteStar":4.5,"voteCount":6},"borrowQuantity":1,"returnQuantity":1,"originalStatus":"nguyen ven","returnStatus":"nguyen ven","depositAmount":120000.0,"expectedBorrowFee":10000.0,"actualBorrowFee":0.0,"punishAmount":0.0},{"book":{"id":0,"name":"Giải tích","author":"Lê Hữu Đăng","category":{"idCategory":1,"nameCategory":"toan hoc"},"publisher":"Kim Dồng","publishedYear":"12/05/2020","price":150000.0,"borrowPricePerDay":5000.0,"totalQuantity":100,"voteStar":0.0,"voteCount":0},"borrowQuantity":2,"returnQuantity":2,"originalStatus":"nguyen ven","returnStatus":"nguyen ven","depositAmount":300000.0,"expectedBorrowFee":20000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":420000.0,"totalExpectedBorrowFee":30000.0,"totalActualBorrowFee":30000.0,"totalPunishAmount":0.0},{"id":15,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":380000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":91,"voteStar":4.5,"voteCount":6},"borrowQuantity":2,"returnQuantity":2,"originalStatus":"nguyen ven","returnStatus":"nguyen ven","depositAmount":240000.0,"expectedBorrowFee":20000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":240000.0,"totalExpectedBorrowFee":20000.0,"totalActualBorrowFee":20000.0,"totalPunishAmount":0.0},{"id":16,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":380000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":91,"voteStar":4.5,"voteCount":6},"borrowQuantity":2,"returnQuantity":2,"originalStatus":"nguyen ven","returnStatus":"nguyen ven","depositAmount":240000.0,"expectedBorrowFee":20000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":240000.0,"totalExpectedBorrowFee":20000.0,"totalActualBorrowFee":20000.0,"totalPunishAmount":0.0},{"id":17,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":380000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":91,"voteStar":4.5,"voteCount":6},"borrowQuantity":2,"returnQuantity":2,"originalStatus":"nguyen ven","returnStatus":"nguyen ven","depositAmount":240000.0,"expectedBorrowFee":20000.0,"actualBorrowFee":0.0,"punishAmount":0.0},{"book":{"id":2,"name":"Xác xuất thống kê","author":"Lê Hữu Đăng","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Văn Lang","publishedYear":"11/11/1988","price":100000.0,"borrowPricePerDay":5000.0,"totalQuantity":99,"voteStar":0.0,"voteCount":0},"borrowQuantity":2,"returnQuantity":1,"originalStatus":"nguyen ven","returnStatus":"thieu 1 quyen","depositAmount":200000.0,"expectedBorrowFee":20000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":440000.0,"totalExpectedBorrowFee":40000.0,"totalActualBorrowFee":40000.0,"totalPunishAmount":100000.0},{"id":18,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":900000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":90,"voteStar":4.5,"voteCount":6},"borrowQuantity":3,"returnQuantity":2,"originalStatus":"nguyen ven","returnStatus":"thieu 1 quyen","depositAmount":360000.0,"expectedBorrowFee":30000.0,"actualBorrowFee":0.0,"punishAmount":0.0},{"book":{"id":2,"name":"Xác xuất thống kê","author":"Lê Hữu Đăng","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Văn Lang","publishedYear":"11/11/1988","price":100000.0,"borrowPricePerDay":5000.0,"totalQuantity":98,"voteStar":0.0,"voteCount":0},"borrowQuantity":2,"returnQuantity":1,"originalStatus":"nguyen ven","returnStatus":"thieu 1 quyen","depositAmount":200000.0,"expectedBorrowFee":20000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":560000.0,"totalExpectedBorrowFee":50000.0,"totalActualBorrowFee":50000.0,"totalPunishAmount":100000.0},{"id":19,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":800000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":89,"voteStar":4.5,"voteCount":6},"borrowQuantity":2,"returnQuantity":1,"originalStatus":"nguyen ven","returnStatus":"thieu 1 quyen","depositAmount":240000.0,"expectedBorrowFee":20000.0,"actualBorrowFee":0.0,"punishAmount":0.0},{"book":{"id":2,"name":"Xác xuất thống kê","author":"Lê Hữu Đăng","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Văn Lang","publishedYear":"11/11/1988","price":100000.0,"borrowPricePerDay":5000.0,"totalQuantity":97,"voteStar":0.0,"voteCount":0},"borrowQuantity":2,"returnQuantity":1,"originalStatus":"nguyen ven","returnStatus":"thieu 1 quyen","depositAmount":200000.0,"expectedBorrowFee":20000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":440000.0,"totalExpectedBorrowFee":40000.0,"totalActualBorrowFee":40000.0,"totalPunishAmount":100000.0},{"id":20,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":700000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":88,"voteStar":4.5,"voteCount":6},"borrowQuantity":2,"returnQuantity":1,"originalStatus":"NV","returnStatus":"thieu 1 quyen","depositAmount":240000.0,"expectedBorrowFee":20000.0,"actualBorrowFee":0.0,"punishAmount":0.0},{"book":{"id":2,"name":"Xác xuất thống kê","author":"Lê Hữu Đăng","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Văn Lang","publishedYear":"11/11/1988","price":100000.0,"borrowPricePerDay":5000.0,"totalQuantity":96,"voteStar":0.0,"voteCount":0},"borrowQuantity":2,"returnQuantity":1,"originalStatus":"NV","returnStatus":"thieu 1 quyen","depositAmount":200000.0,"expectedBorrowFee":20000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":440000.0,"totalExpectedBorrowFee":40000.0,"totalActualBorrowFee":40000.0,"totalPunishAmount":100000.0},{"id":21,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":480000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":87,"voteStar":4.5,"voteCount":6},"borrowQuantity":2,"returnQuantity":1,"originalStatus":"nv","returnStatus":"t 1 q","depositAmount":240000.0,"expectedBorrowFee":20000.0,"actualBorrowFee":0.0,"punishAmount":0.0},{"book":{"id":2,"name":"Xác xuất thống kê","author":"Lê Hữu Đăng","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Văn Lang","publishedYear":"11/11/1988","price":100000.0,"borrowPricePerDay":5000.0,"totalQuantity":95,"voteStar":0.0,"voteCount":0},"borrowQuantity":2,"returnQuantity":1,"originalStatus":"nv","returnStatus":"t 1 q","depositAmount":200000.0,"expectedBorrowFee":20000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":440000.0,"totalExpectedBorrowFee":40000.0,"totalActualBorrowFee":40000.0,"totalPunishAmount":220000.0},{"id":22,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":260000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":86,"voteStar":4.5,"voteCount":6},"borrowQuantity":2,"returnQuantity":1,"originalStatus":"nv","returnStatus":"t 1 q","depositAmount":240000.0,"expectedBorrowFee":20000.0,"actualBorrowFee":0.0,"punishAmount":0.0},{"book":{"id":2,"name":"Xác xuất thống kê","author":"Lê Hữu Đăng","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Văn Lang","publishedYear":"11/11/1988","price":100000.0,"borrowPricePerDay":5000.0,"totalQuantity":94,"voteStar":0.0,"voteCount":0},"borrowQuantity":2,"returnQuantity":1,"originalStatus":"nv","returnStatus":"t 1 q","depositAmount":200000.0,"expectedBorrowFee":20000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"09/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"09/04/2024","totalDepositAmount":440000.0,"totalExpectedBorrowFee":40000.0,"totalActualBorrowFee":40000.0,"totalPunishAmount":220000.0},{"id":23,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":260000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":86,"voteStar":4.5,"voteCount":6},"borrowQuantity":1,"returnQuantity":1,"originalStatus":"nguyen ven","returnStatus":"nv","depositAmount":120000.0,"expectedBorrowFee":5000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"10/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"10/04/2024","totalDepositAmount":120000.0,"totalExpectedBorrowFee":5000.0,"totalActualBorrowFee":5000.0,"totalPunishAmount":0.0},{"id":24,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":140000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":85,"voteStar":4.5,"voteCount":6},"borrowQuantity":2,"returnQuantity":1,"originalStatus":"nv","returnStatus":"thieu 1 quyen","depositAmount":240000.0,"expectedBorrowFee":10000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"10/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"10/04/2024","totalDepositAmount":240000.0,"totalExpectedBorrowFee":10000.0,"totalActualBorrowFee":10000.0,"totalPunishAmount":120000.0},{"id":25,"borrower":{"id":8,"email":"a@gmail.com","password":"Aa123456","fullName":"dang","phone":"0123456788","address":"hcm","role":"USER","balance":780000.0},"details":[{"book":{"id":1,"name":"Harry Potter","author":"Tô Hoài","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Kim Đồng","publishedYear":"11/11/1111","price":120000.0,"borrowPricePerDay":5000.0,"totalQuantity":84,"voteStar":4.5,"voteCount":6},"borrowQuantity":2,"returnQuantity":1,"originalStatus":"nguyen ven","returnStatus":"thieu 1 quyen","depositAmount":240000.0,"expectedBorrowFee":10000.0,"actualBorrowFee":0.0,"punishAmount":0.0},{"book":{"id":2,"name":"Xác xuất thống kê","author":"Lê Hữu Đăng","category":{"idCategory":0,"nameCategory":"thieu nhi"},"publisher":"Văn Lang","publishedYear":"11/11/1988","price":100000.0,"borrowPricePerDay":5000.0,"totalQuantity":93,"voteStar":0.0,"voteCount":0},"borrowQuantity":2,"returnQuantity":1,"originalStatus":"nguyen ven","returnStatus":"thieu 1 quyen","depositAmount":200000.0,"expectedBorrowFee":10000.0,"actualBorrowFee":0.0,"punishAmount":0.0}],"createdDate":"10/04/2024","expectedReturnDate":"11/04/2024","actualReturnDate":"10/04/2024","totalDepositAmount":440000.0,"totalExpectedBorrowFee":20000.0,"totalActualBorrowFee":20000.0,"totalPunishAmount":220000.0}]
+[
+  {
+    "id": 0,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 440000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 100,
+          "voteStar": 4.375,
+          "voteCount": 4
+        },
+        "borrowQuantity": 1,
+        "returnQuantity": 2,
+        "originalStatus": "nguyên vẹn",
+        "returnStatus": "3",
+        "depositAmount": 120000.0,
+        "expectedBorrowFee": 10000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "08/04/2024",
+    "expectedReturnDate": "10/04/2024",
+    "actualReturnDate": "08/04/2024",
+    "totalDepositAmount": 120000.0,
+    "totalExpectedBorrowFee": 10000.0,
+    "totalActualBorrowFee": 0.0,
+    "totalPunishAmount": 50000.0
+  },
+  {
+    "id": 1,
+    "borrower": {
+      "id": 4,
+      "email": "b@gmail.com",
+      "password": "Bb123456",
+      "fullName": "dang",
+      "phone": "0987654321",
+      "address": "hn",
+      "role": "USER",
+      "balance": 920000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 99,
+          "voteStar": 4.375,
+          "voteCount": 4
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 3,
+        "originalStatus": "nguyên vẹn",
+        "returnStatus": "nguyên vẹn",
+        "depositAmount": 240000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "11/04/2024",
+    "totalDepositAmount": 240000.0,
+    "totalExpectedBorrowFee": 20000.0,
+    "totalActualBorrowFee": 20000.0,
+    "totalPunishAmount": 0.0
+  },
+  {
+    "id": 2,
+    "borrower": {
+      "id": 4,
+      "email": "b@gmail.com",
+      "password": "Bb123456",
+      "fullName": "dang",
+      "phone": "0987654321",
+      "address": "hn",
+      "role": "USER",
+      "balance": 920000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 99,
+          "voteStar": 4.375,
+          "voteCount": 4
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 2,
+        "originalStatus": "nguyên vẹn",
+        "returnStatus": "nguyên vẹn",
+        "depositAmount": 240000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "11/04/2024",
+    "totalDepositAmount": 240000.0,
+    "totalExpectedBorrowFee": 20000.0,
+    "totalActualBorrowFee": 20000.0,
+    "totalPunishAmount": 0.0
+  },
+  {
+    "id": 3,
+    "borrower": {
+      "id": 4,
+      "email": "b@gmail.com",
+      "password": "Bb123456",
+      "fullName": "dang",
+      "phone": "0987654321",
+      "address": "hn",
+      "role": "USER",
+      "balance": 900000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 99,
+          "voteStar": 4.375,
+          "voteCount": 4
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 2,
+        "originalStatus": "nguyên vẹn",
+        "returnStatus": "nguyên vẹn",
+        "depositAmount": 240000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 240000.0,
+    "totalExpectedBorrowFee": 20000.0,
+    "totalActualBorrowFee": 20000.0,
+    "totalPunishAmount": 0.0
+  },
+  {
+    "id": 4,
+    "borrower": {
+      "id": 4,
+      "email": "b@gmail.com",
+      "password": "Bb123456",
+      "fullName": "dang",
+      "phone": "0987654321",
+      "address": "hn",
+      "role": "USER",
+      "balance": 630000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 98,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 3,
+        "returnQuantity": 2,
+        "originalStatus": "nguyen vẹn",
+        "returnStatus": "Bị thiếu mất 1 quyển",
+        "depositAmount": 360000.0,
+        "expectedBorrowFee": 30000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 360000.0,
+    "totalExpectedBorrowFee": 30000.0,
+    "totalActualBorrowFee": 30000.0,
+    "totalPunishAmount": 120000.0
+  },
+  {
+    "id": 5,
+    "borrower": {
+      "id": 4,
+      "email": "b@gmail.com",
+      "password": "Bb123456",
+      "fullName": "dang",
+      "phone": "0987654321",
+      "address": "hn",
+      "role": "USER",
+      "balance": 360000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 97,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 3,
+        "returnQuantity": 2,
+        "originalStatus": "nguyên vẹn",
+        "returnStatus": "thiếu 1 quyển",
+        "depositAmount": 360000.0,
+        "expectedBorrowFee": 30000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 360000.0,
+    "totalExpectedBorrowFee": 30000.0,
+    "totalActualBorrowFee": 30000.0,
+    "totalPunishAmount": 120000.0
+  },
+  {
+    "id": 6,
+    "borrower": {
+      "id": 4,
+      "email": "b@gmail.com",
+      "password": "Bb123456",
+      "fullName": "dang",
+      "phone": "0987654321",
+      "address": "hn",
+      "role": "USER",
+      "balance": 90000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 96,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 3,
+        "returnQuantity": 2,
+        "originalStatus": "nguyen vẹn",
+        "returnStatus": "thieu 1 quyen",
+        "depositAmount": 360000.0,
+        "expectedBorrowFee": 30000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 360000.0,
+    "totalExpectedBorrowFee": 30000.0,
+    "totalActualBorrowFee": 30000.0,
+    "totalPunishAmount": 120000.0
+  },
+  {
+    "id": 7,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 600000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 96,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 3,
+        "returnQuantity": 3,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "nguyen ven",
+        "depositAmount": 360000.0,
+        "expectedBorrowFee": 30000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 360000.0,
+    "totalExpectedBorrowFee": 30000.0,
+    "totalActualBorrowFee": 30000.0,
+    "totalPunishAmount": 0.0
+  },
+  {
+    "id": 8,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 330000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 95,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 3,
+        "returnQuantity": 2,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "thieu 1 quyen",
+        "depositAmount": 360000.0,
+        "expectedBorrowFee": 30000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 360000.0,
+    "totalExpectedBorrowFee": 30000.0,
+    "totalActualBorrowFee": 30000.0,
+    "totalPunishAmount": 120000.0
+  },
+  {
+    "id": 9,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 90000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 94,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 1,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "thieu 1 quyen",
+        "depositAmount": 240000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 240000.0,
+    "totalExpectedBorrowFee": 20000.0,
+    "totalActualBorrowFee": 20000.0,
+    "totalPunishAmount": 120000.0
+  },
+  {
+    "id": 10,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 840000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 93,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 4,
+        "returnQuantity": 3,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "thieu 1 quyen",
+        "depositAmount": 480000.0,
+        "expectedBorrowFee": 40000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 480000.0,
+    "totalExpectedBorrowFee": 40000.0,
+    "totalActualBorrowFee": 40000.0,
+    "totalPunishAmount": 40000.0
+  },
+  {
+    "id": 11,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 600000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 92,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 4,
+        "returnQuantity": 3,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "thieu 1 quyen",
+        "depositAmount": 480000.0,
+        "expectedBorrowFee": 40000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 480000.0,
+    "totalExpectedBorrowFee": 40000.0,
+    "totalActualBorrowFee": 40000.0,
+    "totalPunishAmount": 120000.0
+  },
+  {
+    "id": 12,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 480000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 91,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 4,
+        "returnQuantity": 3,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "thieu 1 quyen",
+        "depositAmount": 480000.0,
+        "expectedBorrowFee": 40000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 480000.0,
+    "totalExpectedBorrowFee": 40000.0,
+    "totalActualBorrowFee": 40000.0,
+    "totalPunishAmount": 120000.0
+  },
+  {
+    "id": 13,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 380000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 91,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 1,
+        "returnQuantity": 1,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "ngueyn ven",
+        "depositAmount": 120000.0,
+        "expectedBorrowFee": 10000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 120000.0,
+    "totalExpectedBorrowFee": 10000.0,
+    "totalActualBorrowFee": 10000.0,
+    "totalPunishAmount": 0.0
+  },
+  {
+    "id": 14,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 380000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 91,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 1,
+        "returnQuantity": 1,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "nguyen ven",
+        "depositAmount": 120000.0,
+        "expectedBorrowFee": 10000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      },
+      {
+        "book": {
+          "id": 0,
+          "name": "Giải tích",
+          "author": "Lê Hữu Đăng",
+          "category": {
+            "idCategory": 1,
+            "nameCategory": "toan hoc"
+          },
+          "publisher": "Kim Dồng",
+          "publishedYear": "12/05/2020",
+          "price": 150000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 100,
+          "voteStar": 0.0,
+          "voteCount": 0
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 2,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "nguyen ven",
+        "depositAmount": 300000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 420000.0,
+    "totalExpectedBorrowFee": 30000.0,
+    "totalActualBorrowFee": 30000.0,
+    "totalPunishAmount": 0.0
+  },
+  {
+    "id": 15,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 380000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 91,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 2,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "nguyen ven",
+        "depositAmount": 240000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 240000.0,
+    "totalExpectedBorrowFee": 20000.0,
+    "totalActualBorrowFee": 20000.0,
+    "totalPunishAmount": 0.0
+  },
+  {
+    "id": 16,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 380000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 91,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 2,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "nguyen ven",
+        "depositAmount": 240000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 240000.0,
+    "totalExpectedBorrowFee": 20000.0,
+    "totalActualBorrowFee": 20000.0,
+    "totalPunishAmount": 0.0
+  },
+  {
+    "id": 17,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 380000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 91,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 2,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "nguyen ven",
+        "depositAmount": 240000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      },
+      {
+        "book": {
+          "id": 2,
+          "name": "Xác xuất thống kê",
+          "author": "Lê Hữu Đăng",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Văn Lang",
+          "publishedYear": "11/11/1988",
+          "price": 100000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 99,
+          "voteStar": 0.0,
+          "voteCount": 0
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 1,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "thieu 1 quyen",
+        "depositAmount": 200000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 440000.0,
+    "totalExpectedBorrowFee": 40000.0,
+    "totalActualBorrowFee": 40000.0,
+    "totalPunishAmount": 100000.0
+  },
+  {
+    "id": 18,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 900000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 90,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 3,
+        "returnQuantity": 2,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "thieu 1 quyen",
+        "depositAmount": 360000.0,
+        "expectedBorrowFee": 30000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      },
+      {
+        "book": {
+          "id": 2,
+          "name": "Xác xuất thống kê",
+          "author": "Lê Hữu Đăng",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Văn Lang",
+          "publishedYear": "11/11/1988",
+          "price": 100000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 98,
+          "voteStar": 0.0,
+          "voteCount": 0
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 1,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "thieu 1 quyen",
+        "depositAmount": 200000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 560000.0,
+    "totalExpectedBorrowFee": 50000.0,
+    "totalActualBorrowFee": 50000.0,
+    "totalPunishAmount": 100000.0
+  },
+  {
+    "id": 19,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 800000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 89,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 1,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "thieu 1 quyen",
+        "depositAmount": 240000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      },
+      {
+        "book": {
+          "id": 2,
+          "name": "Xác xuất thống kê",
+          "author": "Lê Hữu Đăng",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Văn Lang",
+          "publishedYear": "11/11/1988",
+          "price": 100000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 97,
+          "voteStar": 0.0,
+          "voteCount": 0
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 1,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "thieu 1 quyen",
+        "depositAmount": 200000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 440000.0,
+    "totalExpectedBorrowFee": 40000.0,
+    "totalActualBorrowFee": 40000.0,
+    "totalPunishAmount": 100000.0
+  },
+  {
+    "id": 20,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 700000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 88,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 1,
+        "originalStatus": "NV",
+        "returnStatus": "thieu 1 quyen",
+        "depositAmount": 240000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      },
+      {
+        "book": {
+          "id": 2,
+          "name": "Xác xuất thống kê",
+          "author": "Lê Hữu Đăng",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Văn Lang",
+          "publishedYear": "11/11/1988",
+          "price": 100000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 96,
+          "voteStar": 0.0,
+          "voteCount": 0
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 1,
+        "originalStatus": "NV",
+        "returnStatus": "thieu 1 quyen",
+        "depositAmount": 200000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 440000.0,
+    "totalExpectedBorrowFee": 40000.0,
+    "totalActualBorrowFee": 40000.0,
+    "totalPunishAmount": 100000.0
+  },
+  {
+    "id": 21,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 480000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 87,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 1,
+        "originalStatus": "nv",
+        "returnStatus": "t 1 q",
+        "depositAmount": 240000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      },
+      {
+        "book": {
+          "id": 2,
+          "name": "Xác xuất thống kê",
+          "author": "Lê Hữu Đăng",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Văn Lang",
+          "publishedYear": "11/11/1988",
+          "price": 100000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 95,
+          "voteStar": 0.0,
+          "voteCount": 0
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 1,
+        "originalStatus": "nv",
+        "returnStatus": "t 1 q",
+        "depositAmount": 200000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 440000.0,
+    "totalExpectedBorrowFee": 40000.0,
+    "totalActualBorrowFee": 40000.0,
+    "totalPunishAmount": 220000.0
+  },
+  {
+    "id": 22,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 260000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 86,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 1,
+        "originalStatus": "nv",
+        "returnStatus": "t 1 q",
+        "depositAmount": 240000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      },
+      {
+        "book": {
+          "id": 2,
+          "name": "Xác xuất thống kê",
+          "author": "Lê Hữu Đăng",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Văn Lang",
+          "publishedYear": "11/11/1988",
+          "price": 100000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 94,
+          "voteStar": 0.0,
+          "voteCount": 0
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 1,
+        "originalStatus": "nv",
+        "returnStatus": "t 1 q",
+        "depositAmount": 200000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "09/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "09/04/2024",
+    "totalDepositAmount": 440000.0,
+    "totalExpectedBorrowFee": 40000.0,
+    "totalActualBorrowFee": 40000.0,
+    "totalPunishAmount": 220000.0
+  },
+  {
+    "id": 23,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 260000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 86,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 1,
+        "returnQuantity": 1,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "nv",
+        "depositAmount": 120000.0,
+        "expectedBorrowFee": 5000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "10/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "10/04/2024",
+    "totalDepositAmount": 120000.0,
+    "totalExpectedBorrowFee": 5000.0,
+    "totalActualBorrowFee": 5000.0,
+    "totalPunishAmount": 0.0
+  },
+  {
+    "id": 24,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 140000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 85,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 1,
+        "originalStatus": "nv",
+        "returnStatus": "thieu 1 quyen",
+        "depositAmount": 240000.0,
+        "expectedBorrowFee": 10000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "10/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "10/04/2024",
+    "totalDepositAmount": 240000.0,
+    "totalExpectedBorrowFee": 10000.0,
+    "totalActualBorrowFee": 10000.0,
+    "totalPunishAmount": 120000.0
+  },
+  {
+    "id": 25,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 780000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 84,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 1,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "thieu 1 quyen",
+        "depositAmount": 240000.0,
+        "expectedBorrowFee": 10000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      },
+      {
+        "book": {
+          "id": 2,
+          "name": "Xác xuất thống kê",
+          "author": "Lê Hữu Đăng",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "thieu nhi"
+          },
+          "publisher": "Văn Lang",
+          "publishedYear": "11/11/1988",
+          "price": 100000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 93,
+          "voteStar": 0.0,
+          "voteCount": 0
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 1,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "thieu 1 quyen",
+        "depositAmount": 200000.0,
+        "expectedBorrowFee": 10000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "10/04/2024",
+    "expectedReturnDate": "11/04/2024",
+    "actualReturnDate": "10/04/2024",
+    "totalDepositAmount": 440000.0,
+    "totalExpectedBorrowFee": 20000.0,
+    "totalActualBorrowFee": 20000.0,
+    "totalPunishAmount": 220000.0
+  },
+  {
+    "id": 26,
+    "borrower": {
+      "id": 8,
+      "email": "a@gmail.com",
+      "password": "Aa123456",
+      "fullName": "dang",
+      "phone": "0123456788",
+      "address": "hcm",
+      "role": "USER",
+      "balance": 180000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 0,
+          "name": "Giải tích",
+          "author": "Lê Hữu Đăng",
+          "category": {
+            "idCategory": 1,
+            "nameCategory": "Toán học"
+          },
+          "publisher": "Kim Dồng",
+          "publishedYear": "12/05/2020",
+          "price": 150000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 98,
+          "voteStar": 0.0,
+          "voteCount": 0
+        },
+        "borrowQuantity": 2,
+        "returnQuantity": 0,
+        "originalStatus": "nguyên vẹn",
+        "returnStatus": null,
+        "depositAmount": 300000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      },
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "Thiếu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 83,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 1,
+        "returnQuantity": 0,
+        "originalStatus": "nguyên vẹn",
+        "returnStatus": null,
+        "depositAmount": 120000.0,
+        "expectedBorrowFee": 10000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "26/04/2024",
+    "expectedReturnDate": "28/04/2024",
+    "actualReturnDate": null,
+    "totalDepositAmount": 420000.0,
+    "totalExpectedBorrowFee": 30000.0,
+    "totalActualBorrowFee": 0.0,
+    "totalPunishAmount": 0.0
+  },
+  {
+    "id": 27,
+    "borrower": {
+      "id": 11,
+      "email": "a1@gmail.com",
+      "password": "Aa123456",
+      "fullName": "Đông",
+      "phone": "0987654321",
+      "address": "HN",
+      "role": "USER",
+      "balance": 490000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "Thiếu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 83,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 1,
+        "returnQuantity": 1,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "làm rách",
+        "depositAmount": 120000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      },
+      {
+        "book": {
+          "id": 0,
+          "name": "Giải tích",
+          "author": "Lê Hữu Đăng",
+          "category": {
+            "idCategory": 1,
+            "nameCategory": "Toán học"
+          },
+          "publisher": "Kim Dồng",
+          "publishedYear": "12/05/2020",
+          "price": 150000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 97,
+          "voteStar": 0.0,
+          "voteCount": 0
+        },
+        "borrowQuantity": 1,
+        "returnQuantity": 1,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "nguyen vẹn",
+        "depositAmount": 150000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "26/04/2024",
+    "expectedReturnDate": "30/04/2024",
+    "actualReturnDate": "26/04/2024",
+    "totalDepositAmount": 270000.0,
+    "totalExpectedBorrowFee": 40000.0,
+    "totalActualBorrowFee": 40000.0,
+    "totalPunishAmount": 60000.0
+  },
+  {
+    "id": 28,
+    "borrower": {
+      "id": 11,
+      "email": "a1@gmail.com",
+      "password": "Aa123456",
+      "fullName": "Đông",
+      "phone": "0987654321",
+      "address": "HN",
+      "role": "USER",
+      "balance": 490000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 0,
+          "name": "Giải tích",
+          "author": "Lê Hữu Đăng",
+          "category": {
+            "idCategory": 1,
+            "nameCategory": "Toán học"
+          },
+          "publisher": "Kim Dồng",
+          "publishedYear": "12/05/2020",
+          "price": 150000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 98,
+          "voteStar": 0.0,
+          "voteCount": 0
+        },
+        "borrowQuantity": 1,
+        "returnQuantity": 1,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "nguyen ven",
+        "depositAmount": 150000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 0.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "20/04/2024",
+    "expectedReturnDate": "24/04/2024",
+    "actualReturnDate": "26/04/2024",
+    "totalDepositAmount": 150000.0,
+    "totalExpectedBorrowFee": 20000.0,
+    "totalActualBorrowFee": 30000.0,
+    "totalPunishAmount": 10000.0
+  },
+  {
+    "id": 29,
+    "borrower": {
+      "id": 11,
+      "email": "a1@gmail.com",
+      "password": "Aa123456",
+      "fullName": "Đông",
+      "phone": "0987654321",
+      "address": "HN",
+      "role": "USER",
+      "balance": 510000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "Thiếu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 83,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 1,
+        "returnQuantity": 1,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "nguyen ven",
+        "depositAmount": 120000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 30000.0,
+        "punishAmount": 10000.0
+      }
+    ],
+    "createdDate": "20/04/2024",
+    "expectedReturnDate": "24/04/2024",
+    "actualReturnDate": "26/04/2024",
+    "totalDepositAmount": 120000.0,
+    "totalExpectedBorrowFee": 20000.0,
+    "totalActualBorrowFee": 30000.0,
+    "totalPunishAmount": 10000.0
+  },
+  {
+    "id": 30,
+    "borrower": {
+      "id": 11,
+      "email": "a1@gmail.com",
+      "password": "Aa123456",
+      "fullName": "Đông",
+      "phone": "0987654321",
+      "address": "HN",
+      "role": "USER",
+      "balance": 500000.0
+    },
+    "details": [
+      {
+        "book": {
+          "id": 1,
+          "name": "Harry Potter",
+          "author": "Tô Hoài",
+          "category": {
+            "idCategory": 0,
+            "nameCategory": "Thiếu nhi"
+          },
+          "publisher": "Kim Đồng",
+          "publishedYear": "11/11/1111",
+          "price": 120000.0,
+          "borrowPricePerDay": 5000.0,
+          "totalQuantity": 82,
+          "voteStar": 4.5,
+          "voteCount": 6
+        },
+        "borrowQuantity": 1,
+        "returnQuantity": 1,
+        "originalStatus": "nguyen ven",
+        "returnStatus": "nguyen ven",
+        "depositAmount": 120000.0,
+        "expectedBorrowFee": 20000.0,
+        "actualBorrowFee": 20000.0,
+        "punishAmount": 0.0
+      }
+    ],
+    "createdDate": "26/04/2024",
+    "expectedReturnDate": "30/04/2024",
+    "actualReturnDate": "26/04/2024",
+    "totalDepositAmount": 120000.0,
+    "totalExpectedBorrowFee": 20000.0,
+    "totalActualBorrowFee": 20000.0,
+    "totalPunishAmount": 0.0
+  }
+]

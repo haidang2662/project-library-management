@@ -188,7 +188,20 @@ public class AdminMenu {
             }
             switch (featureChoice) {
                 case 1 -> userService.createUserForAdmin();
-                case 2 -> userService.updateUserInformation();
+                case 2 -> {
+                    int idUserUpdate;
+                    while (true) {
+                        try {
+                            System.out.println("Mời bạn nhập ID của User muốn update ");
+                            idUserUpdate = new Scanner(System.in).nextInt();
+                        } catch (InputMismatchException e) {
+                            System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
+                            continue;
+                        }
+                        break;
+                    }
+                    userService.updateUserInformation(idUserUpdate);
+                }
                 case 3 -> {
                     User user;
                     int idUserDelete;

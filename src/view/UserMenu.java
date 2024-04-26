@@ -164,7 +164,7 @@ public class UserMenu {
             }
             switch (featureChoice) {
                 case 1:
-                    userService.updateUserInformation();
+                    userService.updateUserInformation(Main.loggedInUser.getId());
                     break;
                 case 2:
                     User user = Main.loggedInUser;

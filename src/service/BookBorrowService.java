@@ -72,7 +72,7 @@ public class BookBorrowService {
             try {
                 expectedReturnDate = LocalDate.parse(new Scanner(System.in).nextLine(), DateTimeConstant.DATE_FORMATTER);
                 borrowingDayCount = ChronoUnit.DAYS.between(createdDate, expectedReturnDate);// số ngày mượn
-                if(borrowingDayCount<0){
+                if (borrowingDayCount < 0) {
                     System.out.println("Ngày trả dự kiến phải ở sau ngày bắt đầu thuê , vui lòng nhập lại");
                     continue;
                 }
@@ -82,8 +82,6 @@ public class BookBorrowService {
                 System.out.println("Định dạng không hợp lệ vui lòng nhập lại ");
             }
         }
-
-
 
         double tongTienCoc = 0, tongTienThue = 0;
         for (BookBorrowDetail detail : details) {
@@ -107,6 +105,7 @@ public class BookBorrowService {
         String transactionContent = borrower.getFullName() + " thực hiện mượn sách thư viện";
         Transaction transaction = new Transaction(borrower, createdDate, -tongTienCoc, TransactionType.BORROW, transactionContent);
         transactionService.saveTransaction(transaction);
+        showBookBorrow(bookBorrow);
     }
 
     private List<BookBorrowDetail> createdBorrowDetail(User borrower) {
@@ -271,6 +270,9 @@ public class BookBorrowService {
             book.setTotalQuantity(book.getTotalQuantity() + numberBookReturn);
             detail.setReturnQuantity(numberBookReturn);
             detail.setReturnStatus(status);
+            double tienThueThucTe1DauSach = soNgayThueThucTe * detail.getBook().getBorrowPricePerDay() * detail.getBorrowQuantity();
+            detail.setActualBorrowFee(tienThueThucTe1DauSach);
+            detail.setPunishAmount(tienThueThucTe1DauSach - detail.getExpectedBorrowFee());
             tongTienPhat += tienPhatThueQuaHan + tienPhatDoTinhTrangSach;
             borrowing.setTotalPunishAmount(tongTienPhat);
         }
@@ -288,6 +290,7 @@ public class BookBorrowService {
         saveBookBorrowsData();
         userService.saveUserData();
         bookService.saveBookData();
+        showBookBorrow(borrowing);
     }
 
     public List<BookBorrow> findByUserId(int userId) { // tìm tất cả các lượt mượn sách từ trước tới giờ của user theo id
@@ -395,7 +398,7 @@ public class BookBorrowService {
     public void showBookBorrow(BookBorrow borrow) {
         System.out.println("****************************************************************************");
         printHeader();
-        System.out.printf("%-15s%-25s%-10s%-20s%-20s%-20s%-20s%-20s%n", borrow.getId(), borrow.getBorrower().getFullName(), borrow.getCreatedDate(), borrow.getActualReturnDate(), borrow.getTotalDepositAmount(), borrow.getTotalExpectedBorrowFee(), borrow.getTotalActualBorrowFee(), borrow.getTotalPunishAmount());
+        System.out.printf("%-15s%-25s%-30s%-30s%-30s%-30s%-30s%-30s%n", borrow.getId(), borrow.getBorrower().getFullName(), borrow.getCreatedDate(), borrow.getActualReturnDate(), borrow.getTotalDepositAmount(), borrow.getTotalExpectedBorrowFee(), borrow.getTotalActualBorrowFee(), borrow.getTotalPunishAmount());
         System.out.println();
         System.out.println();
         System.out.println("==== CHI TIẾT CÁC ĐẦU SÁCH MƯỢN ====");
@@ -427,7 +430,7 @@ public class BookBorrowService {
     public void showBookBorrowDetails(List<BookBorrowDetail> bookBorrowDetails) {
         System.out.printf("%-30s%-20s%-20s%-30s%-30s%-30s%-30s%-30s%-30s%-30s%n",
                 "BookName", "borrowQuantity", "returnQuantity",
-                "originalStatus", "returnStatus", "DepositAmount", "ExpectedBorrowFee", "ActualBorrowFee", "ActualBorrowFee","PunishAmount");
+                "originalStatus", "returnStatus", "DepositAmount", "ExpectedBorrowFee", "ActualBorrowFee", "ActualBorrowFee", "PunishAmount");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         for (BookBorrowDetail bookBorrowDetail : bookBorrowDetails) {
             showBookBorrowDetail(bookBorrowDetail);
@@ -438,7 +441,7 @@ public class BookBorrowService {
         System.out.printf("%-30s%-20s%-20s%-30s%-30s%-30s%-30s%-30s%-30s%-30s%n", bookBorrowDetail.getBook().getName(),
                 bookBorrowDetail.getBorrowQuantity(), bookBorrowDetail.getReturnQuantity(),
                 bookBorrowDetail.getOriginalStatus(), bookBorrowDetail.getReturnStatus(), bookBorrowDetail.getDepositAmount(),
-                bookBorrowDetail.getExpectedBorrowFee(), bookBorrowDetail.getActualBorrowFee(), bookBorrowDetail.getActualBorrowFee(),bookBorrowDetail.getPunishAmount());
+                bookBorrowDetail.getExpectedBorrowFee(), bookBorrowDetail.getActualBorrowFee(), bookBorrowDetail.getActualBorrowFee(), bookBorrowDetail.getPunishAmount());
     }
 
     public void findBorrowDetail() {

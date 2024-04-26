@@ -2,7 +2,6 @@ package service;
 
 import constant.Regex;
 import constant.UserRole;
-import entity.Book;
 import entity.User;
 import main.Main;
 import util.FileUtil;
@@ -223,18 +222,8 @@ public class UserService {
         System.out.println("Không tồn tại user với id vừa nhập!");
     }
 
-    public void updateUserInformation() {
-        int idUserUpdate;
-        while (true) {
-            try {
-                System.out.println("Mời bạn nhập ID của User muốn update ");
-                idUserUpdate = new Scanner(System.in).nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Giá trị bạn vừa nhập không phải là một số nguyên. Vui lòng nhập lại.");
-                continue;
-            }
-            break;
-        }
+    public void updateUserInformation(int idUserUpdate) {
+
         User user = findUserById(idUserUpdate);
         System.out.println("Mời bạn chọn phần thông tin muốn chỉnh sửa: ");
         System.out.println("1. Email");

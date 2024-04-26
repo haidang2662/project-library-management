@@ -125,7 +125,7 @@ public class BookService {
         }
         Book book = new Book(AUTO_ID++, name, author, category, publisher, publishedYear, price, borrowPricePerDay, totalQuantity);
         books.add(book);
-        showBookDetail(book);
+        showBook(book);
         saveBookData(); // Lưu vào File dữ liệu liên quan đến books
     }
 
