@@ -374,6 +374,9 @@ public class BookBorrowService {
         long minDifference = Long.MAX_VALUE;
         BookBorrow nearestBorrow = null;
         for (BookBorrow borrow : borrows) {
+            if (borrow.getActualReturnDate() == null) {
+                continue;
+            }
             long difference = ChronoUnit.DAYS.between(borrow.getActualReturnDate(), LocalDate.now());
             if (difference >= 0 && difference < minDifference) {
                 minDifference = difference;
