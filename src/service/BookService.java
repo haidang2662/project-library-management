@@ -351,7 +351,7 @@ public class BookService {
     public void showBookDetail(Book book) {
         System.out.printf("%-5s%-20s%-20s%-20s%-20s%-20s%-10s%-30s%-20s%-10s%-10s%n",book.getId(),book.getName(),book.getAuthor(),book.getCategory().getNameCategory(),
                 book.getPublisher(),book.getPublishedYear(),book.getPrice(),book.getBorrowPricePerDay(),book.getTotalQuantity(),
-                book.getVoteStar(),book.getVoteCount());
+                book.getVoteCount(),book.getVoteStar());
     }
 
     public void showBooks(List<Book> books1) {
@@ -362,7 +362,7 @@ public class BookService {
     }
 
     public void printHeader(){
-        System.out.printf("%-5s%-20s%-20s%-20s%-20s%-20s%-10s%-30s%-20s%-10s%-10s%n", "Id", "Name", "Author", "CateGory","Publisher","PublishedYear","Price","BorrowPricePerDay","TotalQuantity","VoteStar","VoteCount");
+        System.out.printf("%-5s%-20s%-20s%-20s%-20s%-20s%-10s%-30s%-20s%-10s%-10s%n", "Id", "Name", "Author", "CateGory","Publisher","PublishedYear","Price","BorrowPricePerDay","TotalQuantity","VoteCount","VoteStar");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
     }
 }
